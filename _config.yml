@@ -8,7 +8,7 @@ subtitle: 游戏,写代码,做个好游戏~
 description: 分享个人游戏编程的心得~
 keywords: 游戏开发,LayaBox,H5
 author: Tide Li
-language: zh-Hans
+language: zh-CN
 timezone: 
 
 # URL
@@ -73,10 +73,10 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+theme: hexo-theme-snippet
 # Schemes
 # scheme: Muse  //默认主题
-scheme: Mist
+# scheme: Mist
 #scheme: Pisces
 #scheme: Gemini
 # Deployment
@@ -85,3 +85,19 @@ deploy:
   type: git
   repository: git@github.com:AILHC/AILHC.github.io.git 
   branch: master
+live2d:
+  enable: true
+  scriptFrom: local
+  pluginRootPath: live2dw/
+  pluginJsPath: lib/
+  pluginModelPath: assets/
+  tagMode: false
+  log: false
+  model:
+    use: live2d-widget-model-wanko
+  display:
+    position: right
+    width: 150
+    height: 300
+  mobile:
+    show: true
