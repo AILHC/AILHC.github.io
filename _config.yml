@@ -83,8 +83,10 @@ theme: hexo-theme-snippet
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository: git@github.com:AILHC/AILHC.github.io.git 
-  branch: master
+  repo: 
+    # gitee: git@gitee.com:AIGAMESTUDIO.AILHC/HCBlog.git,master
+    coding: git@e.coding.net:AILHC/tideblog.git,master
+    github: git@github.com:AILHC/AILHC.github.io.git,master
 live2d:
   enable: true
   scriptFrom: local
