@@ -11,6 +11,9 @@ menu:
 - page: 经验之谈
   url: /categories/经验之谈/
   icon:
+- page: 框架设计
+  url: /categories/框架设计/
+  icon:
 - page: 想法流水
   url: /categories/想法流水/
   icon:
