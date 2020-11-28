@@ -85,7 +85,7 @@ deploy:
   type: git
   repo: 
     # gitee: git@gitee.com:AIGAMESTUDIO.AILHC/HCBlog.git,master
-    coding: git@e.coding.net:AILHC/tideblog.git,master
+    # coding: git@e.coding.net:AILHC/tideblog.git,master
     github: git@github.com:AILHC/AILHC.github.io.git,master
 live2d:
   enable: true
