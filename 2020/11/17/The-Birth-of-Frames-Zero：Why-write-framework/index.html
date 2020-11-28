@@ -197,39 +197,49 @@
 <p>我想有的人心里有答案，有的人也有疑问。</p>
 <p>这里我提供别人对框架的见解链接:</p>
 <ul>
-<li><p>知乎文章:<a href="https://zhuanlan.zhihu.com/p/114465098" target="_blank" rel="noopener">什么是框架？为什么要使用框架？我告诉你理由哦！</a></p>
-</li>
-<li><p>知乎问答: <a href="https://www.zhihu.com/question/19558524" target="_blank" rel="noopener">什么是框架？</a></p>
+<li><p>某乎文章:<a href="https://zhuanlan.zhihu.com/p/114465098" target="_blank" rel="noopener">什么是框架？为什么要使用框架？我告诉你理由哦！</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">框架的英文为Framework意思是框架、机制、准则。</span><br><span class="line">最早是源于建筑行业，是一个框子——指其约束性，也是一个架子——指其支撑性。</span><br><span class="line">是一个基本概念上的结构，用于去解决或者处理复杂的问题。</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>我的个人见解(ps:跟上面差不多)</p>
-<p>看一张我画的游戏前端程序结构图</p>
+<ul>
+<li><p>@金戈的回答: <a href="https://www.zhihu.com/question/19558524" target="_blank" rel="noopener">什么是框架？</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">框架（Framework）是一个框子——指其约束性，也是一个架子——指其支撑性。</span><br><span class="line">IT语境中的框架，特指为解决一个开放性问题而设计的具有一定约束性的支撑结构。在此结构上可以根据具体问题扩展、安插更多的组成部分，从而更迅速和方便地构建完整的解决问题的方案。</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>我的个人见解：▼</p>
 <p><img src="https://coding-pages-bucket-434147-7588795-4574-367535-1255530080.cos.ap-guangzhou.myqcloud.com/img/GameApplication.png" alt=""></p>
 <p><img src="https://coding-pages-bucket-434147-7588795-4574-367535-1255530080.cos.ap-guangzhou.myqcloud.com/img/GameApplication-Framework.png" alt=""></p>
 <p>我们的游戏程序都是基于某个平台的，以及可能会使用现成的渲染框架，来实现我们游戏的玩法和业务。同时针对开发和生产环境部署，我们需要一些工具协助。</p>
-<p>框架在渲染框架层和业务层之间，封装部分通用能力供业务层使用。</p>
-<p>我的层级图的灵感来自白玉无冰大佬拍的panda大大讲的一页一个PPT:CocosCreator跨平台的引擎架构</p>
+<p>框架在渲染框架层和业务层之间，封装部分通用能力供业务层使用。起到支撑业务开发的作用。</p>
+<p>我的层级图的灵感来自白玉无冰大佬拍的panda大大讲的一页一个PPT:CocosCreator跨平台的引擎架构。▼</p>
 <p><img src="https://coding-pages-bucket-434147-7588795-4574-367535-1255530080.cos.ap-guangzhou.myqcloud.com/img/CocosCreator跨平台架构.jpg" style="zoom:67%;"></p>
 <p>对于游戏客户端框架来说</p>
 <ul>
 <li><p>框架具有一定的约束性，指的是，我们需要在一定范围内按照框架作者的设计和规范去使用和扩展。</p>
-<p>比如：在CocosCreator框架中，</p>
-<p>如果要加载一个资源，那就需要调用cc.assetManager.loadxxx 或者cc.loader.loadxxx，传规定的参数，传错了就可能出问题</p>
-<p>如果需要加载自定义的资源就需要安装assetManager的规范去扩展。具体可参考CocosCreator的文档，不按规范扩展就可能出问题</p>
+<p>比如：</p>
+<p>在CocosCreator框架中。</p>
+<ul>
+<li><p>如果要加载一个资源，那就需要调用cc.assetManager.loadxxx 或者cc.loader.loadxxx，传规定的参数，传错了就可能出问题。</p>
+</li>
+<li><p>如果需要加载自定义的资源就需要安装assetManager的规范去扩展。具体可参考CocosCreator的文档，不按规范扩展就可能出问题。</p>
+</li>
+</ul>
 </li>
 <li><p>框架有部分已经实现的功能，可以直接使用或者稍微扩展就可以用来实现业务逻辑。</p>
 </li>
-<li><p>大部分游戏客户端框架都包含很多功能模块，甚至不是我们项目需要的</p>
-<p>比如：框架中包含UI管理框架，事件通讯框架，网络模块，等等。</p>
+<li><p>大部分游戏客户端框架都包含很多功能模块，甚至不是我们项目需要的。</p>
+<p>比如：</p>
+<p>框架中包含UI管理框架，事件通讯框架，网络模块，等等。</p>
 <p>我们可能只需要事件通讯模块或者UI管理模块，只能手动去剔除不需要的。</p>
 </li>
-<li><p>框架所能解决的问题有限，有边界</p>
-<p>比如: 有的框架只是一个UI管理框架只解决了复杂UI管理的问题</p>
+<li><p>框架所能解决的问题有限，有边界。</p>
+<p>比如：</p>
+<p>有的框架只是一个UI管理框架只解决了复杂UI管理的问题</p>
 </li>
 </ul>
 <ul>
-<li><p>框架可能跟底层强相关</p>
-<p>比如 一个基于CocosCreator的UI管理模块，里面耦合了CocosCreator的加载，prefab文件，resource文件夹的规范等，可能也耦合了cc.Node的使用等等。</p>
+<li><p>框架可能跟底层强相关。</p>
+<p>比如：一个基于CocosCreator的UI管理模块，里面耦合了CocosCreator的加载，prefab文件，resource文件夹的规范等，可能也耦合了cc.Node的使用等等。</p>
 </li>
 </ul>
 <h2 id="框架解决什么问题？"><a href="#框架解决什么问题？" class="headerlink" title="框架解决什么问题？"></a>框架解决什么问题？</h2><hr>
@@ -269,9 +279,9 @@
 </li>
 <li><p>他人的见解参考</p>
 <ul>
-<li><p>知乎文章: <a href="https://zhuanlan.zhihu.com/p/114465098" target="_blank" rel="noopener">什么是框架？为什么要使用框架？我告诉你理由哦！</a></p>
+<li><p>某乎文章: <a href="https://zhuanlan.zhihu.com/p/114465098" target="_blank" rel="noopener">什么是框架？为什么要使用框架？我告诉你理由哦！</a></p>
 </li>
-<li><p>知乎问答: <a href="https://www.zhihu.com/question/19558524" target="_blank" rel="noopener">什么是框架？</a></p>
+<li><p>某乎问答: <a href="https://www.zhihu.com/question/19558524" target="_blank" rel="noopener">什么是框架？</a></p>
 </li>
 </ul>
 </li>
