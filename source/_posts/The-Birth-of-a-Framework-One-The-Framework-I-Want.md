@@ -393,7 +393,6 @@ export class AppMainComp extends Component {
 
 - [框架的诞生-零：为什么写框架？](https://ailhc.github.io/2020/11/17/The-Birth-of-Frames-Zero%EF%BC%9AWhy-write-framework/)
 - [框架的诞生-一：我想要的框架](https://ailhc.github.io/2020/11/29/The-Birth-of-a-Framework-One-The-Framework-I-Want/)
-- 框架的诞生-二: 承载万千的核心
 - 不只是 UI 管理:通用显示管理
 - 让 fairygui 更好用的插件
 - 满足多种需求的通用对象池
