@@ -1,0 +1,478 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="晴">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="EasyGameFramework,框架设计">
+
+
+<meta name="description" content="目录[TOC]
+我想要的框架是什么样的？上一篇文章: 《框架的诞生-零：为什么写框架？》里有讲 什么是框架。
+框架是一个架子，在游戏程序中，抛开渲染层引擎框架，我们的指的框架就是支撑业务逻辑的架...">
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+<title>
+    
+    框架的诞生-一：我想要的框架 |
+    
+    晴
+</title>
+
+<link rel="alternate" href="/atom.xml" title="晴" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header" style="background-image:url(
+    http://snippet.shenliyang.com/img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Tide Li">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        晴</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/经验之谈/"><i class="fa "></i>
+                                经验之谈</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/框架设计/"><i class="fa "></i>
+                                框架设计</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/想法流水/"><i class="fa "></i>
+                                想法流水</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/资料收集/"><i class="fa "></i>
+                                资料收集</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/关于作者"><i class="fa "></i>
+                                关于作者</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="框架的诞生-一：我想要的框架">
+            
+            框架的诞生-一：我想要的框架
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/框架设计/">框架设计</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/EasyGameFramework/">EasyGameFramework</a> <a class="tag-link" href="/tags/框架设计/">框架设计</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2020/11/29</span>
+    </span>
+    
+    <span class="fa-wrap">
+        <i class="fa fa-eye"></i>
+        <span id="busuanzi_value_page_pv"></span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><p>[TOC]</p>
+<h2 id="我想要的框架是什么样的？"><a href="#我想要的框架是什么样的？" class="headerlink" title="我想要的框架是什么样的？"></a>我想要的框架是什么样的？</h2><p>上一篇文章: 《框架的诞生-零：为什么写框架？》里有讲 什么是框架。</p>
+<p>框架是一个架子，在游戏程序中，抛开渲染层引擎框架，我们的指的框架就是支撑业务逻辑的架子，也是一个框框，规范和约束着开发人员。</p>
+<p>每个框架都有着自己的边界，解决特定领域问题的。</p>
+<p>那我们从去分析我遇到了什么问题，有什么需求，如何解决问题，如何实现需求。</p>
+<p>无论是小项目还是大项目，或者是一个会不断扩张的项目，都希望能够项目代码结构清晰有条理，管理好不同模块。</p>
+<h3 id="我尝试过的方式"><a href="#我尝试过的方式" class="headerlink" title="我尝试过的方式"></a>我尝试过的方式</h3><h4 id="Manager-of-Managers"><a href="#Manager-of-Managers" class="headerlink" title="Manager of Managers"></a>Manager of Managers</h4><p>很多框架都用这种方式</p>
+<p>这是刘钢老师的《<a href="https://zhuanlan.zhihu.com/p/64858713" target="_blank" rel="noopener">Unity项目架构设计与开发管理</a>》中讲到的一种相对较好的方式▼</p>
+<p><img src="https://coding-pages-bucket-434147-7588795-4574-367535-1255530080.cos.ap-guangzhou.myqcloud.com/img/manger-of-mangers.png" style="zoom:67%;"></p>
+<p>优点是:类似于分级结构，各司其职；比如音频管理，场景管理，关卡管理等，每一个都是一个单例脚本，配合使用。结构相对清晰。可以复用</p>
+<p>但我个人不太喜欢的点</p>
+<ul>
+<li>调用不方便，调用链太长，费手指。比如UIManager.getInstance().showUI 或者UIMgr.ins.showUI<ul>
+<li>我想这样: m.uiMgr.showUI  少敲几个字母，也不想import UIMgr</li>
+</ul>
+</li>
+<li>无生命周期统一管理，单例初始化和依赖不太可控。惰性初始化，等到调用getInstance才初始化。</li>
+<li>控制台调试调用不方便，单例可能得单独绑定暴露到全局才能，每个模块都得这样做才行</li>
+<li>直接依赖不可动态替换<ul>
+<li>有个模块我想在不同的平台切换成不同的实现，单例做不到。</li>
+</ul>
+</li>
+<li>大多耦合引擎来开发，只能在同引擎项目进行复用</li>
+</ul>
+<h4 id="模块字典挂载到全局变量window"><a href="#模块字典挂载到全局变量window" class="headerlink" title="模块字典挂载到全局变量window"></a>模块字典挂载到全局变量window</h4><p>这是我之前的框架使用的方式</p>
+<p>就是将所有的模块初始化，然后注入一个模块字典</p>
+<p>然后将字典挂载到全局的一个变量中。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> Main &#123;</span><br><span class="line">    <span class="keyword">constructor</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">const</span> moduleMap = &#123;</span><br><span class="line"></span><br><span class="line">        &#125;;</span><br><span class="line">        moduleMap[<span class="string">"uiMgr"</span>] = <span class="keyword">new</span> UIMgr();</span><br><span class="line">        moduleMap[<span class="string">"netMgr"</span>] = <span class="keyword">new</span> NetMgr();</span><br><span class="line"></span><br><span class="line">        <span class="built_in">window</span>[<span class="string">"aa"</span>] = moduleMap;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> UIMgr &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> NetMgr &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>优点：调用方便</p>
+<p>缺点: 有点危险，别人知道了可以在控制台调用进行调试。</p>
+<p>这些方式都有些问题，先不考虑方便调用</p>
+<h2 id="怎么实现我想要的框架？"><a href="#怎么实现我想要的框架？" class="headerlink" title="怎么实现我想要的框架？"></a>怎么实现我想要的框架？</h2><h3 id="一个具有生命周期的模块化机制"><a href="#一个具有生命周期的模块化机制" class="headerlink" title="一个具有生命周期的模块化机制"></a>一个具有生命周期的模块化机制</h3><h4 id="pomelo给我的灵感"><a href="#pomelo给我的灵感" class="headerlink" title="pomelo给我的灵感"></a>pomelo给我的灵感</h4><p>这个想法的灵感来自 pomelo 一个网易开发的基于nodejs的分布式服务器框架。</p>
+<p>pomelo支持可插拔的component扩展架构</p>
+<p>用户只要实现component相关的接口： start, afterStart, stop, 就可以加载自定义的组件：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.load([name], comp, [opts])</span><br></pre></td></tr></table></figure>
+<p>start, afterStart 这些生命周期 接口跟cocos和Unity的组件式接口很像。<br>主要是方便处理不同模块之间的依赖引用。比如：A依赖了B，但B还未初始化。</p>
+<p>各自的初始化，都在start里处理，然后在afterStart里进行依赖调用。</p>
+<p>可能对于不同的业务，这些生命周期可能不够用，可以根据具体业务进行扩展，满足自定义需求。</p>
+<p>比如登录业务相关的：</p>
+<p>C模块依赖A和B登录后的数据状态，那么增加两个接口 onLoginInit,onAfterLoginInit。</p>
+<p>那么A和B实现onLoginInit接口进行登录初始化，C在onAfterLoginInit接口进行依赖调用。</p>
+<p>于是我设计了这样的一个简单的接口</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> global &#123;</span><br><span class="line">    <span class="keyword">namespace</span> egf &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">interface</span> IModule &#123;</span><br><span class="line">            <span class="comment">/**模块名 */</span></span><br><span class="line">            key?: <span class="built_in">string</span></span><br><span class="line">            <span class="comment">/**</span></span><br><span class="line"><span class="comment">             * 当初始化时</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            onInit?(app: IApp): <span class="built_in">void</span>;</span><br><span class="line">            <span class="comment">/**</span></span><br><span class="line"><span class="comment">             * 所有模块初始化完成时</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            onAfterInit?(app: IApp): <span class="built_in">void</span>;</span><br><span class="line">            <span class="comment">/**</span></span><br><span class="line"><span class="comment">             * 模块停止时</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            onStop?(): <span class="built_in">void</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">type</span> BootEndCallback = <span class="function">(<span class="params">isSuccess: <span class="built_in">boolean</span></span>) =&gt;</span> <span class="built_in">void</span>;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 引导程序</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="keyword">interface</span> IBootLoader &#123;</span><br><span class="line">            <span class="comment">/**</span></span><br><span class="line"><span class="comment">             * 引导</span></span><br><span class="line"><span class="comment">             * @param app </span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            onBoot(app: IApp, bootEnd: BootEndCallback): <span class="built_in">void</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 主程序</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="keyword">interface</span> IApp&lt;ModuleMap = any&gt; &#123;</span><br><span class="line">            <span class="comment">/**</span></span><br><span class="line"><span class="comment">             * 程序状态</span></span><br><span class="line"><span class="comment">             * 0 未启动 1 引导中, 2 初始化, 3 运行中</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            state: <span class="built_in">number</span>;</span><br><span class="line">            <span class="comment">/**</span></span><br><span class="line"><span class="comment">             * 模块字典</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            moduleMap: ModuleMap;</span><br><span class="line">            <span class="comment">/**</span></span><br><span class="line"><span class="comment">             * 引导</span></span><br><span class="line"><span class="comment">             * @param bootLoaders </span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            bootstrap(bootLoaders: egf.IBootLoader[]): <span class="built_in">Promise</span>&lt;<span class="built_in">boolean</span>&gt;;</span><br><span class="line">            <span class="comment">/**</span></span><br><span class="line"><span class="comment">             * 初始化</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            init(): <span class="built_in">void</span>;</span><br><span class="line">            <span class="comment">/**</span></span><br><span class="line"><span class="comment">             * 加载模块</span></span><br><span class="line"><span class="comment">             * @param module </span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            loadModule(<span class="keyword">module</span>: IModule | any, key?: keyof ModuleMap): void;</span><br><span class="line">            /**</span><br><span class="line">             * 停止</span><br><span class="line">             */</span><br><span class="line">            stop(): void;</span><br><span class="line">            /**</span><br><span class="line">             * 获取模块实例</span><br><span class="line">             * @param moduleKey </span><br><span class="line">             */</span><br><span class="line">            getModule&lt;T extends IModule = any&gt;(moduleKey: keyof ModuleMap): T;</span><br><span class="line">            /**</span><br><span class="line">             * 判断有没有这个模块</span><br><span class="line">             * @param moduleKey </span><br><span class="line">             */</span><br><span class="line">            hasModule(moduleKey: keyof ModuleMap): boolean;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// eslint-disable-next-line @typescript-eslint/semi</span><br><span class="line">export &#123; &#125;</span><br></pre></td></tr></table></figure>
+<p>我就想要一个模块化机制，简单的模块化机制。</p>
+<h4 id="CatLib给我的灵感"><a href="#CatLib给我的灵感" class="headerlink" title="CatLib给我的灵感"></a>CatLib给我的灵感</h4><p>这里有一个bootloader的东西我没有讲到，它的灵感来自CatLib，一个我觉得很棒的Unity框架。</p>
+<p>这个机制是什么呢？以开发测试环境和生产环境举例。</p>
+<p>有一个debugBootLoader，这个引导程序处理一些测试用的模块加载和初始化，杂七杂八的。</p>
+<p>当你发布生产环境时，可以通过debug变量屏蔽加载这个引导程序，也可以通过编译工具剔除这段代码。</p>
+<p>具体实现可以看：<a href="https://github.com/AILHC/EasyGameFrameworkOpen/tree/main/packages/core#readme" target="_blank" rel="noopener">https://github.com/AILHC/EasyGameFrameworkOpen/tree/main/packages/core#readme</a></p>
+<h4 id="怎么使用"><a href="#怎么使用" class="headerlink" title="怎么使用?"></a>怎么使用?</h4><p>cocoscreator2.x的 demo  <a href="https://github.com/AILHC/egf-ccc-empty" target="_blank" rel="noopener">https://github.com/AILHC/egf-ccc-empty</a></p>
+<p>cocoscreator3d 的 demo <a href="https://github.com/AILHC/egf-ccc3d-empty" target="_blank" rel="noopener">https://github.com/AILHC/egf-ccc3d-empty</a></p>
+<p>示例代码</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//FrameworkLoader.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; HelloWorld &#125; <span class="keyword">from</span> <span class="string">"../HelloWorld"</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> FrameworkLoader <span class="keyword">implements</span> egf.IBootLoader &#123;</span><br><span class="line">    onBoot(app: egf.IApp, bootEnd: egf.BootEndCallback): <span class="built_in">void</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> helloWorld = <span class="keyword">new</span> HelloWorld();</span><br><span class="line">        app.loadModule(helloWorld);</span><br><span class="line">        bootEnd(<span class="literal">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//AppMain.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; App &#125; <span class="keyword">from</span> <span class="string">"@ailhc/egf-core"</span></span><br><span class="line"><span class="keyword">import</span> &#123; FrameworkLoader &#125; <span class="keyword">from</span> <span class="string">"./boot-loaders/FrameworkLoader"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; setModuleMap, m &#125; <span class="keyword">from</span> <span class="string">"./ModuleMap"</span>;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 这是一种启动和初始化框架的方式，在cocos加载脚本时启动</span></span><br><span class="line"><span class="comment"> * 不依赖场景加载和节点组件挂载</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> AppMain &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> app: App&lt;IModuleMap&gt;;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> initFramework() &#123;</span><br><span class="line">        <span class="keyword">const</span> app = <span class="keyword">new</span> App&lt;IModuleMap&gt;();</span><br><span class="line">        AppMain.app = app;</span><br><span class="line">        app.bootstrap([<span class="keyword">new</span> FrameworkLoader()]);</span><br><span class="line">        setModuleMap(app.moduleMap);</span><br><span class="line">        app.init();</span><br><span class="line">        <span class="built_in">window</span>[<span class="string">"m"</span>] = m;<span class="comment">//挂在到全局，方便控制台调试，生产环境可以屏蔽=&gt;安全</span></span><br><span class="line">        m.helloWorld.say();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">AppMain.initFramework();</span><br></pre></td></tr></table></figure>
+<p>至于怎么调用方便，这个是个人的喜好，我呢，用了一点点魔法，让自己用着舒服又有点安全感。细节请看demo</p>
+<p>上一篇文章我们了解到大部分框架具有约束性，要按规范去使用和扩展。</p>
+<p>而这个模块机制的框架约束性很小很小，几乎没有。</p>
+<p>你可以将已经实现的单例Manager实例注入模块管理器，起个名字加个声明就可以了，不用特地实现接口。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.loadModule(UIMgr.getInstance(),<span class="string">"uiMgr"</span>);</span><br></pre></td></tr></table></figure>
+<p>或者你可以将业务模块 比如HeroModule注入进去，那么业务模块之间就可以直接调用了。不用担心typescript的循环引用了。</p>
+<p>举个栗子（随便的）:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// BattleModule.ts</span></span><br><span class="line">m.hero.showHero(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//HeroModule.ts</span></span><br><span class="line">m.battle.startTestBattle(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<p>就像服务端的rpc调用一样。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">app.rpc.chat.chatRemote.kick(session, uid, player, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="我想在CocosCreator和C3d中使用"><a href="#我想在CocosCreator和C3d中使用" class="headerlink" title="我想在CocosCreator和C3d中使用"></a>我想在CocosCreator和C3d中使用</h3><p>由于我的工作中是用Laya的，项目也用了这个框架。但我私底下都是玩CocosCreator和CocosCreator3d的(为什么啊？你懂得😉😉)</p>
+<p>我不想在项目之间将源码拷贝来拷贝去，迭代更新同步麻烦。</p>
+<p>如果能像npm包一样 安装就好了。而且核心模块是一个模块，其他模块也是一个模块。</p>
+<p>于是我开发了一个模块编译发布的工具，开发之前以为很简单，实际上，踩坑了好久😂。</p>
+<h4 id="这个模块编译发布工具有什么功能？"><a href="#这个模块编译发布工具有什么功能？" class="headerlink" title="这个模块编译发布工具有什么功能？"></a>这个模块编译发布工具有什么功能？</h4><ul>
+<li>编译模块成iife、commonjs、systemjs格式的js文件</li>
+<li>自动生成单个.d.ts声明文件</li>
+</ul>
+<p>这个systemjs格式的js文件可以让不支持npm包的CocosCreator3d可以像使用npm包一样使用。即使到时Cocos3.0支持npm了，使用方式一模一样。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; App &#125; <span class="keyword">from</span> <span class="string">'@ailhc/egf-core'</span>;<span class="comment">//像引用npm包一样引用</span></span><br><span class="line"><span class="keyword">import</span> &#123; _decorator, Component, Node &#125; <span class="keyword">from</span> <span class="string">'cc'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; m, setModuleMap &#125; <span class="keyword">from</span> <span class="string">'./ModuleMap'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; FrameworkLoader &#125; <span class="keyword">from</span> <span class="string">'./boot-loaders/FrameworkLoader'</span>;</span><br><span class="line"><span class="keyword">const</span> &#123; ccclass, property &#125; = _decorator;</span><br><span class="line"><span class="meta">@ccclass</span>(<span class="string">'AppMainComp'</span>)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> AppMainComp <span class="keyword">extends</span> Component &#123;</span><br><span class="line">    <span class="comment">/* class member could be defined like this */</span></span><br><span class="line">    <span class="comment">// dummy = '';</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* use `property` decorator if your want the member to be serializable */</span></span><br><span class="line">    <span class="comment">// @property</span></span><br><span class="line">    <span class="comment">// serializableDummy = 0;</span></span><br><span class="line"></span><br><span class="line">    onLoad() &#123;</span><br><span class="line">        <span class="keyword">this</span>._initFramework();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> _initFramework() &#123;</span><br><span class="line">        <span class="keyword">const</span> app = <span class="keyword">new</span> App&lt;IModuleMap&gt;();</span><br><span class="line">        <span class="comment">// new TestImport();</span></span><br><span class="line">        app.bootstrap([<span class="keyword">new</span> FrameworkLoader()]);</span><br><span class="line">        <span class="comment">// app.bootstrap([new FrameworkLoader2()]);</span></span><br><span class="line">        setModuleMap(app.moduleMap);</span><br><span class="line">        app.init();</span><br><span class="line">        <span class="built_in">window</span>[<span class="string">"m"</span>] = m;<span class="comment">//挂在到全局，方便控制台调试，生产环境可以屏蔽=&gt;安全</span></span><br><span class="line">        m.helloWorld.say();</span><br><span class="line">    &#125;</span><br><span class="line">    start() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// update (dt) &#123;&#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="如何开发一个模块"><a href="#如何开发一个模块" class="headerlink" title="如何开发一个模块"></a>如何开发一个模块</h4><ol>
+<li>克隆项目 git clone <a href="https://github.com/AILHC/EasyGameFrameworkOpen.git" target="_blank" rel="noopener">https://github.com/AILHC/EasyGameFrameworkOpen.git</a></li>
+<li>复制 packages/package-template项目，改文件夹名，改package.json里的项目名等信息</li>
+<li>npm install 初始化项目</li>
+<li>然后用typescript进行开发，使用index.ts文件将所有代码export（可以使用 export-typescript插件自动化，插件版本必须是0.0.5之前的）</li>
+<li>使用 egf build 进行编译发布</li>
+</ol>
+<h3 id="总结一下框架实现了哪些特性"><a href="#总结一下框架实现了哪些特性" class="headerlink" title="总结一下框架实现了哪些特性"></a>总结一下框架实现了哪些特性</h3><ul>
+<li>模块化<ul>
+<li>底层基础模块，业务模块，都是模块</li>
+</ul>
+</li>
+<li>模块生命周期<ul>
+<li>让模块的初始化有序，依赖可控</li>
+</ul>
+</li>
+<li>可面向接口<ul>
+<li>方便具体实现细节可替换，模块可动态替换</li>
+</ul>
+</li>
+<li>友好的类型声明<ul>
+<li>点一下就有类型提示，传字符串获取模块也有类型提示，很香的。</li>
+</ul>
+</li>
+<li>可以和引擎无关的</li>
+<li>每个模块库都是一个npm包</li>
+<li>模块库导出后可以是多种js格式，可以让laya，ccc，c3d使用</li>
+<li>库模块可以用typescript开发</li>
+</ul>
+<h2 id="这个框架可以做什么？"><a href="#这个框架可以做什么？" class="headerlink" title="这个框架可以做什么？"></a>这个框架可以做什么？</h2><ul>
+<li><p>基于轻量级无依赖的模块机制，可以为不同项目量身定制框架，可大可小。也可以根据项目的不同阶段进行渐进式扩展。</p>
+</li>
+<li><p>基于模块开发工具，我们可以开发和发布一个单独的对核心零依赖的模块，给不同的项目使用。</p>
+<ul>
+<li>方便别的项目引用</li>
+<li>方便开源</li>
+<li>方便做单元测试</li>
+</ul>
+</li>
+</ul>
+<p>这样看来其实这个框架，不算是上一篇文章讲到的框架，算是一个便于搭建框架的工具，基础。</p>
+<p>谢谢大家阅读我的文章，希望大家能有所收获。</p>
+<h2 id="框架系列文章"><a href="#框架系列文章" class="headerlink" title="框架系列文章"></a>框架系列文章</h2><ul>
+<li><a href="https://ailhc.github.io/2020/11/17/The-Birth-of-Frames-Zero%EF%BC%9AWhy-write-framework/" target="_blank" rel="noopener">框架的诞生-零：为什么写框架？</a></li>
+<li><a href="https://ailhc.github.io/2020/11/29/The-Birth-of-a-Framework-One-The-Framework-I-Want/" target="_blank" rel="noopener">框架的诞生-一：我想要的框架</a></li>
+<li>框架的诞生-二:  承载万千的核心</li>
+<li>不只是UI管理:通用显示管理</li>
+<li>让fairygui更好用的插件</li>
+<li>满足多种需求的通用对象池</li>
+<li>构建游戏/应用的神器:broadcast</li>
+<li>满足所有自定义需求的通用socket网络模块</li>
+<li>业务开发总结之状态管理</li>
+<li>。。。</li>
+</ul>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>欢迎关注，更多内容持续更新</p>
+<p>公众号搜索:玩转游戏开发</p>
+<p>或扫码:<img src="https://coding-pages-bucket-434147-7588795-4574-367535-1255530080.cos.ap-guangzhou.myqcloud.com/img/20201128164023.png" alt="img" style="zoom:50%;"></p>
+<p>QQ群: 1103157878</p>
+<p>博客主页: <a href="https://ailhc.github.io/" target="_blank" rel="noopener">https://ailhc.github.io/</a></p>
+<p>github: <a href="https://github.com/AILHC" target="_blank" rel="noopener">https://github.com/AILHC</a></p>
+
+    </div>
+    
+    <div class="reward" ontouchstart="">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+            <span class="reward-type">
+                <img class="wechat" src="/./img/reward-wepay.png"><b>微信打赏</b>
+            </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">
+        谢谢
+    </p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="https://ailhc.github.io/" target="_blank">AILHC</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+    <a href="/2020/11/17/The-Birth-of-Frames-Zero：Why-write-framework/" class="next-post btn btn-default" title="框架的诞生-零：为什么写框架？">
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            框架的诞生-零：为什么写框架？</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#目录"><span class="toc-text">目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#我想要的框架是什么样的？"><span class="toc-text">我想要的框架是什么样的？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#我尝试过的方式"><span class="toc-text">我尝试过的方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Manager-of-Managers"><span class="toc-text">Manager of Managers</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#模块字典挂载到全局变量window"><span class="toc-text">模块字典挂载到全局变量window</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#怎么实现我想要的框架？"><span class="toc-text">怎么实现我想要的框架？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一个具有生命周期的模块化机制"><span class="toc-text">一个具有生命周期的模块化机制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#pomelo给我的灵感"><span class="toc-text">pomelo给我的灵感</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CatLib给我的灵感"><span class="toc-text">CatLib给我的灵感</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#怎么使用"><span class="toc-text">怎么使用?</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#我想在CocosCreator和C3d中使用"><span class="toc-text">我想在CocosCreator和C3d中使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#这个模块编译发布工具有什么功能？"><span class="toc-text">这个模块编译发布工具有什么功能？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#如何开发一个模块"><span class="toc-text">如何开发一个模块</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结一下框架实现了哪些特性"><span class="toc-text">总结一下框架实现了哪些特性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#这个框架可以做什么？"><span class="toc-text">这个框架可以做什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#框架系列文章"><span class="toc-text">框架系列文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后"><span class="toc-text">最后</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+    访问量:
+    <strong id="busuanzi_value_site_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    &nbsp; | &nbsp;
+    访客数:
+    <strong id="busuanzi_value_site_uv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="/assets/tagcanvas.min.js?rev=2.9"></script>
+<script>
+var tagOption = {
+    textColour: '#444', // 字体颜色
+    outlineMethod: 'block', // 选中模式
+    outlineColour: '#FFDAB9', // 选中模式的颜色
+    interval: 30 || 30, // 动画帧之间的时间间隔，值越大，转动幅度越大
+    textHeight: 13,
+    outlineRadius: 3,
+    freezeActive: true || '', // 选中的标签是否继续滚动
+    frontSelect: true || '', // 不选标签云后部的标签
+    initial: [0.1, -0.1],
+    depth: 0.5,
+    decel: 0.95,
+    maxSpeed: 0.03,
+    reverse: true || '', // 是否反向触发
+    fadeIn: 500, // 进入动画时间
+    wheelZoom: false || '' // 是否启用鼠标滚轮
+}
+TagCanvas.Start('tag-cloud-3d', '', tagOption);
+</script>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/app.js?rev=@@hash"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+</html>

@@ -22,9 +22,8 @@
 <meta name="keywords" content="EasyGameFramework,框架设计">
 
 
-<meta name="description" content="[TOC]
-题外话
-大家好，很高兴，能写这篇文章分享给你们看，也很感谢你们能看我的文章。如果能和你们交流最好了。做游戏开发3、4年了，我用过这些，Unity，Cocos2dx，CocosCrea...">
+<meta name="description" content="目录[TOC]
+题外话大家好，很高兴，能写这篇文章分享给你们看，也很感谢你们能看我的文章。如果能和你们交流最好了。做游戏开发3、4年了，我用过这些，Unity，Cocos2dx，CocosCre...">
 
 
 <meta name="robots" content="all">
@@ -186,15 +185,13 @@
     </div>
     
     <div class="post-body post-content">
-        <p>[TOC]</p>
-<h2 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h2><hr>
-<p>大家好，很高兴，能写这篇文章分享给你们看，也很感谢你们能看我的文章。<br>如果能和你们交流最好了。<br>做游戏开发3、4年了，我用过这些，Unity，Cocos2dx，CocosCreator，LayaAir，Egret。</p>
+        <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><p>[TOC]</p>
+<h2 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h2><p>大家好，很高兴，能写这篇文章分享给你们看，也很感谢你们能看我的文章。<br>如果能和你们交流最好了。<br>做游戏开发3、4年了，我用过这些，Unity，Cocos2dx，CocosCreator，LayaAir，Egret。</p>
 <p>用得最久的是LayaAir，因为工作需要嘛。</p>
 <p>但最喜欢的还是CocosCreator，因为社区的小伙伴、引擎组的人都很好很可爱，他们分享的东西都让我受益匪浅。</p>
 <p>谢谢~<br><img src="https://coding-pages-bucket-434147-7588795-4574-367535-1255530080.cos.ap-guangzhou.myqcloud.com/img/九十度鞠躬谢谢.jpg" style="zoom:50%;"></p>
 <p>第一次写文章，如有不当之处请多多见谅。</p>
-<h2 id="什么是框架？"><a href="#什么是框架？" class="headerlink" title="什么是框架？"></a>什么是框架？</h2><hr>
-<p>我想有的人心里有答案，有的人也有疑问。</p>
+<h2 id="什么是框架？"><a href="#什么是框架？" class="headerlink" title="什么是框架？"></a>什么是框架？</h2><p>我想有的人心里有答案，有的人也有疑问。</p>
 <p>这里我提供别人对框架的见解链接:</p>
 <ul>
 <li><p>某乎文章:<a href="https://zhuanlan.zhihu.com/p/114465098" target="_blank" rel="noopener">什么是框架？为什么要使用框架？我告诉你理由哦！</a></p>
@@ -242,8 +239,7 @@
 <p>比如：一个基于CocosCreator的UI管理模块，里面耦合了CocosCreator的加载，prefab文件，resource文件夹的规范等，可能也耦合了cc.Node的使用等等。</p>
 </li>
 </ul>
-<h2 id="框架解决什么问题？"><a href="#框架解决什么问题？" class="headerlink" title="框架解决什么问题？"></a>框架解决什么问题？</h2><hr>
-<p>大家对框架的第一印象可能是</p>
+<h2 id="框架解决什么问题？"><a href="#框架解决什么问题？" class="headerlink" title="框架解决什么问题？"></a>框架解决什么问题？</h2><p>大家对框架的第一印象可能是</p>
 <ul>
 <li><p>我学不动了<img src="https://coding-pages-bucket-434147-7588795-4574-367535-1255530080.cos.ap-guangzhou.myqcloud.com/img/学不动了.jpg" alt="学不动了" style="zoom: 50%;"></p>
 </li>
@@ -256,50 +252,20 @@
 <li>好的框架可以让开发人员减少维护程序架构心智负担，减少纠结。</li>
 <li>最重要的是可以大大的提高开发效率，大部分时间专心写业务就可以了。</li>
 </ul>
-<h2 id="为什么写框架？"><a href="#为什么写框架？" class="headerlink" title="为什么写框架？"></a>为什么写框架？</h2><hr>
-<p>有现成的框架为什么不拿来直接用，干嘛自己造轮子浪费时间？</p>
-<p>可能是现成的框架没法满足业务需求</p>
-<p>可能是现成的框架和自己的思想不符</p>
-<p>可能是现成的框架过时了</p>
-<p>等等</p>
-<p>对于我而言</p>
-<p>写框架可以督促我去学习其他框架是如何设计的，为什么这样设计，能解决什么问题，为什么能解决这些问题。</p>
+<h2 id="为什么写框架？"><a href="#为什么写框架？" class="headerlink" title="为什么写框架？"></a>为什么写框架？</h2><h3 id="为了造一个更好更适合的轮子"><a href="#为了造一个更好更适合的轮子" class="headerlink" title="为了造一个更好更适合的轮子"></a>为了造一个更好更适合的轮子</h3><p>有现成的框架为什么不拿来直接用，干嘛自己造轮子浪费时间？</p>
+<ol>
+<li><p>现成的框架没法满足需求，有无法解决的问题。</p>
+</li>
+<li><p>现成的框架和自己的思想不符。</p>
+</li>
+</ol>
+<h3 id="为了学习和实践"><a href="#为了学习和实践" class="headerlink" title="为了学习和实践"></a>为了学习和实践</h3><p>写框架可以督促我去学习其他框架是如何设计的，为什么这样设计，能解决什么问题，为什么能解决这些问题。</p>
 <p>然后反过来去思考我工作和开发中遇到的问题，我学着去分析，去尝试找解决方案，以及思考如果我写框架怎么解决这些问题。怎么去设计。</p>
 <p>写出来的框架很挫怎么办？怕个毛线，继续学习，继续思考，然后解决问题，大不了推翻重写。</p>
 <p>写出来的框架不能用在公司的项目中去实践怎么办？这个想法有点危险，哈哈哈，可以自己写项目来验证。不过还有另外一种解决方案。下一篇会讲。</p>
 <p>写框架是一场历练，督促着我去学习和沉淀所学，打磨我的知识体系，让它更加完善。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><hr>
-<ul>
-<li><p>什么是框架？</p>
-<ul>
-<li><p>看游戏程序架构图</p>
-<ul>
-<li>框架层图</li>
-</ul>
-</li>
-<li><p>他人的见解参考</p>
-<ul>
-<li><p>某乎文章: <a href="https://zhuanlan.zhihu.com/p/114465098" target="_blank" rel="noopener">什么是框架？为什么要使用框架？我告诉你理由哦！</a></p>
-</li>
-<li><p>某乎问答: <a href="https://www.zhihu.com/question/19558524" target="_blank" rel="noopener">什么是框架？</a></p>
-</li>
-</ul>
-</li>
-<li><p>我的见解（对于游戏客户端框架）</p>
-<ul>
-<li><p>框架具有一定的约束性，指的是，我们需要在一定范围内按照框架作者的设计和规范去使用和扩展。</p>
-</li>
-<li><p>框架有部分已经实现的功能，可以直接使用或者稍微扩展就可以用来实现业务逻辑。</p>
-</li>
-<li><p>大部分游戏客户端框架都包含很多功能模块，甚至不是我们项目需要的</p>
-</li>
-<li><p>框架所能解决的问题有限，有边界</p>
-</li>
-</ul>
-</li>
-<li><p>框架可能跟底层强相关</p>
-</li>
-</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li><p>什么是框架？<br>是游戏程序的一部分，是支撑游戏业务逻辑的架子，但也是具有一定约束的框框。</p>
 </li>
 <li><p>框架解决什么问题？</p>
 <ul>
@@ -322,8 +288,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="一些游戏客户端框架参考"><a href="#一些游戏客户端框架参考" class="headerlink" title="一些游戏客户端框架参考"></a>一些游戏客户端框架参考</h2><hr>
-<ul>
+<h2 id="一些游戏客户端框架参考"><a href="#一些游戏客户端框架参考" class="headerlink" title="一些游戏客户端框架参考"></a>一些游戏客户端框架参考</h2><ul>
 <li><a href="https://github.com/CatLib" target="_blank" rel="noopener">CatLib</a> 一个Unity的渐进式框架(ps：我的框架灵感之一)</li>
 <li><a href="https://gitbook.cn/gitchat/column/5a3921aec5896e6e1cf1a129" target="_blank" rel="noopener">U3d网络游戏架构设计</a> 一个大佬的GitChat专栏，需要订阅</li>
 <li><a href="http://gameinstitute.qq.com/lore/index/10017" target="_blank" rel="noopener">腾讯学院的手游核心技术实战</a> 这是腾讯学院的一个贪吃蛇大作战的一个游戏开发课程，讲到了如何设计和实现基于Unity的游戏框架</li>
@@ -337,8 +302,7 @@
 <li><a href="https://huangx916.github.io/2019/01/01/gameplayframework/" target="_blank" rel="noopener">GameplayFrameWork for CococsCreator</a> </li>
 <li>其他的还有很多，论坛搜 “框架”即可</li>
 </ul>
-<h2 id="心里话"><a href="#心里话" class="headerlink" title="心里话"></a>心里话</h2><hr>
-<p>我想和优秀的小伙伴一起开发好玩的游戏</p>
+<h2 id="心里话"><a href="#心里话" class="headerlink" title="心里话"></a>心里话</h2><p>我想和优秀的小伙伴一起开发好玩的游戏</p>
 <p>我希望能通过我做的游戏，我的能力获得用于生活和学习的报酬。</p>
 <p>我也希望</p>
 <p>有人能从我的游戏中获得快乐，或者有所收获</p>
@@ -349,11 +313,9 @@
 <p><strong>谢谢你玩我的游戏</strong></p>
 <p><strong>谢谢你信任我</strong></p>
 <p><strong>谢谢你用我的框架</strong></p>
-<h2 id="预告"><a href="#预告" class="headerlink" title="预告"></a>预告</h2><hr>
-<p>框架系列文章</p>
-<ul>
+<h2 id="框架系列文章"><a href="#框架系列文章" class="headerlink" title="框架系列文章"></a>框架系列文章</h2><ul>
 <li><a href="https://ailhc.github.io/2020/11/17/The-Birth-of-Frames-Zero%EF%BC%9AWhy-write-framework/" target="_blank" rel="noopener">框架的诞生-零：为什么写框架？</a></li>
-<li>框架的诞生-一：我的框架</li>
+<li>框架的诞生-一：我想要的框架</li>
 <li>框架的诞生-二:  承载万千的核心</li>
 <li>不只是UI管理:通用显示管理</li>
 <li>让fairygui更好用的插件</li>
@@ -363,8 +325,7 @@
 <li>业务开发总结之状态管理</li>
 <li>。。。</li>
 </ul>
-<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><hr>
-<p>欢迎关注，更多内容持续更新</p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>欢迎关注，更多内容持续更新</p>
 <p>公众号搜索:玩转游戏开发</p>
 <p>或扫码:<img src="https://coding-pages-bucket-434147-7588795-4574-367535-1255530080.cos.ap-guangzhou.myqcloud.com/img/20201128164023.png" alt="img" style="zoom:50%;"></p>
 <p>QQ群: 1103157878</p>
@@ -404,6 +365,12 @@
 </article>
 <div class="article-nav prev-next-wrap clearfix">
     
+    <a href="/2020/11/29/The-Birth-of-a-Framework-One-The-Framework-I-Want/" class="pre-post btn btn-default" title="框架的诞生-一：我想要的框架">
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            框架的诞生-一：我想要的框架</span>
+    </a>
+    
     
     <a href="/2020/03/08/about-terminal-and-shell/" class="next-post btn btn-default" title="命令行使用记录">
         <span class="hidden-lg">下一篇</span>
@@ -421,7 +388,7 @@
             文章目录
         </h3>
         
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题外话"><span class="toc-text">题外话</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是框架？"><span class="toc-text">什么是框架？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#框架解决什么问题？"><span class="toc-text">框架解决什么问题？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么写框架？"><span class="toc-text">为什么写框架？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一些游戏客户端框架参考"><span class="toc-text">一些游戏客户端框架参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#心里话"><span class="toc-text">心里话</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#预告"><span class="toc-text">预告</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后"><span class="toc-text">最后</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#目录"><span class="toc-text">目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题外话"><span class="toc-text">题外话</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是框架？"><span class="toc-text">什么是框架？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#框架解决什么问题？"><span class="toc-text">框架解决什么问题？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么写框架？"><span class="toc-text">为什么写框架？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#为了造一个更好更适合的轮子"><span class="toc-text">为了造一个更好更适合的轮子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为了学习和实践"><span class="toc-text">为了学习和实践</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一些游戏客户端框架参考"><span class="toc-text">一些游戏客户端框架参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#心里话"><span class="toc-text">心里话</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#框架系列文章"><span class="toc-text">框架系列文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后"><span class="toc-text">最后</span></a></li></ol>
         
     </div>
 </aside>
