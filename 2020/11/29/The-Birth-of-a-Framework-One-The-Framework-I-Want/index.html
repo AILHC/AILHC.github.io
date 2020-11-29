@@ -227,9 +227,10 @@
 <p>比如登录业务相关的：</p>
 <p>C模块依赖A和B登录后的数据状态，那么增加两个接口 onLoginInit,onAfterLoginInit。</p>
 <p>那么A和B实现onLoginInit接口进行登录初始化，C在onAfterLoginInit接口进行依赖调用。</p>
-<p>于是我设计了这样的一个简单的接口</p>
+<p><strong>模块声明周期图</strong></p>
+<p><img src="https://coding-pages-bucket-434147-7588795-4574-367535-1255530080.cos.ap-guangzhou.myqcloud.com/img/EgfCoreLifeCircle.png" alt=""></p>
+<p><strong>接口设计</strong></p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> global &#123;</span><br><span class="line">    <span class="keyword">namespace</span> egf &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">interface</span> IModule &#123;</span><br><span class="line">            <span class="comment">/**模块名 */</span></span><br><span class="line">            key?: <span class="built_in">string</span></span><br><span class="line">            <span class="comment">/**</span></span><br><span class="line"><span class="comment">             * 当初始化时</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            onInit?(app: IApp): <span class="built_in">void</span>;</span><br><span class="line">            <span class="comment">/**</span></span><br><span class="line"><span class="comment">             * 所有模块初始化完成时</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            onAfterInit?(app: IApp): <span class="built_in">void</span>;</span><br><span class="line">            <span class="comment">/**</span></span><br><span class="line"><span class="comment">             * 模块停止时</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            onStop?(): <span class="built_in">void</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">type</span> BootEndCallback = <span class="function">(<span class="params">isSuccess: <span class="built_in">boolean</span></span>) =&gt;</span> <span class="built_in">void</span>;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 引导程序</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="keyword">interface</span> IBootLoader &#123;</span><br><span class="line">            <span class="comment">/**</span></span><br><span class="line"><span class="comment">             * 引导</span></span><br><span class="line"><span class="comment">             * @param app </span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            onBoot(app: IApp, bootEnd: BootEndCallback): <span class="built_in">void</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 主程序</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="keyword">interface</span> IApp&lt;ModuleMap = any&gt; &#123;</span><br><span class="line">            <span class="comment">/**</span></span><br><span class="line"><span class="comment">             * 程序状态</span></span><br><span class="line"><span class="comment">             * 0 未启动 1 引导中, 2 初始化, 3 运行中</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            state: <span class="built_in">number</span>;</span><br><span class="line">            <span class="comment">/**</span></span><br><span class="line"><span class="comment">             * 模块字典</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            moduleMap: ModuleMap;</span><br><span class="line">            <span class="comment">/**</span></span><br><span class="line"><span class="comment">             * 引导</span></span><br><span class="line"><span class="comment">             * @param bootLoaders </span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            bootstrap(bootLoaders: egf.IBootLoader[]): <span class="built_in">Promise</span>&lt;<span class="built_in">boolean</span>&gt;;</span><br><span class="line">            <span class="comment">/**</span></span><br><span class="line"><span class="comment">             * 初始化</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            init(): <span class="built_in">void</span>;</span><br><span class="line">            <span class="comment">/**</span></span><br><span class="line"><span class="comment">             * 加载模块</span></span><br><span class="line"><span class="comment">             * @param module </span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            loadModule(<span class="keyword">module</span>: IModule | any, key?: keyof ModuleMap): void;</span><br><span class="line">            /**</span><br><span class="line">             * 停止</span><br><span class="line">             */</span><br><span class="line">            stop(): void;</span><br><span class="line">            /**</span><br><span class="line">             * 获取模块实例</span><br><span class="line">             * @param moduleKey </span><br><span class="line">             */</span><br><span class="line">            getModule&lt;T extends IModule = any&gt;(moduleKey: keyof ModuleMap): T;</span><br><span class="line">            /**</span><br><span class="line">             * 判断有没有这个模块</span><br><span class="line">             * @param moduleKey </span><br><span class="line">             */</span><br><span class="line">            hasModule(moduleKey: keyof ModuleMap): boolean;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// eslint-disable-next-line @typescript-eslint/semi</span><br><span class="line">export &#123; &#125;</span><br></pre></td></tr></table></figure>
-<p>我就想要一个模块化机制，简单的模块化机制。</p>
 <h4 id="CatLib给我的灵感"><a href="#CatLib给我的灵感" class="headerlink" title="CatLib给我的灵感"></a>CatLib给我的灵感</h4><p>这里有一个bootloader的东西我没有讲到，它的灵感来自CatLib，一个我觉得很棒的Unity框架。</p>
 <p>这个机制是什么呢？以开发测试环境和生产环境举例。</p>
 <p>有一个debugBootLoader，这个引导程序处理一些测试用的模块加载和初始化，杂七杂八的。</p>
@@ -266,16 +267,13 @@
 <li>然后用typescript进行开发，使用index.ts文件将所有代码export（可以使用 export-typescript插件自动化，插件版本必须是0.0.5之前的）</li>
 <li>使用 egf build 进行编译发布</li>
 </ol>
-<h3 id="总结一下框架实现了哪些特性"><a href="#总结一下框架实现了哪些特性" class="headerlink" title="总结一下框架实现了哪些特性"></a>总结一下框架实现了哪些特性</h3><ul>
-<li>模块化<ul>
-<li>底层基础模块，业务模块，都是模块</li>
-</ul>
-</li>
+<h3 id="总结一下框架有什么特性"><a href="#总结一下框架有什么特性" class="headerlink" title="总结一下框架有什么特性"></a>总结一下框架有什么特性</h3><ul>
+<li>轻量级模块化机制</li>
 <li>模块生命周期<ul>
 <li>让模块的初始化有序，依赖可控</li>
 </ul>
 </li>
-<li>可面向接口<ul>
+<li>可面向接口编程<ul>
 <li>方便具体实现细节可替换，模块可动态替换</li>
 </ul>
 </li>
@@ -283,14 +281,13 @@
 <li>点一下就有类型提示，传字符串获取模块也有类型提示，很香的。</li>
 </ul>
 </li>
-<li>可以和引擎无关的</li>
+<li>基于TypeScript与引擎无关</li>
 <li>每个模块库都是一个npm包</li>
 <li>模块库导出后可以是多种js格式，可以让laya，ccc，c3d使用</li>
-<li>库模块可以用typescript开发</li>
 </ul>
-<h2 id="这个框架可以做什么？"><a href="#这个框架可以做什么？" class="headerlink" title="这个框架可以做什么？"></a>这个框架可以做什么？</h2><ul>
-<li><p>基于轻量级无依赖的模块机制，可以为不同项目量身定制框架，可大可小。也可以根据项目的不同阶段进行渐进式扩展。</p>
-</li>
+<h2 id="这个框架可以做什么？"><a href="#这个框架可以做什么？" class="headerlink" title="这个框架可以做什么？"></a>这个框架可以做什么？</h2><h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><ul>
+<li>基于轻量级无依赖的模块机制，可以为不同项目量身定制框架，可大可小。也可以根据项目的不同阶段进行渐进式扩展。还可以在项目的不同阶段轻易地接入</li>
+<li>面向接口编程的模块，底层组件可以无感知替换</li>
 <li><p>基于模块开发工具，我们可以开发和发布一个单独的对核心零依赖的模块，给不同的项目使用。</p>
 <ul>
 <li>方便别的项目引用</li>
@@ -298,10 +295,11 @@
 <li>方便做单元测试</li>
 </ul>
 </li>
+<li>基于模块化机制和配套开发工具，大家可以为公司或者个人建立自己的模块库，在不同项目按需复用。</li>
 </ul>
-<p>这样看来其实这个框架，不算是上一篇文章讲到的框架，算是一个便于搭建框架的工具，基础。</p>
+<h3 id="架构设想"><a href="#架构设想" class="headerlink" title="架构设想"></a>架构设想</h3><p><img src="https://coding-pages-bucket-434147-7588795-4574-367535-1255530080.cos.ap-guangzhou.myqcloud.com/img/EgfCoreDesign.png" alt="img"></p>
 <p>谢谢大家阅读我的文章，希望大家能有所收获。</p>
-<h2 id="框架系列文章"><a href="#框架系列文章" class="headerlink" title="框架系列文章"></a>框架系列文章</h2><ul>
+<h2 id="框架开发系列文章"><a href="#框架开发系列文章" class="headerlink" title="框架开发系列文章"></a>框架开发系列文章</h2><ul>
 <li><a href="https://ailhc.github.io/2020/11/17/The-Birth-of-Frames-Zero%EF%BC%9AWhy-write-framework/" target="_blank" rel="noopener">框架的诞生-零：为什么写框架？</a></li>
 <li><a href="https://ailhc.github.io/2020/11/29/The-Birth-of-a-Framework-One-The-Framework-I-Want/" target="_blank" rel="noopener">框架的诞生-一：我想要的框架</a></li>
 <li>框架的诞生-二:  承载万千的核心</li>
@@ -311,7 +309,7 @@
 <li>构建游戏/应用的神器:broadcast</li>
 <li>满足所有自定义需求的通用socket网络模块</li>
 <li>业务开发总结之状态管理</li>
-<li>。。。</li>
+<li>待续。。。</li>
 </ul>
 <h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>欢迎关注，更多内容持续更新</p>
 <p>公众号搜索:玩转游戏开发</p>
@@ -396,7 +394,7 @@ new Valine({
             文章目录
         </h3>
         
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#目录"><span class="toc-text">目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#我想要的框架是什么样的？"><span class="toc-text">我想要的框架是什么样的？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#我尝试过的方式"><span class="toc-text">我尝试过的方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Manager-of-Managers"><span class="toc-text">Manager of Managers</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#模块字典挂载到全局变量window"><span class="toc-text">模块字典挂载到全局变量window</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#怎么实现我想要的框架？"><span class="toc-text">怎么实现我想要的框架？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一个具有生命周期的模块化机制"><span class="toc-text">一个具有生命周期的模块化机制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#pomelo给我的灵感"><span class="toc-text">pomelo给我的灵感</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CatLib给我的灵感"><span class="toc-text">CatLib给我的灵感</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#怎么使用"><span class="toc-text">怎么使用?</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#我想在CocosCreator和C3d中使用"><span class="toc-text">我想在CocosCreator和C3d中使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#这个模块编译发布工具有什么功能？"><span class="toc-text">这个模块编译发布工具有什么功能？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#如何开发一个模块"><span class="toc-text">如何开发一个模块</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结一下框架实现了哪些特性"><span class="toc-text">总结一下框架实现了哪些特性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#这个框架可以做什么？"><span class="toc-text">这个框架可以做什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#框架系列文章"><span class="toc-text">框架系列文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后"><span class="toc-text">最后</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#目录"><span class="toc-text">目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#我想要的框架是什么样的？"><span class="toc-text">我想要的框架是什么样的？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#我尝试过的方式"><span class="toc-text">我尝试过的方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Manager-of-Managers"><span class="toc-text">Manager of Managers</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#模块字典挂载到全局变量window"><span class="toc-text">模块字典挂载到全局变量window</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#怎么实现我想要的框架？"><span class="toc-text">怎么实现我想要的框架？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一个具有生命周期的模块化机制"><span class="toc-text">一个具有生命周期的模块化机制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#pomelo给我的灵感"><span class="toc-text">pomelo给我的灵感</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CatLib给我的灵感"><span class="toc-text">CatLib给我的灵感</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#怎么使用"><span class="toc-text">怎么使用?</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#我想在CocosCreator和C3d中使用"><span class="toc-text">我想在CocosCreator和C3d中使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#这个模块编译发布工具有什么功能？"><span class="toc-text">这个模块编译发布工具有什么功能？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#如何开发一个模块"><span class="toc-text">如何开发一个模块</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结一下框架有什么特性"><span class="toc-text">总结一下框架有什么特性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#这个框架可以做什么？"><span class="toc-text">这个框架可以做什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#特性"><span class="toc-text">特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#架构设想"><span class="toc-text">架构设想</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#框架开发系列文章"><span class="toc-text">框架开发系列文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后"><span class="toc-text">最后</span></a></li></ol>
         
     </div>
 </aside>
