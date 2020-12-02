@@ -210,29 +210,56 @@ img: "https://coding-pages-bucket-434147-7588795-4574-367535-1255530080.cos.ap-g
 
 **谢谢你用我的框架**
 
-## 框架系列文章
+谢谢大家阅读我的文章，希望大家能有所收获。
+
+## 框架开发系列文章
 
 
-- [框架的诞生-零：为什么写框架？](https://ailhc.github.io/2020/11/17/The-Birth-of-Frames-Zero%EF%BC%9AWhy-write-framework/)
-- [框架的诞生-一：我想要的框架](https://ailhc.github.io/2020/11/29/The-Birth-of-a-Framework-One-The-Framework-I-Want/)
-- 不只是UI管理:通用显示管理
-- 让fairygui更好用的插件
-- 满足多种需求的通用对象池
-- 构建游戏/应用的神器:broadcast
-- 满足所有自定义需求的通用socket网络模块
-- 业务开发总结之状态管理
-- 。。。
+
+* [框架的诞生-零：为什么写框架？](https://ailhc.github.io/2020/11/17/The-Birth-of-Frames-Zero%EF%BC%9AWhy-write-framework/)
+
+* [框架的诞生-一：我想要的框架](https://ailhc.github.io/2020/11/29/The-Birth-of-a-Framework-One-The-Framework-I-Want/)
+
+* [打破CocosCreator3d不能使用npm包的魔咒!!!](https://ailhc.github.io/2020/11/30/Break-the-spell-that-CocosCreator3d-cannot-use-NPM-packages/)
+
+* 不只是 UI 管理:通用显示管理
+
+* 让 fairygui 更好用的插件
+
+* 满足多种需求的通用对象池
+
+* 构建游戏/应用的神器:broadcast
+
+* 满足所有自定义需求的通用 socket 网络模块
+
+* 业务开发总结之状态管理
+
+* 待续。。。
+
+
 
 ## 最后
 
-欢迎关注，更多内容持续更新
+
+
+欢迎关注我的公众号，更多内容持续更新
+
+
 
 公众号搜索:玩转游戏开发
 
+
+
 或扫码:<img src="https://coding-pages-bucket-434147-7588795-4574-367535-1255530080.cos.ap-guangzhou.myqcloud.com/img/20201128164023.png" alt="img" style="zoom:50%;" />
 
-QQ群: 1103157878
+
+
+QQ 群: 1103157878
+
+
 
 博客主页: https://ailhc.github.io/
+
+掘金: https://juejin.cn/user/3069492195769469
 
 github: https://github.com/AILHC
