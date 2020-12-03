@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://yoursite.com/2020/11/17/The-Birth-of-Frames-Zero%EF%BC%9AWhy-write-framework/</loc>
-    <lastmod>2020-12-02</lastmod>
+    <loc>http://yoursite.com/2020/12/02/The-birth-of-the-framework-two-positioning/</loc>
+    <lastmod>2020-12-03</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/2020/11/29/The-Birth-of-a-Framework-One-The-Framework-I-Want/</loc>
+    <lastmod>2020-12-02</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/2020/11/17/The-Birth-of-Frames-Zero%EF%BC%9AWhy-write-framework/</loc>
     <lastmod>2020-12-02</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/2020/11/30/Break-the-spell-that-CocosCreator3d-cannot-use-NPM-packages/</loc>
