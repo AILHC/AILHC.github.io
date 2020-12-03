@@ -391,6 +391,8 @@ export class AppMainComp extends Component {
 
 
 
+谢谢大家阅读我的文章，希望大家能有所收获。
+
 ## 框架开发系列文章
 
 
@@ -399,7 +401,9 @@ export class AppMainComp extends Component {
 
 * [框架的诞生-一：我想要的框架](https://ailhc.github.io/2020/11/29/The-Birth-of-a-Framework-One-The-Framework-I-Want/)
 
-* 打破CocosCreator3d不能使用npm包的魔咒!!!
+* [打破CocosCreator3d不能使用npm包的魔咒!!!](https://ailhc.github.io/2020/11/30/Break-the-spell-that-CocosCreator3d-cannot-use-NPM-packages/)
+
+* [框架的诞生-二：定位](https://ailhc.github.io/2020/12/02/The-birth-of-the-framework-two-positioning/)
 
 * 不只是 UI 管理:通用显示管理
 
@@ -414,6 +418,34 @@ export class AppMainComp extends Component {
 * 业务开发总结之状态管理
 
 * 待续。。。
+
+
+
+## 最后
+
+
+
+欢迎关注我的公众号，更多内容持续更新
+
+
+
+公众号搜索:玩转游戏开发
+
+
+
+或扫码:<img src="https://coding-pages-bucket-434147-7588795-4574-367535-1255530080.cos.ap-guangzhou.myqcloud.com/img/20201128164023.png" alt="img" style="zoom:50%;" />
+
+
+
+QQ 群: 1103157878
+
+
+
+博客主页: https://ailhc.github.io/
+
+掘金: https://juejin.cn/user/3069492195769469
+
+github: https://github.com/AILHC
 
 
 

@@ -222,6 +222,8 @@ img: "https://coding-pages-bucket-434147-7588795-4574-367535-1255530080.cos.ap-g
 
 * [打破CocosCreator3d不能使用npm包的魔咒!!!](https://ailhc.github.io/2020/11/30/Break-the-spell-that-CocosCreator3d-cannot-use-NPM-packages/)
 
+* [框架的诞生-二：定位](https://ailhc.github.io/2020/12/02/The-birth-of-the-framework-two-positioning/)
+
 * 不只是 UI 管理:通用显示管理
 
 * 让 fairygui 更好用的插件
