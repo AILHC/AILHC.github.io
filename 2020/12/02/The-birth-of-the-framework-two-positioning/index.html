@@ -19,7 +19,7 @@
     <link rel="dns-prefetch" href="http://yoursite.com">
     <!--SEO-->
 
-<meta name="keywords" content="标签1,标签2">
+<meta name="keywords" content="EasyGameFramework,框架设计">
 
 
 <meta name="description" content="前几天发布了我的框架，EasyGameFramework ，也发了几篇文章来分享我的心得和想法。之后在跟一些小伙伴的交流中收获很多。初次写文章，有些地方可能没表达清楚，大家可能一些疑惑。所以想了...">
@@ -33,7 +33,7 @@
 
 <title>
     
-    The-birth-of-the-framework-two:positioning |
+    框架的诞生-二：定位 |
     
     晴
 </title>
@@ -142,16 +142,16 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="The-birth-of-the-framework-two:positioning">
+        <h1 id="框架的诞生-二：定位">
             
-            The-birth-of-the-framework-two:positioning
+            框架的诞生-二：定位
             
         </h1>
         <div class="post-meta">
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/分类1/">分类1</a> <a class="category-link" href="/categories/分类1/分类2/">分类2</a>
+        <a class="category-link" href="/categories/框架设计/">框架设计</a>
     </span>
     
     
@@ -159,7 +159,7 @@
         <i class="fa fa-tags"></i>
         <span class="tags-meta">
             
-            <a class="tag-link" href="/tags/标签1/">标签1</a> <a class="tag-link" href="/tags/标签2/">标签2</a>
+            <a class="tag-link" href="/tags/EasyGameFramework/">EasyGameFramework</a> <a class="tag-link" href="/tags/框架设计/">框架设计</a>
             
         </span>
     </span>
@@ -201,14 +201,14 @@
 <p>就在今年Vue3.0也发布了，它在这条道路上更加极致了。有兴趣的小伙伴可以了解一下，掘金上也有很多分析的文章。</p>
 <p>我对此的理解:<br>渐进的框架，提供一个非常精简，尽可能小的内核。来满足基本需求。然后逐渐提供一些官方维护的帮助构建复杂应用的独立解决方案，可以各种组合搭配使用，<strong>不需要时可以不用</strong>。同时也可以自己开发定制自己的库。</p>
 <p>一个框架需要有自己的定位，要么精简无比，就像react一样，就做个渲染库。或者像Angular一样，大而全。亦或者像vue一样折中，渐进。</p>
-<p>一开始，我在慢慢搭建自己的框架时，心潮澎湃，激情满满。想要要有很多很多功能，也做了很多功能模块。但是，有时候想用一部分功能时，不好拆分，用了之后同步和维护也会变得麻烦。(ps.当时用Laya3d在开发rpg挂机项目，框架已经具备大部分功能模块了，也想开源出来，但想了想只是芸芸众轮中一个大同小异的轮子，没啥好分享的，也不好维护。)</p>
+<p>一开始，我在慢慢搭建自己的框架时，心潮澎湃，激情满满。想要有很多很多功能，也实现了很多功能模块。但是，有时候想用一部分功能时，不好拆分，用了之后同步和维护也会变得麻烦。(ps.当时用Laya3d在开发rpg挂机项目，框架已经具备大部分功能模块了，也想开源出来，但想了想只是芸芸众轮中一个大同小异的轮子，没啥好分享的，也不好维护。)</p>
 <p>大而全的路子不适合我，因为时间精力没那么多，而且价值和意义不大。</p>
 <p>所以我选择了渐进。</p>
 <p>这一个转变，让我更多地关注手中的业务，关注多人协作，以及对需求、问题的思考。去学习不同框架的设计思路，以及了解它们如何去解决它们界定的领域的问题。</p>
 <p>我将我认为最重要最核心的模块分离出来，进行研究，实践和迭代，尽量打磨到更好的状态。</p>
 <p>虽然我选择的方向和Vue相似，但不能比的。</p>
 <h2 id="框架核心的定位"><a href="#框架核心的定位" class="headerlink" title="框架核心的定位"></a>框架核心的定位</h2><ul>
-<li><p>极致轻量级，无缝融入项目</p>
+<li><p>极致轻量级</p>
 <p>这样它就可以轻易融入任意阶段的项目，比如你想要一个舒服的全局调用不同模块的接口的体验，那它的添加几乎无感，就130多行的源码，未压缩就10kb。</p>
 </li>
 <li><p>引擎无关性</p>
@@ -217,7 +217,7 @@
 </ul>
 <ul>
 <li><p>可插拔可扩展的模块化机制</p>
-<p>核心库提供的机制，可以让你可以创造多种方式去管理你的业务和基础模块，你也可以使用pureMvc那套规范，也可以简单的横向扩展。使用面向接口编程，你可以动态地根据平台，环境，替换具体模块实现。</p>
+<p>核心库提供的机制，可以让你可以创造多种方式去管理你的业务和基础模块，你可以在里面套pureMvc那套规范，也可以简单的横向扩展。<br>使用面向接口编程，你可以动态地根据平台，环境，替换具体模块实现。</p>
 </li>
 </ul>
 <ul>
@@ -238,8 +238,8 @@
 <p>C 模块依赖 A 和 B 登录后的数据状态，那么增加两个接口 onLoginInit,onAfterLoginInit。</p>
 <p>那么 A 和 B 实现 onLoginInit 接口进行登录初始化，C 在 onAfterLoginInit 接口进行依赖调用。</p>
 </blockquote>
-<p>模块自动裁剪这种功能，太高级了。这个是在编译层可以做的处理，比如摇树Treeshake优化，将没有调用过的函数代码剪掉。</p>
-<p>随着功能迭代开发，框架的确会越来越庞大，这个时候就需要开发者自己去整理了，这个可能没办法帮你自动处理。</p>
+<p>模块自动裁剪这种功能，太高级了。这个是在编译层做的处理，比如摇树Treeshake优化，将没有调用过的函数代码剪掉。</p>
+<p>随着功能迭代开发，框架的确会越来越庞大，这个时候就需要开发者自己去整理了，这个可能任何框架都没办法帮你自动处理。<br>有人可能说:人家CocosCreator可以啊。这个是官方提供的对引擎的模块进行剔除。你自己扩展一堆模块，可能需要你自己去决定剔除哪些了。<br>同样，我所提供的模块，你可以按需使用。</p>
 <p>可以参照这两张图▼</p>
 <p><img src="https://coding-pages-bucket-434147-7588795-4574-367535-1255530080.cos.ap-guangzhou.myqcloud.com/img/GameApplication.png" alt=""></p>
 </li>
@@ -253,23 +253,19 @@
 <p>其实这个平时的业务开发不推荐使用这个工具将模块，独立起来开发。只有当这个模块需要多项目内共用，开源分享，抽离沉淀时使用。因为会增加维护成本。平时开发怎么方便就怎么来。</p>
 </li>
 </ul>
-<h2 id="EasyGameFramework这个开源项目的定位"><a href="#EasyGameFramework这个开源项目的定位" class="headerlink" title="EasyGameFramework这个开源项目的定位"></a>EasyGameFramework这个开源项目的定位</h2><h3 id="开源框架核心和框架工具"><a href="#开源框架核心和框架工具" class="headerlink" title="开源框架核心和框架工具"></a>开源框架核心和框架工具</h3><p>方便和大家交流以及提供一个开发框架的实践</p>
-<p>方便大家开发自己的框架和沉淀技术</p>
-<h3 id="开源分享我自己在工作学习中积累沉淀的技术"><a href="#开源分享我自己在工作学习中积累沉淀的技术" class="headerlink" title="开源分享我自己在工作学习中积累沉淀的技术"></a>开源分享我自己在工作学习中积累沉淀的技术</h3><ul>
+<h2 id="EasyGameFramework仓库的定位"><a href="#EasyGameFramework仓库的定位" class="headerlink" title="EasyGameFramework仓库的定位"></a>EasyGameFramework仓库的定位</h2><h3 id="开源和持续维护"><a href="#开源和持续维护" class="headerlink" title="开源和持续维护"></a>开源和持续维护</h3><p>这个项目主要是开源和持续维护框架提供的一些重要的基础模块。</p>
+<p>包括不仅限于</p>
+<ul>
 <li><p>前端基础模块（显示，资源，消息状态，网络等）</p>
 </li>
 <li><p>引擎扩展模块</p>
 </li>
 <li><p>基础模块的引擎实现</p>
 </li>
-<li><p>通用业务模块实现等</p>
-</li>
-<li><p>工具模块</p>
-</li>
-<li><p>其他</p>
-</li>
 </ul>
-<h3 id="打造个人的技术中台"><a href="#打造个人的技术中台" class="headerlink" title="打造个人的技术中台"></a>打造个人的技术中台</h3><p>这个说的有点夸张，但意思是那个意思，就是沉淀技术进行多项目共享。</p>
+<h3 id="抛砖引玉"><a href="#抛砖引玉" class="headerlink" title="抛砖引玉"></a>抛砖引玉</h3><p>给大家提供一个开发框架的实践参考，也方便大家交流框架开发，业务开发等</p>
+<p>也鼓励更多的人参与和交流，游戏开发路上不孤单。</p>
+<h3 id="H5游戏技术中台实践参考"><a href="#H5游戏技术中台实践参考" class="headerlink" title="H5游戏技术中台实践参考"></a>H5游戏技术中台实践参考</h3><p>这个说的有点夸张，但意思是那个意思，就是沉淀技术进行多项目共享的实践</p>
 <p>游戏引擎，属于游戏程序里的渲染层级，如果能将业务和渲染很好的分离，将业务和渲染扩展分别沉淀，不仅有益于提高现有项目的开发效率。<br>而且将来如果做下一个项目，甚至切换引擎做项目，那么这个沉淀就可以让我节省很多时间，花更多的时间来专注业务和游戏性逻辑的研发，提高项目开发效率。</p>
 <p>如果用了fairygui这种第三方UI解决方案，连UI资产也可跨项目跨引擎，那也可以节省很多时间。</p>
 <p>当然也可以参照这个项目去打造公司的技术中台。</p>
@@ -367,7 +363,7 @@
             文章目录
         </h3>
         
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是定位？"><span class="toc-text">什么是定位？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么要定位呢？"><span class="toc-text">为什么要定位呢？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#框架核心的定位"><span class="toc-text">框架核心的定位</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#框架库构建工具的定位"><span class="toc-text">框架库构建工具的定位</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EasyGameFramework这个开源项目的定位"><span class="toc-text">EasyGameFramework这个开源项目的定位</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#开源框架核心和框架工具"><span class="toc-text">开源框架核心和框架工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开源分享我自己在工作学习中积累沉淀的技术"><span class="toc-text">开源分享我自己在工作学习中积累沉淀的技术</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#打造个人的技术中台"><span class="toc-text">打造个人的技术中台</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#框架开发系列文章"><span class="toc-text">框架开发系列文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后"><span class="toc-text">最后</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是定位？"><span class="toc-text">什么是定位？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么要定位呢？"><span class="toc-text">为什么要定位呢？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#框架核心的定位"><span class="toc-text">框架核心的定位</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#框架库构建工具的定位"><span class="toc-text">框架库构建工具的定位</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EasyGameFramework仓库的定位"><span class="toc-text">EasyGameFramework仓库的定位</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#开源和持续维护"><span class="toc-text">开源和持续维护</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#抛砖引玉"><span class="toc-text">抛砖引玉</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#H5游戏技术中台实践参考"><span class="toc-text">H5游戏技术中台实践参考</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#框架开发系列文章"><span class="toc-text">框架开发系列文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后"><span class="toc-text">最后</span></a></li></ol>
         
     </div>
 </aside>
