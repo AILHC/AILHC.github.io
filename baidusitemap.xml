@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://yoursite.com/2020/12/27/%E6%9E%84%E5%BB%BA%E5%A4%8D%E6%9D%82%E6%B8%B8%E6%88%8F-%E5%BA%94%E7%94%A8%E7%9A%84%E7%A5%9E%E5%99%A8-broadcast/</loc>
+    <lastmod>2020-12-27</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/2020/12/27/%E8%AE%B0%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%8F%82%E5%8A%A0Cocos%E5%BC%80%E5%8F%91%E8%80%85%E6%B2%99%E9%BE%99/</loc>
+    <lastmod>2020-12-27</lastmod>
+  </url>  <url>
     <loc>http://yoursite.com/2020/12/25/%E5%9F%BA%E4%BA%8ETypeScript%E7%9A%84%E9%80%9A%E7%94%A8%E6%B8%B8%E6%88%8FUI%E6%A1%86%E6%9E%B6%E7%9A%84%E4%BD%BF%E7%94%A8/</loc>
-    <lastmod>2020-12-24</lastmod>
+    <lastmod>2020-12-27</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/2020/12/21/Fix-the-problem-with-the-NPM-package-not-available-in-the-ABundle-of-Cocoscreator2-4-x/</loc>
+    <lastmod>2020-12-25</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/2020/12/24/%E8%A7%A3%E5%86%B3CocosCreator2-4-x%E7%9A%84ABundle%E4%B8%8D%E8%83%BD%E4%BD%BF%E7%94%A8npm%E5%8C%85%E7%9A%84%E9%97%AE%E9%A2%98/</loc>
     <lastmod>2020-12-24</lastmod>
@@ -21,9 +30,6 @@
   </url>  <url>
     <loc>http://yoursite.com/2020/11/30/Break-the-spell-that-CocosCreator3d-cannot-use-NPM-packages/</loc>
     <lastmod>2020-11-30</lastmod>
-  </url>  <url>
-    <loc>http://yoursite.com/2020/02/27/my-resume/</loc>
-    <lastmod>2020-10-17</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/2020/02/28/how-to-wrrite-blog/</loc>
     <lastmod>2020-10-17</lastmod>
