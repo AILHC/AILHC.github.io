@@ -12,6 +12,8 @@ img: https://pixabay.com/zh/vectors/map-navigation-geography-312213/
 ---
     前几天发布了我的框架，EasyGameFramework ，也发了几篇文章来分享我的心得和想法。之后在跟一些小伙伴的交流中收获很多。初次写文章，有些地方可能没表达清楚，大家可能一些疑惑。所以想了一下，写了下这篇文章，主要讲一下关于这个框架的定位。
 
+框架:[源码传送门](https://github.com/AILHC/EasyGameFrameworkOpen)
+
 ## 什么是定位？
 > 定位是一个汉语词汇，读音dìng wèi，意思是指确定方位，确定或指出的地方，确定场所或界限（如通过勘察）给这个地产的界限定位。出自《韩非子·扬权》。
 

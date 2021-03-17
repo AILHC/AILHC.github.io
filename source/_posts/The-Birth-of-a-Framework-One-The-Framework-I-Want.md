@@ -28,6 +28,8 @@ img: "https://coding-pages-bucket-434147-7588795-4574-367535-1255530080.cos.ap-g
 
 无论是小项目还是大项目，或者是一个会不断扩张的项目，都希望能够项目代码结构清晰有条理，管理好不同模块。
 
+框架:[源码传送门](https://github.com/AILHC/EasyGameFrameworkOpen)
+
 ### 我尝试过的方式
 
 #### Manager of Managers
