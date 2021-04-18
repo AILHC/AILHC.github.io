@@ -1,0 +1,533 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="晴">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="EasyGameFramework,Discussion,enet">
+
+
+<meta name="description" content="打个招呼大家好~
+游戏开发之路有趣但不易,
+玩起来才能一直热情洋溢。
+我是喜欢游戏开发的海潮😉
+前言社交是人的基本需求。
+互联网时代，基于互联网的社交带给网民们无穷的欢乐和瓜。
+那些能够实时交...">
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+<title>
+    
+    一起聊天吃瓜放烟花-仿微信聊天放烟花效果 |
+    
+    晴
+</title>
+
+<link rel="alternate" href="/atom.xml" title="晴" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header" style="background-image:url(
+    http://snippet.shenliyang.com/img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Tide Li">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        晴</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/经验之谈/"><i class="fa "></i>
+                                经验之谈</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/框架设计/"><i class="fa "></i>
+                                框架设计</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/想法流水/"><i class="fa "></i>
+                                想法流水</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/资料收集/"><i class="fa "></i>
+                                资料收集</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/关于作者"><i class="fa "></i>
+                                关于作者</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="一起聊天吃瓜放烟花-仿微信聊天放烟花效果">
+            
+            一起聊天吃瓜放烟花-仿微信聊天放烟花效果
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/EasyGameFramework/">EasyGameFramework</a> <a class="category-link" href="/categories/EasyGameFramework/想法流水/">想法流水</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/Discussion/">Discussion</a> <a class="tag-link" href="/tags/EasyGameFramework/">EasyGameFramework</a> <a class="tag-link" href="/tags/enet/">enet</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2021/01/17</span>
+    </span>
+    
+    <span class="fa-wrap">
+        <i class="fa fa-eye"></i>
+        <span id="busuanzi_value_page_pv"></span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="打个招呼"><a href="#打个招呼" class="headerlink" title="打个招呼"></a>打个招呼</h2><p>大家好~</p>
+<p><strong>游戏开发之路有趣但不易,</strong></p>
+<p><strong>玩起来才能一直热情洋溢。</strong></p>
+<p>我是喜欢<strong>游戏开发</strong>的海潮😉</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><strong>社交</strong>是人的基本需求。</p>
+<p>互联网时代，基于互联网的社交带给网民们无穷的欢乐和<strong>瓜</strong>。<br><img src="https://coding-pages-bucket-434147-7588795-4574-367535-1255530080.cos.ap-guangzhou.myqcloud.com/img/chigua.jpg" alt="吃瓜" style="zoom:50%;"></p>
+<p>那些能够实时交互的社交软件/游戏，往往会带给我们更多惊喜。</p>
+<p>最近微信更新了8.0版本，可以在聊天的时候放炸弹，烟花等动态表情。很多人都玩得不亦乐乎~</p>
+<p>在这之前呢，我的框架仓库增加了一个独立的网络模块，可以用于构建长连接网络游戏/应用。</p>
+<p>特性:</p>
+<ol>
+<li>跨平台:适用于任意ts/js项目</li>
+<li>灵活、高可扩展:可以根据项目需要进行多层次定制</li>
+<li>零依赖</li>
+<li>强类型:基于TypeScript</li>
+<li>功能强大:提供完整的基本需求实现(消息处理、握手、心跳、重连)</li>
+<li>可靠:完善的单元测试</li>
+</ol>
+<p>传送门:<a href="https://github.com/AILHC/EasyGameFrameworkOpen/tree/main/packages/enet#readme" target="_blank" rel="noopener">enet</a></p>
+<p>那接下来，我带大家借助enet库实现</p>
+<ol>
+<li><p>一个带烟花效果的socket demo(超简单，三步就可以)</p>
+</li>
+<li><p>一个接近真实网络游戏开发的多人聊天室demo</p>
+</li>
+</ol>
+<p>玩起来~</p>
+<h2 id="极简聊天放烟花"><a href="#极简聊天放烟花" class="headerlink" title="极简聊天放烟花"></a>极简聊天放烟花</h2><h3 id="第一步-引入网络库并初始化"><a href="#第一步-引入网络库并初始化" class="headerlink" title="第一步:引入网络库并初始化"></a>第一步:引入网络库并初始化</h3><p>enet这个库，发布于npm公共仓库中。提供多种规范，适用于任何平台。</p>
+<p>这次我们直接通过url引入iife格式的js</p>
+<ol>
+<li><p>创建html文件,引入enet库</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"container"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/@ailhc/enet@1.0.0/dist/iife/lib/index.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>初始化enet</p>
+</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="actionscript">    <span class="keyword">var</span> netNode = <span class="keyword">new</span> enet.NetNode();</span></span><br><span class="line"><span class="actionscript">    <span class="comment">//定制网络事件反馈逻辑</span></span></span><br><span class="line"><span class="undefined">    netNode.init(&#123;</span></span><br><span class="line"><span class="undefined">        netEventHandler: &#123;</span></span><br><span class="line"><span class="actionscript">            <span class="comment">//开始连接事件</span></span></span><br><span class="line"><span class="javascript">            onStartConnenct: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">                <span class="built_in">console</span>.log(<span class="string">`开始连接服务器`</span>);</span></span><br><span class="line"><span class="undefined">            &#125;,</span></span><br><span class="line"><span class="actionscript">            <span class="comment">//连接成功事件</span></span></span><br><span class="line"><span class="javascript">            onConnectEnd: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">                <span class="built_in">console</span>.log(<span class="string">`连接服务器成功👌`</span>);</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;);</span></span><br><span class="line"><span class="undefined">    </span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="第二步-写上收发消息的逻辑"><a href="#第二步-写上收发消息的逻辑" class="headerlink" title="第二步: 写上收发消息的逻辑"></a>第二步: 写上收发消息的逻辑</h3><p>就几句代码，so easy~<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="actionscript">    <span class="comment">//省略初始化逻辑..</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">//连上一个公用的websocket测试服务器,它会原本不动的返回发出的消息</span></span></span><br><span class="line"><span class="actionscript">    netNode.connect(<span class="string">"wss://echo.websocket.org/"</span>);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="built_in">window</span>.netNode = netNode;</span></span><br><span class="line"><span class="actionscript">    <span class="comment">//封装发送消息逻辑，相当于微信发送按钮</span></span></span><br><span class="line"><span class="javascript">    <span class="built_in">window</span>.sendMsgToServer = <span class="function"><span class="keyword">function</span> (<span class="params">msg</span>) </span>&#123;</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">if</span> (!netNode.socket.isConnected) &#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.warn(<span class="string">`服务器还没连上`</span>);</span></span><br><span class="line"><span class="actionscript">            <span class="keyword">return</span>;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="actionscript">        netNode.notify(<span class="string">"msg"</span>, msg);</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="actionscript">    <span class="comment">//监听服务器消息返回</span></span></span><br><span class="line"><span class="actionscript">    netNode.onPush(<span class="string">"msg"</span>, <span class="function"><span class="keyword">function</span> <span class="params">(dpkg)</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(<span class="string">`服务器返回:`</span>, dpkg.data);</span></span><br><span class="line"><span class="undefined">    &#125;)</span></span><br><span class="line"><span class="undefined">    </span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>这个时候，我们就可以运行看看效果了<br>等待服务器连接成功（因为那个公用的测试服务器有时慢有时快）</p>
+<p>在控制台输入 sendMsgToServer(“hello enet”)</p>
+<p><img src="https://coding-pages-bucket-434147-7588795-4574-367535-1255530080.cos.ap-guangzhou.myqcloud.com/img/html-enet-test1.gif" alt="img"></p>
+<h3 id="第三步-加上烟花效果"><a href="#第三步-加上烟花效果" class="headerlink" title="第三步:加上烟花效果"></a>第三步:加上烟花效果</h3><p>烟花效果网上扒来的<br><a href="https://blog.csdn.net/weixin_42686892/article/details/112589511" target="_blank" rel="noopener">快过年了，用JS让你的网页放烟花吧</a></p>
+<p>在原来的代码里改<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="actionscript">  <span class="comment">//省略</span></span></span><br><span class="line"><span class="javascript">    <span class="built_in">window</span>.sendMsgToServer = <span class="function"><span class="keyword">function</span> (<span class="params">msg</span>) </span>&#123;</span></span><br><span class="line"><span class="actionscript">        <span class="comment">/**省略*/</span></span></span><br><span class="line"><span class="actionscript">        checkAndFire(msg, <span class="literal">true</span>);</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="actionscript">    netNode.onPush(<span class="string">"msg"</span>, <span class="function"><span class="keyword">function</span> <span class="params">(dpkg)</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(<span class="string">`服务器返回:`</span>, dpkg.data);</span></span><br><span class="line"><span class="actionscript">        checkAndFire(dpkg.data, <span class="literal">false</span>);</span></span><br><span class="line"><span class="undefined">    &#125;)</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">checkAndFire</span><span class="params">(msg, left)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">if</span> (msg.includes(<span class="string">"烟花"</span>) | msg.includes(<span class="string">"🎇"</span>)) &#123;</span></span><br><span class="line"><span class="javascript">            fire(<span class="built_in">window</span>.innerWidth * (left ? <span class="number">1</span> / <span class="number">3</span> : <span class="number">2</span> / <span class="number">3</span>), <span class="built_in">window</span>.innerHeight / <span class="number">2</span>);</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>运行起来，看看效果</p>
+<p><img src="https://coding-pages-bucket-434147-7588795-4574-367535-1255530080.cos.ap-guangzhou.myqcloud.com/img/html-enet-test2.gif" alt="img"></p>
+<p>简单的仿微信聊天放烟花就这样了</p>
+<p><a href="https://ailhc.github.io/demos/enet-simple-demo/index.html" target="_blank" rel="noopener">在线demo</a></p>
+<p><a href="https://github.com/AILHC/EasyGameFrameworkOpen/tree/main/examples/egf-net-ws/egf-simple-net-client" target="_blank" rel="noopener">源码</a></p>
+<p>接下来，我们搞个大的。</p>
+<h2 id="多人聊天放烟花"><a href="#多人聊天放烟花" class="headerlink" title="多人聊天放烟花"></a>多人聊天放烟花</h2><p>在实际的网络应用开发中，网络通信的需求会复杂许多。</p>
+<ol>
+<li>可能会使用协议包装通信数据进行传输</li>
+<li>可能会对通信数据进行加密</li>
+<li>可能会使用特殊的socket(socket.io)，甚至定制socket</li>
+<li>心跳处理</li>
+<li>握手处理</li>
+<li>断线重连处理</li>
+</ol>
+<p><strong>enet</strong>模块对上述情况都进行了封装，只需要根据提供的接口进行实现就可(无需改源码)</p>
+<p>在这个多人聊天室demo中，我将使用<strong>protobuf</strong>作为通信协议。</p>
+<h3 id="为什么使用protobuf？"><a href="#为什么使用protobuf？" class="headerlink" title="为什么使用protobuf？"></a>为什么使用protobuf？</h3><p><strong>什么是protobuf</strong></p>
+<blockquote>
+<p>protobuf(Google Protocol Buffers)是Google提供一个具有高效的协议数据交换格式工具库(类似Json)，但相比于Json，Protobuf有更高的转化效率，时间效率和空间效率都是JSON的3-5倍。</p>
+</blockquote>
+<blockquote>
+<p>protobuf提供了多种编程语言的支持：C++，JAVA，Python，C#，erlang等</p>
+</blockquote>
+<p><strong>优势</strong></p>
+<ul>
+<li><p>可以快速玩起来，统一的协议语言可以和多种后端语言快乐地玩起来，甚至多人sport🤪👩🏿‍🤝‍🧑🏿👬👨🏾‍🤝‍👨🏼</p>
+</li>
+<li><p>不用自己设计协议和实现协议编解码</p>
+</li>
+</ul>
+<p>👀来看看如何接入<strong>protobuf</strong></p>
+<h3 id="使用protobuf"><a href="#使用protobuf" class="headerlink" title="使用protobuf"></a>使用protobuf</h3><p>虽然不用自己设计协议，但怎么接入开发中还是需要滴</p>
+<p><strong>常见的protobuf使用方式</strong></p>
+<ol>
+<li>使用protobufjs库加载proto文件，然后进行协议编码解码</li>
+<li>使用protobuf工具将proto文件转成js文件+.d.ts声明文件，在项目中同时引入protobuf库和导出的js文件就可</li>
+</ol>
+<p>我这里选择第二种方案</p>
+<ul>
+<li>优点:使用方便，适用于多种环境，有类型声明</li>
+<li>缺点: <strong>会使js包体大些</strong>。</li>
+</ul>
+<p>为了方便协议的导出，我用自己开发的一个protobuf工具:<a href="https://github.com/AILHC/EasyGameFrameworkOpen/tree/main/packages/egf-protobuf-cli#readme" target="_blank" rel="noopener">egf-protobuf</a></p>
+<ol>
+<li>安装工具到全局或者项目目录 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install egf-protobuf -g</span><br><span class="line">或者</span><br><span class="line">npm install -S egf-protobuf</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="2">
+<li>在package.json写一下npm script <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">"scripts": &#123;</span><br><span class="line">    "genPb": "egf-pb g",</span><br><span class="line">    "pbInit": "egf-pb i"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="3">
+<li><p>初始化项目 npm run pbInit</p>
+</li>
+<li><p>创建proto文件目录protofiles</p>
+</li>
+<li><p>写协议 pb_base.proto</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">package pb_test;</span><br><span class="line">message User &#123;</span><br><span class="line">    required uint32 uid = 1;</span><br><span class="line">    required string name = 2;</span><br><span class="line">&#125;</span><br><span class="line"> //登录请求</span><br><span class="line">message Cs_Login &#123;</span><br><span class="line">    required string name = 1;</span><br><span class="line">&#125;</span><br><span class="line">//登录返回</span><br><span class="line">message Sc_Login &#123;</span><br><span class="line">    required uint32 uid = 1;</span><br><span class="line">    repeated User users = 2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> //用户进来推送</span><br><span class="line">message Sc_userEnter &#123;</span><br><span class="line">    required User user = 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"> //用户离开推送</span><br><span class="line">message Sc_userLeave &#123;</span><br><span class="line">    required uint32 uid = 2;</span><br><span class="line">&#125;</span><br><span class="line">//消息结构</span><br><span class="line"> message ChatMsg &#123;</span><br><span class="line">    required uint32 uid = 1;</span><br><span class="line">    required string msg = 2;</span><br><span class="line">&#125;</span><br><span class="line">//客户端发送消息</span><br><span class="line">message Cs_SendMsg &#123;</span><br><span class="line">    required ChatMsg msg = 1;</span><br><span class="line">&#125;</span><br><span class="line">//服务器推送消息</span><br><span class="line">message Sc_Msg &#123;</span><br><span class="line">    required ChatMsg msg =1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="6">
+<li><p>修改一下导出配置protobuf/epbconfig.js</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**.proto 文件夹路径  */</span></span><br><span class="line">sourceRoot: <span class="string">"protofiles"</span>,<span class="comment">//指向创建的proto文件目录</span></span><br><span class="line"><span class="comment">/**输出js文件名 */</span></span><br><span class="line">outFileName: <span class="string">"proto_bundle"</span>,</span><br><span class="line"><span class="comment">/**生成js的输出路径 */</span></span><br><span class="line">outputDir: <span class="string">"egf-ccc-net-ws/assets/protojs"</span>,<span class="comment">//客户端js文件输出目录</span></span><br><span class="line"><span class="comment">/**声明文件输出路径 */</span></span><br><span class="line">dtsOutDir:  <span class="string">"egf-ccc-net-ws/libs"</span>,<span class="comment">//客户端声明文件输出目录</span></span><br></pre></td></tr></table></figure>
+<p> <strong>ps</strong>:由于后端用ts，所以也配置了后端文件导出路径(前后端同时导出=双倍的快乐🤞🏻✌🏻)</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**服务端输出配置 */</span></span><br><span class="line">serverOutputConfig: &#123;</span><br><span class="line">	<span class="comment">/**protobufjs库输出目录 */</span></span><br><span class="line">   	pbjsLibDir: <span class="string">"egf-net-ws-server/libs"</span>,</span><br><span class="line">    <span class="comment">/**生成的proto js文件输出 */</span></span><br><span class="line">   	pbjsOutDir: <span class="string">"egf-net-ws-server/protojs"</span>,</span><br><span class="line">    <span class="comment">/**声明文件输出路径 */</span></span><br><span class="line">dtsOutDir: <span class="string">"egf-net-ws-server/libs"</span></span><br><span class="line"></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="7">
+<li>导出js和.d.ts <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run genPb</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="8">
+<li>项目中引入protobufjs库和proto_bundle.js<ol>
+<li>CocosCreator需要将它们设置为插件</li>
+<li>nodejs项目，需要使用require加载它们<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">"../libs/protobuf.js"</span>);</span><br><span class="line"><span class="built_in">require</span>(<span class="string">"../protojs/proto_bundle.js"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ol>
+<p>这样就可以在业务里愉快地使用protobuf来进行协议的编码解码了</p>
+   <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//编码</span></span><br><span class="line"><span class="keyword">const</span> uint8arr = pb_test.ChatMsg.encode(&#123; msg: <span class="string">"hello world"</span>, uid: <span class="number">1</span> &#125;).finish();</span><br><span class="line"><span class="comment">//解码</span></span><br><span class="line"><span class="keyword">const</span> msg: pb_test.IChatMsg = pb_test.ChatMsg.decode(uint8arr);</span><br><span class="line"><span class="comment">//结果: &#123; msg: "hello world", uid: 1 &#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="将enet和protobuf结合起来"><a href="#将enet和protobuf结合起来" class="headerlink" title="将enet和protobuf结合起来"></a>将enet和protobuf结合起来</h3><p>enet中如果需要自定义协议处理则需要实现enet.IProtoHandler接口</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> IProtoHandler&lt;ProtoKeyType = any&gt; &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 协议key转字符串key</span></span><br><span class="line"><span class="comment">     * @param protoKey</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    protoKey2Key(protoKey: ProtoKeyType): <span class="built_in">string</span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 编码数据包</span></span><br><span class="line"><span class="comment">     * @param pkg</span></span><br><span class="line"><span class="comment">     * @param useCrypto 是否加密</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    encodePkg&lt;T&gt;(pkg: enet.IPackage&lt;T&gt;, useCrypto?: <span class="built_in">boolean</span>): NetData;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 编码消息数据包</span></span><br><span class="line"><span class="comment">     * @param msg 消息包</span></span><br><span class="line"><span class="comment">     * @param useCrypto 是否加密</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    encodeMsg&lt;T&gt;(msg: enet.IMessage&lt;T, ProtoKeyType&gt;, useCrypto?: <span class="built_in">boolean</span>): NetData;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 解码网络数据包，</span></span><br><span class="line"><span class="comment">     * @param data</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    decodePkg&lt;T&gt;(data: NetData): IDecodePackage&lt;T&gt;;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 心跳配置</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    heartbeatConfig: enet.IHeartBeatConfig;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>举个栗子</strong>🌰</p>
+<p>我需要使用protobuf协议进行通信</p>
+<p>那我就实现接口写一个protobuf协议处理器。</p>
+<p>比如:<a href="https://github.com/AILHC/EasyGameFrameworkOpen/tree/main/packages/enet-pbws#readme" target="_blank" rel="noopener">egf-pbws</a></p>
+<p><strong>简单两步用起来</strong>(☞ﾟヮﾟ)☞</p>
+<ol>
+<li>安装egf-pbws</li>
+</ol>
+   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i egf-pbws</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>和enet结合<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; NetNode &#125; <span class="keyword">from</span> <span class="string">"@ailhc/enet"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; PbProtoHandler &#125; <span class="keyword">from</span> <span class="string">"@ailhc/enet-pbws"</span>;  </span><br><span class="line"><span class="keyword">const</span> netMgr = <span class="keyword">new</span> NetNode&lt;<span class="built_in">string</span>&gt;();</span><br><span class="line"><span class="keyword">this</span>._net = netMgr;</span><br><span class="line"><span class="comment">//将协议编解码对象注入 我这里是pb_test</span></span><br><span class="line"><span class="keyword">const</span> protoHandler = <span class="keyword">new</span> PbProtoHandler(pb_test);</span><br><span class="line">netMgr.init(&#123;</span><br><span class="line">     netEventHandler: <span class="keyword">this</span>,</span><br><span class="line">     protoHandler: protoHandler</span><br><span class="line"> &#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>准备工作做好了，开始写客户端</p>
+<h3 id="CocosCreator2-4-2实现多人聊天客户端"><a href="#CocosCreator2-4-2实现多人聊天客户端" class="headerlink" title="CocosCreator2.4.2实现多人聊天客户端"></a>CocosCreator2.4.2实现多人聊天客户端</h3><p>这个客户端项目中写了3个例子</p>
+<ol>
+<li>testcases/websocket-test 纯使用websocket+控制台打印的方式的例子</li>
+<li>testcases/simple-test enet简单使用版本，没对协议层进行定制</li>
+<li>testcases/protobuf-test protobuf协议定制版(今天的主角)</li>
+</ol>
+<p>由于篇幅有限，UI组件的实现就不讲了，都是很简单的实现，具体可以直接看源码</p>
+<p>传送门:<a href="https://github.com/AILHC/EasyGameFrameworkOpen/tree/main/examples/egf-net-ws/egf-ccc-net-ws" target="_blank" rel="noopener">聊天客户端实现</a></p>
+<p><strong>核心逻辑实现</strong></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; ccclass, property &#125; = cc._decorator;</span><br><span class="line"><span class="keyword">import</span> &#123; NetNode &#125; <span class="keyword">from</span> <span class="string">"@ailhc/enet"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; PbProtoHandler &#125; <span class="keyword">from</span> <span class="string">"@ailhc/enet-pbws"</span>;</span><br><span class="line"><span class="keyword">import</span> MsgPanel <span class="keyword">from</span> <span class="string">"../../comps/msgPanel/MsgPanel"</span>;</span><br><span class="line"><span class="meta">@ccclass</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">class</span> ProtobufNetTest <span class="keyword">extends</span> cc.Component <span class="keyword">implements</span> enet.INetEventHandler &#123;</span><br><span class="line">    <span class="comment">//省略</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> _uid: <span class="built_in">number</span>;</span><br><span class="line">    userMap: &#123; [key: <span class="built_in">number</span>]: <span class="built_in">string</span> &#125; = &#123;&#125;;</span><br><span class="line">    <span class="keyword">private</span> _userName: <span class="built_in">string</span>;</span><br><span class="line"></span><br><span class="line">    onLoad() &#123;</span><br><span class="line">        <span class="keyword">const</span> netMgr = <span class="keyword">new</span> NetNode&lt;<span class="built_in">string</span>&gt;();</span><br><span class="line">        <span class="keyword">this</span>._net = netMgr;</span><br><span class="line">        <span class="keyword">const</span> protoHandler = <span class="keyword">new</span> PbProtoHandler(pb_test);</span><br><span class="line">        netMgr.init(&#123;</span><br><span class="line">            netEventHandler: <span class="keyword">this</span>,</span><br><span class="line">            protoHandler: protoHandler</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="comment">//监听消息推送</span></span><br><span class="line">        netMgr.onPush&lt;pb_test.ISc_Msg&gt;(<span class="string">"Sc_Msg"</span>, &#123; method: <span class="keyword">this</span>.onMsgPush, context: <span class="keyword">this</span> &#125;);</span><br><span class="line">        <span class="comment">//监听用户进来</span></span><br><span class="line">        netMgr.onPush&lt;pb_test.ISc_userEnter&gt;(<span class="string">"Sc_userEnter"</span>, &#123; method: <span class="keyword">this</span>.onUserEnter, context: <span class="keyword">this</span> &#125;);</span><br><span class="line">        <span class="comment">//监听用户离开</span></span><br><span class="line">        netMgr.onPush&lt;pb_test.ISc_userLeave&gt;(<span class="string">"Sc_userLeave"</span>, &#123; method: <span class="keyword">this</span>.onUserLeave, context: <span class="keyword">this</span> &#125;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 连接服务器</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    connectSvr() &#123;</span><br><span class="line">        <span class="keyword">this</span>._net.connect(<span class="string">"ws://localhost:8181"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 登录服务器</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    loginSvr() &#123;</span><br><span class="line">        <span class="keyword">let</span> nameStr = <span class="keyword">this</span>.nameInputEdit.string;</span><br><span class="line">        <span class="keyword">if</span> (!nameStr || !nameStr.length) &#123;</span><br><span class="line">            nameStr = <span class="string">"User"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>._net.request&lt;pb_test.ICs_Login, pb_test.ISc_Login&gt;<span class="function">(<span class="params">"Cs_Login", &#123; name: nameStr &#125;, (<span class="params">dpkg</span>) =&gt; &#123;</span></span></span><br><span class="line"><span class="function"><span class="params">            <span class="keyword">if</span> (<span class="params">!dpkg.errorMsg</span>) &#123;</span></span></span><br><span class="line"><span class="function"><span class="params">                <span class="keyword">this</span>._userName = nameStr;</span></span></span><br><span class="line"><span class="function"><span class="params">                <span class="keyword">this</span>._uid = dpkg.data.uid;</span></span></span><br><span class="line"><span class="function"><span class="params">                <span class="keyword">const</span> users = dpkg.data.users;</span></span></span><br><span class="line"><span class="function"><span class="params">                <span class="keyword">if</span> (<span class="params">users &amp;&amp; users.length</span>) &#123;</span></span></span><br><span class="line"><span class="function"><span class="params">                    <span class="keyword">for</span> (<span class="params"><span class="keyword">let</span> i = 0; i &lt; users.length; i++</span>) &#123;</span></span></span><br><span class="line"><span class="function"><span class="params">                        <span class="keyword">const</span> user = users[i];</span></span></span><br><span class="line"><span class="function"><span class="params">                        <span class="keyword">this</span>.userMap[user.uid] = user.name;</span></span></span><br><span class="line"><span class="function"><span class="params">                    &#125;</span></span></span><br><span class="line"><span class="function"><span class="params">                &#125;</span></span></span><br><span class="line"><span class="function"><span class="params">                <span class="keyword">this</span>.hideLoginPanel(<span class="params"></span>);</span></span></span><br><span class="line"><span class="function"><span class="params">                <span class="keyword">this</span>.showChatPanel(<span class="params"></span>);</span></span></span><br><span class="line"><span class="function"><span class="params">            &#125;</span></span></span><br><span class="line"><span class="function"><span class="params">        &#125;</span>)</span></span><br><span class="line"><span class="function">    &#125;</span></span><br><span class="line"><span class="function">    /**</span></span><br><span class="line"><span class="function">     * 发送消息</span></span><br><span class="line"><span class="function">     */</span></span><br><span class="line"><span class="function">    <span class="params">sendMsg</span><span class="params">()</span> &#123;</span></span><br><span class="line"><span class="function">        <span class="params">const</span> <span class="params">msg</span> = <span class="params">this</span>.<span class="params">msgInputEdit</span>.<span class="params">string</span>;</span></span><br><span class="line"><span class="function">        <span class="params">if</span> (<span class="params">!msg</span>) &#123;</span></span><br><span class="line"><span class="function">            <span class="params">console</span>.<span class="params">error</span>(<span class="params">`请输入消息文本`</span>)</span></span><br><span class="line"><span class="function">            <span class="params">return</span>;</span></span><br><span class="line"><span class="function">        &#125;</span></span><br><span class="line"><span class="function">        <span class="params">this</span>.<span class="params">msgInputEdit</span>.<span class="params">string</span> = "";</span></span><br><span class="line"><span class="function">        <span class="params">this</span>._<span class="params">net</span>.<span class="params">notify</span>&lt;<span class="params">pb_test</span>.<span class="params">ICs_SendMsg</span>&gt;(<span class="params">"Cs_SendMsg", &#123; msg: &#123; uid: <span class="keyword">this</span>._uid, msg: msg &#125; &#125;</span>)</span></span><br><span class="line"><span class="function">    &#125;</span></span><br><span class="line"><span class="function">    //用户进来处理</span></span><br><span class="line"><span class="function">    <span class="params">onUserEnter</span>(<span class="params">dpkg: enet.IDecodePackage&lt;pb_test.ISc_userEnter&gt;</span>) &#123;</span></span><br><span class="line"><span class="function">        <span class="params">if</span> (<span class="params">!dpkg.errorMsg</span>) &#123;</span></span><br><span class="line"><span class="function">            <span class="params">const</span> <span class="params">enterUser</span> = <span class="params">dpkg</span>.<span class="params">data</span>.<span class="params">user</span>;</span></span><br><span class="line"><span class="function">            <span class="params">this</span>.<span class="params">userMap</span>[<span class="params">enterUser</span>.<span class="params">uid</span>] = <span class="params">enterUser</span>.<span class="params">name</span>;</span></span><br><span class="line"><span class="function">            <span class="params">this</span>.<span class="params">msgPanelComp</span>.<span class="params">addMsg</span>(<span class="params">&#123; name: "系统", msg: `[$&#123;enterUser.name&#125;]进来了` &#125;</span>);</span></span><br><span class="line"><span class="function">        &#125; <span class="params">else</span> &#123;</span></span><br><span class="line"><span class="function">            <span class="params">console</span>.<span class="params">error</span>(<span class="params">dpkg.errorMsg</span>);</span></span><br><span class="line"><span class="function">        &#125;</span></span><br><span class="line"><span class="function">    &#125;</span></span><br><span class="line"><span class="function">    //用户离开处理</span></span><br><span class="line"><span class="function">    <span class="params">onUserLeave</span>(<span class="params">dpkg: enet.IDecodePackage&lt;pb_test.ISc_userLeave&gt;</span>) &#123;</span></span><br><span class="line"><span class="function">        <span class="params">if</span> (<span class="params">!dpkg.errorMsg</span>) &#123;</span></span><br><span class="line"><span class="function">            <span class="params">if</span> (<span class="params"><span class="keyword">this</span>.userMap[dpkg.data.uid]</span>) &#123;</span></span><br><span class="line"><span class="function">                <span class="params">const</span> <span class="params">leaveUserName</span> = <span class="params">this</span>.<span class="params">userMap</span>[<span class="params">dpkg</span>.<span class="params">data</span>.<span class="params">uid</span>];</span></span><br><span class="line"><span class="function">                <span class="params">this</span>.<span class="params">msgPanelComp</span>.<span class="params">addMsg</span>(<span class="params">&#123; name: "系统", msg: `[$&#123;leaveUserName&#125;]离开了` &#125;</span>);</span></span><br><span class="line"><span class="function">                <span class="params">delete</span> <span class="params">this</span>.<span class="params">userMap</span>[<span class="params">dpkg</span>.<span class="params">data</span>.<span class="params">uid</span>];</span></span><br><span class="line"><span class="function">            &#125;</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">        &#125; <span class="params">else</span> &#123;</span></span><br><span class="line"><span class="function">            <span class="params">console</span>.<span class="params">error</span>(<span class="params">dpkg.errorMsg</span>);</span></span><br><span class="line"><span class="function">        &#125;</span></span><br><span class="line"><span class="function">    &#125;</span></span><br><span class="line"><span class="function">    //消息下发处理</span></span><br><span class="line"><span class="function">    <span class="params">onMsgPush</span>(<span class="params">dpkg: enet.IDecodePackage&lt;pb_test.ISc_Msg&gt;</span>) &#123;</span></span><br><span class="line"><span class="function">        <span class="params">if</span> (<span class="params">!dpkg.errorMsg</span>) &#123;</span></span><br><span class="line"><span class="function">            <span class="params">const</span> <span class="params">svrMsg</span> = <span class="params">dpkg</span>.<span class="params">data</span>.<span class="params">msg</span>;</span></span><br><span class="line"><span class="function">            <span class="params">let</span> <span class="params">userName</span>: <span class="params">string</span>;</span></span><br><span class="line"><span class="function">            <span class="params">let</span> <span class="params">isSelf</span>: <span class="params">boolean</span>;</span></span><br><span class="line"><span class="function">            <span class="params">if</span> (<span class="params"><span class="keyword">this</span>._uid === svrMsg.uid</span>) &#123;</span></span><br><span class="line"><span class="function">                <span class="params">userName</span> = "我";</span></span><br><span class="line"><span class="function">                <span class="params">isSelf</span> = <span class="params">true</span>;</span></span><br><span class="line"><span class="function">            &#125; <span class="params">else</span> <span class="params">if</span> (<span class="params"><span class="keyword">this</span>.userMap[svrMsg.uid]</span>) &#123;</span></span><br><span class="line"><span class="function">                <span class="params">userName</span> = <span class="params">this</span>.<span class="params">userMap</span>[<span class="params">svrMsg</span>.<span class="params">uid</span>];</span></span><br><span class="line"><span class="function">            &#125; <span class="params">else</span> &#123;</span></span><br><span class="line"><span class="function">                <span class="params">console</span>.<span class="params">error</span>(<span class="params">`没有这个用户:$&#123;svrMsg.uid&#125;`</span>)</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">            &#125;</span></span><br><span class="line"><span class="function">            <span class="params">if</span> (<span class="params">userName</span>) &#123;</span></span><br><span class="line"><span class="function">                <span class="params">const</span> <span class="params">msgData</span> = &#123; <span class="params">name</span>: <span class="params">userName</span>, <span class="params">msg</span>: <span class="params">svrMsg</span>.<span class="params">msg</span> &#125;</span></span><br><span class="line"><span class="function">                //判断是否放烟花</span></span><br><span class="line"><span class="function">                <span class="params">this</span>.<span class="params">checkAndFire</span>(<span class="params">svrMsg.msg, isSelf</span>);</span></span><br><span class="line"><span class="function">                <span class="params">this</span>.<span class="params">msgPanelComp</span>.<span class="params">addMsg</span>(<span class="params">msgData</span>);</span></span><br><span class="line"><span class="function">            &#125;</span></span><br><span class="line"><span class="function">        &#125; <span class="params">else</span> &#123;</span></span><br><span class="line"><span class="function">            <span class="params">console</span>.<span class="params">error</span>(<span class="params">dpkg.errorMsg</span>);</span></span><br><span class="line"><span class="function">        &#125;</span></span><br><span class="line"><span class="function">    &#125;</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">    //#<span class="params">region</span> 遮罩提示面板</span></span><br><span class="line"><span class="function">    <span class="params">public</span> <span class="params">showMaskPanel</span><span class="params">()</span> &#123;</span></span><br><span class="line"><span class="function">        <span class="params">if</span> (<span class="params">!<span class="keyword">this</span>.maskPanel.active</span>) <span class="params">this</span>.<span class="params">maskPanel</span>.<span class="params">active</span> = <span class="params">true</span>;</span></span><br><span class="line"><span class="function">        <span class="params">if</span> (<span class="params">!<span class="built_in">isNaN</span>(<span class="params"><span class="keyword">this</span>._hideMaskTimeId</span>)</span>) &#123;</span></span><br><span class="line"><span class="function">            <span class="params">clearTimeout</span>(<span class="params"><span class="keyword">this</span>._hideMaskTimeId</span>);</span></span><br><span class="line"><span class="function">        &#125;</span></span><br><span class="line"><span class="function">    &#125;</span></span><br><span class="line"><span class="function">    <span class="params">public</span> <span class="params">updateMaskPanelTips</span>(<span class="params">tips: <span class="built_in">string</span></span>) &#123;</span></span><br><span class="line"><span class="function">        <span class="params">this</span>.<span class="params">maskTips</span>.<span class="params">string</span> = <span class="params">tips</span>;</span></span><br><span class="line"><span class="function">    &#125;</span></span><br><span class="line"><span class="function">    <span class="params">private</span> _<span class="params">hideMaskTimeId</span>: <span class="params">number</span>;</span></span><br><span class="line"><span class="function">    <span class="params">public</span> <span class="params">hideMaskPanel</span><span class="params">()</span> &#123;</span></span><br><span class="line"><span class="function">        <span class="params">this</span>._<span class="params">hideMaskTimeId</span> = <span class="params">setTimeout</span>(<span class="params">(<span class="params"></span>) =&gt; &#123;</span></span></span><br><span class="line"><span class="function"><span class="params">            <span class="keyword">this</span>.maskPanel.active = <span class="literal">false</span>;</span></span></span><br><span class="line"><span class="function"><span class="params">        &#125;, 1000</span>) <span class="params">as</span> <span class="params">any</span>;</span></span><br><span class="line"><span class="function">    &#125;</span></span><br><span class="line"><span class="function">    //#<span class="params">endregion</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">    //#<span class="params">region</span> 连接面板</span></span><br><span class="line"><span class="function">    <span class="params">showConnectPanel</span><span class="params">()</span> &#123;</span></span><br><span class="line"><span class="function">        <span class="params">this</span>.<span class="params">connectPanel</span>.<span class="params">active</span> = <span class="params">true</span>;</span></span><br><span class="line"><span class="function">    &#125;</span></span><br><span class="line"><span class="function">    <span class="params">hideConnectPanel</span><span class="params">()</span> &#123;</span></span><br><span class="line"><span class="function">        <span class="params">this</span>.<span class="params">connectPanel</span>.<span class="params">active</span> = <span class="params">false</span>;</span></span><br><span class="line"><span class="function">    &#125;</span></span><br><span class="line"><span class="function">    //#<span class="params">endregion</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">    //#<span class="params">region</span> 登录面板</span></span><br><span class="line"><span class="function">    <span class="params">showLoginPanel</span><span class="params">()</span> &#123;</span></span><br><span class="line"><span class="function">        <span class="params">this</span>.<span class="params">loginPanel</span>.<span class="params">active</span> = <span class="params">true</span>;</span></span><br><span class="line"><span class="function">    &#125;</span></span><br><span class="line"><span class="function">    <span class="params">hideLoginPanel</span><span class="params">()</span> &#123;</span></span><br><span class="line"><span class="function">        <span class="params">this</span>.<span class="params">loginPanel</span>.<span class="params">active</span> = <span class="params">false</span>;</span></span><br><span class="line"><span class="function">    &#125;</span></span><br><span class="line"><span class="function">    //#<span class="params">endregion</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">    //#<span class="params">region</span> 聊天面板</span></span><br><span class="line"><span class="function">    <span class="params">showChatPanel</span><span class="params">()</span> &#123;</span></span><br><span class="line"><span class="function">        <span class="params">this</span>.<span class="params">chatPanel</span>.<span class="params">active</span> = <span class="params">true</span>;</span></span><br><span class="line"><span class="function">    &#125;</span></span><br><span class="line"><span class="function">    <span class="params">hideChatPanel</span><span class="params">()</span> &#123;</span></span><br><span class="line"><span class="function">        <span class="params">this</span>.<span class="params">chatPanel</span>.<span class="params">active</span> = <span class="params">false</span>;</span></span><br><span class="line"><span class="function">    &#125;</span></span><br><span class="line"><span class="function">    //#<span class="params">endregion</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">    <span class="params">onStartConnenct</span>?(<span class="params">connectOpt: enet.IConnectOptions&lt;<span class="built_in">any</span>&gt;</span>): <span class="params">void</span> &#123;</span></span><br><span class="line"><span class="function">        <span class="params">this</span>.<span class="params">showMaskPanel</span><span class="params">()</span></span></span><br><span class="line"><span class="function">        <span class="params">this</span>.<span class="params">updateMaskPanelTips</span>(<span class="params">"连接服务器中"</span>);</span></span><br><span class="line"><span class="function">    &#125;</span></span><br><span class="line"><span class="function">    <span class="params">onConnectEnd</span>?(<span class="params">connectOpt: enet.IConnectOptions&lt;<span class="built_in">any</span>&gt;</span>): <span class="params">void</span> &#123;</span></span><br><span class="line"><span class="function">        <span class="params">this</span>.<span class="params">updateMaskPanelTips</span>(<span class="params">"连接服务器成功"</span>);</span></span><br><span class="line"><span class="function">        <span class="params">this</span>.<span class="params">hideMaskPanel</span><span class="params">()</span>;</span></span><br><span class="line"><span class="function">        <span class="params">this</span>.<span class="params">showLoginPanel</span><span class="params">()</span>;</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">    &#125;</span></span><br><span class="line"><span class="function">    //判断并放烟花</span></span><br><span class="line"><span class="function">    <span class="params">checkAndFire</span>(<span class="params">msg: <span class="built_in">string</span>, left: <span class="built_in">boolean</span></span>) &#123;</span></span><br><span class="line"><span class="function">        <span class="params">if</span> (<span class="params">msg.includes(<span class="params">"烟花"</span>) || msg.includes(<span class="params">"🎇"</span>)</span>) &#123;</span></span><br><span class="line"><span class="function">            <span class="params">window</span>.<span class="params">fire</span>(<span class="params"><span class="built_in">window</span>.innerWidth * 1 / 2 + (<span class="params">left ? -100 : 100</span>), <span class="built_in">window</span>.innerHeight / 2</span>);</span></span><br><span class="line"><span class="function">        &#125;</span></span><br><span class="line"><span class="function">    &#125;</span></span><br><span class="line"><span class="function">    //省略。。。    </span></span><br><span class="line"><span class="function">&#125;</span></span><br></pre></td></tr></table></figure>
+<p><strong>烟花效果代码实现</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//烟花代码,稍微修改一下</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> cdom = <span class="built_in">document</span>.createElement(<span class="string">"canvas"</span>);</span><br><span class="line">    cdom.id = <span class="string">"myCanvas"</span>; cdom.style.position = <span class="string">"fixed"</span>; cdom.style.left = <span class="string">"0"</span>; cdom.style.top = <span class="string">"0"</span>;</span><br><span class="line">    cdom.style.zIndex = <span class="number">1</span>; <span class="built_in">document</span>.body.appendChild(cdom); <span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'myCanvas'</span>); <span class="keyword">var</span> context = canvas.getContext(<span class="string">'2d'</span>);</span><br><span class="line">    cdom.style.background = <span class="string">"rgba(255,255,255,0)"</span><span class="comment">//背景透明</span></span><br><span class="line">    cdom.style.pointerEvents = <span class="string">"none"</span>;<span class="comment">//让这个canvas的点击穿透</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">resizeCanvas</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        canvas.width = <span class="built_in">window</span>.innerWidth; canvas.height = <span class="built_in">window</span>.innerHeight;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">window</span>.addEventListener(<span class="string">'resize'</span>, resizeCanvas, <span class="literal">false</span>); resizeCanvas(); clearCanvas();</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">clearCanvas</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// context.fillStyle = '#000000';</span></span><br><span class="line">        <span class="comment">// context.fillRect(0, 0, canvas.width, canvas.height);</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> rid;</span><br><span class="line">    <span class="built_in">window</span>.fire = <span class="function"><span class="keyword">function</span> <span class="title">fire</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">        createFireworks(x, y); <span class="function"><span class="keyword">function</span> <span class="title">tick</span>(<span class="params"></span>) </span>&#123; context.globalCompositeOperation = <span class="string">'destination-out'</span>; context.fillStyle = <span class="string">'rgba(0,0,0,'</span> + <span class="number">10</span> / <span class="number">100</span> + <span class="string">')'</span>; context.fillRect(<span class="number">0</span>, <span class="number">0</span>, canvas.width, canvas.height); context.globalCompositeOperation = <span class="string">'lighter'</span>; drawFireworks(); rid = requestAnimationFrame(tick); &#125; cancelAnimationFrame(rid); tick();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> particles = [];</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">createFireworks</span>(<span class="params">sx, sy</span>) </span>&#123;</span><br><span class="line">        particles = []; <span class="keyword">var</span> hue = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">51</span>) + <span class="number">150</span>; <span class="keyword">var</span> hueVariance = <span class="number">30</span>; <span class="keyword">var</span> count = <span class="number">100</span>; <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; count; i++) &#123; <span class="keyword">var</span> p = &#123;&#125;; <span class="keyword">var</span> angle = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">360</span>); p.radians = angle * <span class="built_in">Math</span>.PI / <span class="number">180</span>; p.x = sx; p.y = sy; p.speed = (<span class="built_in">Math</span>.random() * <span class="number">5</span>) + <span class="number">.4</span>; p.radius = p.speed; p.size = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">3</span>) + <span class="number">1</span>; p.hue = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * ((hue + hueVariance) - (hue - hueVariance))) + (hue - hueVariance); p.brightness = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">31</span>) + <span class="number">50</span>; p.alpha = (<span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">61</span>) + <span class="number">40</span>) / <span class="number">100</span>; particles.push(p); &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">drawFireworks</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        clearCanvas(); <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; particles.length; i++) &#123;</span><br><span class="line">            <span class="keyword">var</span> p = particles[i]; <span class="keyword">var</span> vx = <span class="built_in">Math</span>.cos(p.radians) * p.radius; <span class="keyword">var</span> vy = <span class="built_in">Math</span>.sin(p.radians) * p.radius + <span class="number">0.4</span>; p.x += vx; p.y += vy; p.radius *= <span class="number">1</span> - p.speed / <span class="number">100</span>; p.alpha -= <span class="number">0.005</span>; context.beginPath(); context.arc(p.x, p.y, p.size, <span class="number">0</span>, <span class="built_in">Math</span>.PI * <span class="number">2</span>, <span class="literal">false</span>); context.closePath();</span><br><span class="line">            context.fillStyle = <span class="string">'hsla('</span> + p.hue + <span class="string">', 100%, '</span> + p.brightness + <span class="string">'%, '</span> + p.alpha + <span class="string">')'</span>; context.fill();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// document.addEventListener('mousedown', mouseDownHandler, false);</span></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<p>界面效果图</p>
+<p><img src="https://coding-pages-bucket-434147-7588795-4574-367535-1255530080.cos.ap-guangzhou.myqcloud.com/img/chatdemotest1.gif" style="zoom: 67%;"></p>
+<h3 id="node-TypeScript实现简易后端"><a href="#node-TypeScript实现简易后端" class="headerlink" title="node+TypeScript实现简易后端"></a>node+TypeScript实现简易后端</h3><p>我最熟悉node，而且可以共用<strong>enet-pbws</strong>的这个protobuf协议处理库</p>
+<p>就几行代码</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> WebSocket = <span class="built_in">require</span>(<span class="string">"ws"</span>)</span><br><span class="line"><span class="keyword">import</span> config <span class="keyword">from</span> <span class="string">"./config"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; PackageType, PbProtoHandler &#125; <span class="keyword">from</span> <span class="string">"@ailhc/enet-pbws"</span>;</span><br><span class="line"><span class="comment">//引入protobuf库</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">"../libs/protobuf.js"</span>);</span><br><span class="line"><span class="comment">//引入转译后的protojs文件</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">"../protojs/proto_bundle.js"</span>);</span><br><span class="line"><span class="keyword">import</span> &#123; &#125; <span class="keyword">from</span> <span class="string">"@ailhc/enet"</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> App &#123;</span><br><span class="line">    <span class="keyword">private</span> _svr: WebSocket.Server;</span><br><span class="line">    <span class="keyword">private</span> _clientMap: Map&lt;<span class="built_in">number</span>, ClientAgent&gt;;</span><br><span class="line">    <span class="keyword">private</span> _uid: <span class="built_in">number</span> = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">public</span> protoHandler: PbProtoHandler;</span><br><span class="line">    <span class="keyword">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">this</span>.protoHandler = <span class="keyword">new</span> PbProtoHandler(global.pb_test)</span><br><span class="line">        <span class="keyword">const</span> wsvr = <span class="keyword">new</span> WebSocket.Server(&#123; port: config.port &#125;);</span><br><span class="line">        <span class="keyword">this</span>._svr = wsvr;</span><br><span class="line">        <span class="keyword">this</span>._clientMap = <span class="keyword">new</span> Map();</span><br><span class="line">        wsvr.on(<span class="string">'connection'</span>, <span class="function">(<span class="params">clientWs</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'client connected'</span>);</span><br><span class="line">            <span class="keyword">this</span>._clientMap.set(<span class="keyword">this</span>._uid, <span class="keyword">new</span> ClientAgent(<span class="keyword">this</span>, <span class="keyword">this</span>._uid, clientWs));</span><br><span class="line">            <span class="keyword">this</span>._uid++;</span><br><span class="line"></span><br><span class="line">        &#125;);</span><br><span class="line">        wsvr.on(<span class="string">"close"</span>, <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`服务器启动:监听端口:<span class="subst">$&#123;config.port&#125;</span>`</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    sendToAllClient(data: enet.NetData) &#123;</span><br><span class="line">        <span class="keyword">this</span>._clientMap.forEach(<span class="function">(<span class="params">client</span>) =&gt;</span> &#123;</span><br><span class="line">            client.ws.send(data);</span><br><span class="line"></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    sendToOhterClient(uid: <span class="built_in">number</span>, data: enet.NetData) &#123;</span><br><span class="line">        <span class="keyword">this</span>._clientMap.forEach(<span class="function">(<span class="params">client</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (client.uid !== uid) &#123;</span><br><span class="line">                client.ws.send(data);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    sendToClient(uid: <span class="built_in">number</span>, data: enet.NetData) &#123;</span><br><span class="line">        <span class="keyword">const</span> client = <span class="keyword">this</span>._clientMap.get(uid);</span><br><span class="line">        client.ws.send(data);</span><br><span class="line">    &#125;</span><br><span class="line">    onUserLogin(user: pb_test.IUser, reqId: <span class="built_in">number</span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> users: pb_test.IUser[] = [];</span><br><span class="line">        <span class="keyword">const</span> encodeData = <span class="keyword">this</span>.protoHandler.encodeMsg&lt;pb_test.Sc_Login&gt;(&#123; key: <span class="string">"Sc_Login"</span>, data: &#123; uid: user.uid, users: users &#125;, reqId: reqId &#125;);</span><br><span class="line">        <span class="keyword">this</span>.sendToClient(user.uid, encodeData);</span><br><span class="line">        <span class="keyword">const</span> enterEncodeData = <span class="keyword">this</span>.protoHandler.encodeMsg&lt;pb_test.Sc_userEnter&gt;(&#123; key: <span class="string">"Sc_userEnter"</span>, data: &#123; user: user &#125; &#125;)</span><br><span class="line">        <span class="keyword">this</span>.sendToOhterClient(user.uid, enterEncodeData);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//客户端代理</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> ClientAgent &#123;</span><br><span class="line">    <span class="keyword">private</span> loginData: pb_test.ICs_Login;</span><br><span class="line">    <span class="keyword">constructor</span>(<span class="params"><span class="keyword">public</span> app: App, <span class="keyword">public</span> uid: <span class="built_in">number</span>, <span class="keyword">public</span> ws: WebSocket</span>) &#123;</span><br><span class="line"></span><br><span class="line">        ws.on(<span class="string">'message'</span>, <span class="keyword">this</span>.onMessage.bind(<span class="keyword">this</span>));</span><br><span class="line">        ws.on(<span class="string">"close"</span>, <span class="keyword">this</span>.onClose.bind(<span class="keyword">this</span>));</span><br><span class="line">        ws.on(<span class="string">"error"</span>, <span class="keyword">this</span>.onError.bind(<span class="keyword">this</span>));</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">get</span> user(): pb_test.IUser &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123; uid: <span class="keyword">this</span>.uid, name: <span class="keyword">this</span>.loginData.name &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> onMessage(message) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> message === <span class="string">"string"</span>) &#123;</span><br><span class="line">            <span class="comment">//TODO 字符串处理</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">//protobuf处理</span></span><br><span class="line">            <span class="keyword">const</span> dpkg = <span class="keyword">this</span>.app.protoHandler.decodePkg(message);</span><br><span class="line">            <span class="keyword">if</span> (dpkg.errorMsg) &#123;</span><br><span class="line">                <span class="built_in">console</span>.error(<span class="string">`解析客户端uid:<span class="subst">$&#123;this.uid&#125;</span>消息错误:`</span>, dpkg.errorMsg);</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (dpkg.type === PackageType.DATA) &#123;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">this</span>[dpkg.key] &amp;&amp; <span class="keyword">this</span>[dpkg.key](dpkg)</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> Cs_Login(dpkg: enet.IDecodePackage&lt;pb_test.Cs_Login&gt;) &#123;</span><br><span class="line">        <span class="keyword">this</span>.loginData = dpkg.data;</span><br><span class="line">        <span class="keyword">this</span>.app.onUserLogin(<span class="keyword">this</span>.user, dpkg.reqId);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> Cs_SendMsg(dpkg: enet.IDecodePackage&lt;pb_test.Cs_SendMsg&gt;) &#123;</span><br><span class="line">        <span class="keyword">const</span> encodeData = <span class="keyword">this</span>.app.protoHandler.encodeMsg&lt;pb_test.Sc_Msg&gt;(&#123; key: <span class="string">"Sc_Msg"</span>, data: dpkg.data &#125;);</span><br><span class="line">        <span class="keyword">this</span>.app.sendToAllClient(encodeData);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> onError(err: <span class="built_in">Error</span>) &#123;</span><br><span class="line">        <span class="built_in">console</span>.error(err);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> onClose(code: <span class="built_in">number</span>, reason: <span class="built_in">string</span>) &#123;</span><br><span class="line">        <span class="built_in">console</span>.error(<span class="string">`<span class="subst">$&#123;this.uid&#125;</span> 断开连接:code<span class="subst">$&#123;code&#125;</span>,reason:<span class="subst">$&#123;reason&#125;</span>`</span>);</span><br><span class="line">        <span class="keyword">const</span> leaveEncodeData = <span class="keyword">this</span>.app.protoHandler.encodeMsg&lt;pb_test.Sc_userLeave&gt;(&#123; key: <span class="string">"Sc_userLeave"</span>, data: &#123; uid: <span class="keyword">this</span>.uid &#125; &#125;)</span><br><span class="line">        <span class="keyword">this</span>.app.sendToOhterClient(<span class="keyword">this</span>.uid, leaveEncodeData);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">(<span class="keyword">new</span> App())</span><br></pre></td></tr></table></figure>
+<h3 id="开启多人Sport聊天"><a href="#开启多人Sport聊天" class="headerlink" title="开启多人Sport聊天"></a>开启多人<del>Sport</del>聊天</h3><p><strong>启动项目</strong></p>
+<ul>
+<li><p>初始化项目</p>
+<p>在/examples/egf-net-ws目录，打开终端</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<p>如果有yarn则可以</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn install</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动服务器(还是在刚刚的目录下)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run star-svr 或者 npm run dev_svr</span><br></pre></td></tr></table></figure>
+<p>服务器启动成功:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">服务器启动:监听端口:<span class="number">8181</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动客户端:用CocosCreator2.4.2打开项目</p>
+</li>
+</ul>
+<p><strong>最终效果</strong></p>
+<p><img src="https://coding-pages-bucket-434147-7588795-4574-367535-1255530080.cos.ap-guangzhou.myqcloud.com/img/chatdemotest2.gif" alt=""></p>
+<p><strong>一起聊天放烟花</strong></p>
+<p><img src="https://coding-pages-bucket-434147-7588795-4574-367535-1255530080.cos.ap-guangzhou.myqcloud.com/img/chatdemotest3.gif" style="zoom: 67%;"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li><p>第一个demo，借助<strong>enet</strong>通过简单的几句代码就可以实现socket收发消息</p>
+</li>
+<li><p>第二个demo，借助<strong>enet</strong>以及<strong>egf-protobuf</strong>和<strong>enet-pbws</strong>可轻松实现基于protobuf协议的多人聊天室应用</p>
+</li>
+</ul>
+<p>由于篇幅有限，有些功能没有讲到</p>
+<ul>
+<li>自定义握手处理</li>
+<li>自定义socket层</li>
+<li>自定义网络反馈层(比如：发送请求就弹出请求中遮罩，请求结束自动关闭遮罩等)</li>
+<li>心跳处理</li>
+<li>重连处理</li>
+</ul>
+<p>后续将分享一下，如何设计<strong>enet</strong></p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>我是喜欢<strong>游戏开发</strong>的海潮😉</p>
+<p>持续学习，持续up，<strong>分享</strong>游戏开发心得，玩转游戏开发</p>
+<p><strong>游戏开发之路有趣但不易,</strong></p>
+<p><strong>玩起来才能一直热情洋溢。</strong></p>
+<p>欢迎关注我的公众号，更多内容持续更新</p>
+<p>公众号搜索:玩转游戏开发</p>
+<p>或扫码:<img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/abd0c14c9c954e56af20adb71fa00da9~tplv-k3u1fbpfcp-zoom-1.image" alt="img" style="zoom:50%;"></p>
+<p>QQ 群: 1103157878</p>
+<p>博客主页: <a href="https://ailhc.github.io/" target="_blank" rel="noopener">https://ailhc.github.io/</a></p>
+<p>掘金: <a href="https://juejin.cn/user/3069492195769469" target="_blank" rel="noopener">https://juejin.cn/user/3069492195769469</a></p>
+<p>github: <a href="https://github.com/AILHC" target="_blank" rel="noopener">https://github.com/AILHC</a></p>
+
+    </div>
+    
+    <div class="reward" ontouchstart="">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+            <span class="reward-type">
+                <img class="wechat" src="/./img/reward-wepay.png"><b>微信打赏</b>
+            </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">
+        谢谢
+    </p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="https://ailhc.github.io/" target="_blank">AILHC</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2021/04/18/我想摸一摸CocosCreator的上限/" class="pre-post btn btn-default" title="我想摸一摸CocosCreator的上限">
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            我想摸一摸CocosCreator的上限</span>
+    </a>
+    
+    
+    <a href="/2020/12/31/我的2020/" class="next-post btn btn-default" title="我的2020">
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            我的2020</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#打个招呼"><span class="toc-text">打个招呼</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#极简聊天放烟花"><span class="toc-text">极简聊天放烟花</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一步-引入网络库并初始化"><span class="toc-text">第一步:引入网络库并初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第二步-写上收发消息的逻辑"><span class="toc-text">第二步: 写上收发消息的逻辑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第三步-加上烟花效果"><span class="toc-text">第三步:加上烟花效果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多人聊天放烟花"><span class="toc-text">多人聊天放烟花</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么使用protobuf？"><span class="toc-text">为什么使用protobuf？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用protobuf"><span class="toc-text">使用protobuf</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#将enet和protobuf结合起来"><span class="toc-text">将enet和protobuf结合起来</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CocosCreator2-4-2实现多人聊天客户端"><span class="toc-text">CocosCreator2.4.2实现多人聊天客户端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#node-TypeScript实现简易后端"><span class="toc-text">node+TypeScript实现简易后端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开启多人Sport聊天"><span class="toc-text">开启多人Sport聊天</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后"><span class="toc-text">最后</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+    访问量:
+    <strong id="busuanzi_value_site_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    &nbsp; | &nbsp;
+    访客数:
+    <strong id="busuanzi_value_site_uv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="/assets/tagcanvas.min.js?rev=2.9"></script>
+<script>
+var tagOption = {
+    textColour: '#444', // 字体颜色
+    outlineMethod: 'block', // 选中模式
+    outlineColour: '#FFDAB9', // 选中模式的颜色
+    interval: 30 || 30, // 动画帧之间的时间间隔，值越大，转动幅度越大
+    textHeight: 13,
+    outlineRadius: 3,
+    freezeActive: true || '', // 选中的标签是否继续滚动
+    frontSelect: true || '', // 不选标签云后部的标签
+    initial: [0.1, -0.1],
+    depth: 0.5,
+    decel: 0.95,
+    maxSpeed: 0.03,
+    reverse: true || '', // 是否反向触发
+    fadeIn: 500, // 进入动画时间
+    wheelZoom: false || '' // 是否启用鼠标滚轮
+}
+TagCanvas.Start('tag-cloud-3d', '', tagOption);
+</script>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/app.js?rev=@@hash"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+</html>
