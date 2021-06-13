@@ -7,7 +7,8 @@ tags:
 comments: false
 abbrlink: 17439
 date: 2021-6-13 12:56:34
-img:
+img: https://cdn.jsdelivr.net/gh/ailhc/picture/img/燕子.jpg
+
 ---
 
 ## 前言
@@ -32,7 +33,7 @@ img:
 文章: [`我想摸一下Creator的上限`](https://mp.weixin.qq.com/s/t7664GuXvEWz2BKnbpPDCw)
 
 上个星期有个深陷水深火热的小伙伴找到我，让我帮帮忙
-    ![](![](https://cdn.jsdelivr.net/gh/ailhc/picture/img/大项目-聊天记录1.png)
+    ![](https://cdn.jsdelivr.net/gh/ailhc/picture/img/大项目-聊天记录1.png)
     ![](https://cdn.jsdelivr.net/gh/ailhc/picture/img/大项目-聊天记录2.png)
     
     
@@ -46,6 +47,13 @@ img:
 
 ![](https://cdn.jsdelivr.net/gh/ailhc/picture/img/表情-来了来了.gif)
 
+视频演示:
+
+**https://www.bilibili.com/video/BV1hh411e7p5/**
+
+插件地址:
+
+**https://store.cocos.com/app/resources/search?name=Aswallow**
 
 ## 我们感到难受的是什么？
 
