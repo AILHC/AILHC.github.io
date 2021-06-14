@@ -10,7 +10,6 @@ date: 2021-6-13 12:56:34
 img: https://cdn.jsdelivr.net/gh/ailhc/picture/img/燕子.jpg
 
 ---
-
 ## 前言
 
 论坛上有很多帖子、很多人说Creator大项目卡顿，也在苦苦寻找解决方案。
@@ -93,7 +92,7 @@ img: https://cdn.jsdelivr.net/gh/ailhc/picture/img/燕子.jpg
 
 ## 卡顿的根源:Creator编辑器的资源管理机制
 
-Creator编辑器会对所有资源进行分析，记录它们之间的依赖关系。
+`Creator`编辑器会对所有资源进行分析，记录它们之间的依赖关系。
 
 `.meta`文件就是记录资源的信息和依赖信息
 
@@ -127,11 +126,13 @@ Creator官方在`Creator2.4.x`版本也给出了他们的解决方案:AssetBundl
 
 这些方案是有用，但就是有些麻烦，怎么才能做到更加方便和无感知呢？
 
-而且还有一个问题，怎么加载解析图集、龙骨、spine甚至fgui发布的资源和tilemap呢？
+而且还有一个问题，怎么加载解析`图集`、`龙骨`、`spine`甚至`fgui发布的资源`和`tilemap`呢？
 
 因为官方的接口中，加载远程资源：只能加载简单的图片、音频、文本
 
- 文档传送门🚪:https://docs.cocos.com/creator/manual/zh/scripting/dynamic-load-resources.html
+ 文档传送门🚪:
+ 
+ **https://docs.cocos.com/creator/manual/zh/scripting/dynamic-load-resources.html**
 
 ## 我的解决方案
 
@@ -140,13 +141,15 @@ Creator官方在`Creator2.4.x`版本也给出了他们的解决方案:AssetBundl
 
 不知道大家知不知道这个的存在。
 
-文档传送门:https://docs.cocos.com/creator/manual/zh/advanced-topics/custom-preview-template.html
+文档传送门:
+
+**https://docs.cocos.com/creator/manual/zh/advanced-topics/custom-preview-template.html**
 
 在项目根目录创建`preview-templates`，然后编辑器的预览功能就会以这个目录为入口
 
 你将外部资源放到这个文件夹，使用远程加载接口，就可以加载到这里的资源
 
-```ts
+```js
 //直接将someres.png放到preview-templates
 var remoteUrl = "someres.png";
 cc.assetManager.loadRemote(remoteUrl, function (err, texture) {
@@ -177,7 +180,7 @@ cc.assetManager.loadRemote(remoteUrl, function (err, texture) {
 
 找到了解析方法后，基于此实现了 `aswallow-asset-manager`
 
-它可以让你更加简单的加载外部、解析和管理`外部资源`(图集、龙骨、spine、tilemap、fgui发布的资源)
+它可以让你更加简单的加载、解析和管理`外部资源`(图集、龙骨、spine、tilemap、fgui发布的资源)
 
 通过加载version文件，可以实现轻易加载解析加了md5后缀的资源（加载逻辑不变的情况下）
 
@@ -185,58 +188,58 @@ cc.assetManager.loadRemote(remoteUrl, function (err, texture) {
 
 1. 加载图集
 
-   ```ts
-   aswallow.extAssetMgr.load([{ url: "atlas/emoji", assetType: "plist" }], (err, result) => {
-               console.log(result);
-               const atlas =  aswallow.extAssetMgr.get("atlas/emoji.plist") as cc.SpriteAtlas;
-               console.log(atlas);
-               this.emojiSp.spriteFrame = atlas.getSpriteFrame("emoji1")
-           });
-   }
-   ```
+    ```js
+    aswallow.extAssetMgr.load([{ url: "atlas/emoji", assetType: "plist" }], (err, result) => {
+                console.log(result);
+                const atlas =  aswallow.extAssetMgr.get("atlas/emoji.plist") as cc.SpriteAtlas;
+                console.log(atlas);
+                this.emojiSp.spriteFrame = atlas.getSpriteFrame("emoji1")
+            });
+    }
+    ```
 
    
 
 2. 加载图片
 
-   ```ts
-   let asset: cc.Asset;
-   let index = 0;
-   this._scheduleCallback = () => {
-       asset = aswallow.extAssetMgr.get(`${iconRoot}/i${index}.png`);
-       index = Math.floor(Math.random() * 10);
-       this.sp.spriteFrame = null;
-   
-       this.sp.spriteFrame = new cc.SpriteFrame(asset as cc.Texture2D);
-   }
-   let iconRoot = "fgui-res/Icons";
-   let resPaths = [];
-   for (let i = 0; i < 10; i++) {
-       resPaths.push(iconRoot + "/i" + i + ".png");
-   }
-   // cc.assetManager.preloadAny()
-   aswallow.extAssetMgr.load(resPaths, (err, result: aswallow.ILoadResult) => {
-       if (!err) {
-           console.log(`加载成功`)
-           console.log(result);
-   
-           this.schedule(this._scheduleCallback, 1, cc.macro.REPEAT_FOREVER);
-   
-   
-           // this.sp.spriteFrame.ensureLoadTexture();
-   
-       }
-   
-   });
-   ```
+    ```js
+    let asset: cc.Asset;
+    let index = 0;
+    this._scheduleCallback = () => {
+        asset = aswallow.extAssetMgr.get(`${iconRoot}/i${index}.png`);
+        index = Math.floor(Math.random() * 10);
+        this.sp.spriteFrame = null;
+
+        this.sp.spriteFrame = new cc.SpriteFrame(asset as cc.Texture2D);
+    }
+    let iconRoot = "fgui-res/Icons";
+    let resPaths = [];
+    for (let i = 0; i < 10; i++) {
+        resPaths.push(iconRoot + "/i" + i + ".png");
+    }
+    // cc.assetManager.preloadAny()
+    aswallow.extAssetMgr.load(resPaths, (err, result: aswallow.ILoadResult) => {
+        if (!err) {
+            console.log(`加载成功`)
+            console.log(result);
+
+            this.schedule(this._scheduleCallback, 1, cc.macro.REPEAT_FOREVER);
+
+
+            // this.sp.spriteFrame.ensureLoadTexture();
+
+        }
+
+    });
+    ```
 
    
 
 3. 加载龙骨
 
-   ```ts
-   const extAssetMgr = aswallow.extAssetMgr; 
-   extAssetMgr.load([
+    ```js
+    const extAssetMgr = aswallow.extAssetMgr; 
+    extAssetMgr.load([
         { url: "dragonbones/dragon/texture.json", assetType: "DragonBonesAtlasAsset" },
         { url: "dragonbones/dragon/NewDragonTest.json", assetType: "DragonBonesAsset" },
         "dragonbones/dragon/texture.png"], (err, items) => {
@@ -246,61 +249,61 @@ cc.assetManager.loadRemote(remoteUrl, function (err, texture) {
         this.dragonBone_json.armatureName = 'armatureName';
         this.dragonBone_json.playAnimation('stand', 0);
     });
-   //加载二进制
-   
-   extAssetMgr.load({ url: "dragonbones/sword-man/SwordsMan", assetType: "DragonBonesAsset", ext: ".dbbin" }, (err, items) => {
-       this.dragonBone_bin.dragonAsset = extAssetMgr.get("dragonbones/sword-man/SwordsMan_ske.dbbin") as any;
-       this.dragonBone_bin.dragonAtlasAsset = extAssetMgr.get("dragonbones/sword-man/SwordsMan_tex.json") as any;
-       this.dragonBone_bin.armatureName = 'Swordsman-NestArmature';
-       this.dragonBone_bin.playAnimation('walk', 0);
-   })
-   ```
+    //加载二进制
+
+    extAssetMgr.load({ url: "dragonbones/sword-man/SwordsMan", assetType: "DragonBonesAsset", ext: ".dbbin" }, (err, items) => {
+        this.dragonBone_bin.dragonAsset = extAssetMgr.get("dragonbones/sword-man/SwordsMan_ske.dbbin") as any;
+        this.dragonBone_bin.dragonAtlasAsset = extAssetMgr.get("dragonbones/sword-man/SwordsMan_tex.json") as any;
+        this.dragonBone_bin.armatureName = 'Swordsman-NestArmature';
+        this.dragonBone_bin.playAnimation('walk', 0);
+    })
+    ```
 
    
 
 4. 加载spine
 
-   ```ts
-   const extAssetMgr = aswallow.extAssetMgr;
-   
-   extAssetMgr.load([{ url: "spines/spineboy/spineboy.json", assetType: "SpineAsset" },
-                     "spines/spineboy/spineboy.txt",
-                     "spines/spineboy/spineboy.png"], (err, items) => {
-       console.log(items)
-       this.spine_json.skeletonData = extAssetMgr.get("spines/spineboy/spineboy.json") as any;
-       this.spine_json.animation = 'run';
-   });
-   //加载二进制
-   extAssetMgr.load([{ url: "spines/spineRatorBin/raptor-pro.skel", assetType: "SpineAsset" },
-                     "spines/spineRatorBin/raptor-pro.atlas",
-                     "spines/spineRatorBin/raptor-pro.png"], (err, items) => {
-       console.log(items)
-       this.spine_bin.skeletonData = extAssetMgr.get("spines/spineRatorBin/raptor-pro.skel") as any;
-       this.spine_bin.animation = 'walk';
-       // this.spine._updateSkeletonData
-   });
-   ```
+    ```js
+    const extAssetMgr = aswallow.extAssetMgr;
+
+    extAssetMgr.load([{ url: "spines/spineboy/spineboy.json", assetType: "SpineAsset" },
+                        "spines/spineboy/spineboy.txt",
+                        "spines/spineboy/spineboy.png"], (err, items) => {
+        console.log(items)
+        this.spine_json.skeletonData = extAssetMgr.get("spines/spineboy/spineboy.json") as any;
+        this.spine_json.animation = 'run';
+    });
+    //加载二进制
+    extAssetMgr.load([{ url: "spines/spineRatorBin/raptor-pro.skel", assetType: "SpineAsset" },
+                        "spines/spineRatorBin/raptor-pro.atlas",
+                        "spines/spineRatorBin/raptor-pro.png"], (err, items) => {
+        console.log(items)
+        this.spine_bin.skeletonData = extAssetMgr.get("spines/spineRatorBin/raptor-pro.skel") as any;
+        this.spine_bin.animation = 'walk';
+        // this.spine._updateSkeletonData
+    });
+    ```
 
    
 
 5. 加载fgui
 
-   ```ts
-   //正常使用即可，接口没有变化 
-   ```
+    ```js
+    //正常使用即可，接口没有变化 
+    ```
 
 6. 资源释放(以释放spine资源为例)
 
-   ```ts
-   aswallow.extAssetMgr.release([
-       { url: "spines/spineboy/spineboy.json", assetType: "SpineAsset" },
-       "spines/spineboy/spineboy.txt",
-       "spines/spineboy/spineboy.png",
-       { url: "spines/spineRatorBin/raptor-pro.skel", assetType: "SpineAsset" },
-       "spines/spineRatorBin/raptor-pro.atlas",
-       "spines/spineRatorBin/raptor-pro.png"
-   ])
-   ```
+    ```js
+    aswallow.extAssetMgr.release([
+        { url: "spines/spineboy/spineboy.json", assetType: "SpineAsset" },
+        "spines/spineboy/spineboy.txt",
+        "spines/spineboy/spineboy.png",
+        { url: "spines/spineRatorBin/raptor-pro.skel", assetType: "SpineAsset" },
+        "spines/spineRatorBin/raptor-pro.atlas",
+        "spines/spineRatorBin/raptor-pro.png"
+    ])
+    ```
 
    
 
