@@ -1,0 +1,382 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="晴">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="Git,学习,记录">
+
+
+<meta name="description" content="Git 使用记录Git学习资源Git问题记录SSHKey
+怎么生成？
+ 123ssh-keygen -t rsa -C &quot;youremail&quot;默认会生成 名字 id_rsa ...">
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+<title>
+    
+    Git使用记录 |
+    
+    晴
+</title>
+
+<link rel="alternate" href="/atom.xml" title="晴" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header" style="background-image:url(
+    http://snippet.shenliyang.com/img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Tide Li">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        晴</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/经验之谈/"><i class="fa "></i>
+                                经验之谈</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/框架设计/"><i class="fa "></i>
+                                框架设计</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/想法流水/"><i class="fa "></i>
+                                想法流水</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/资料收集/"><i class="fa "></i>
+                                资料收集</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/关于作者"><i class="fa "></i>
+                                关于作者</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Git使用记录">
+            
+            Git使用记录
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/经验之谈/">经验之谈</a> <a class="category-link" href="/categories/经验之谈/资料收集/">资料收集</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/Git/">Git</a> <a class="tag-link" href="/tags/学习/">学习</a> <a class="tag-link" href="/tags/记录/">记录</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2020/02/27</span>
+    </span>
+    
+    <span class="fa-wrap">
+        <i class="fa fa-eye"></i>
+        <span id="busuanzi_value_page_pv"></span>
+    </span>
+    
+    
+</div>
+        
+        
+        <p class="fa fa-exclamation-triangle warning">
+            本文于<strong>
+                675</strong>
+            天之前发表，文中内容可能已经过时。
+        </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h1 id="Git-使用记录"><a href="#Git-使用记录" class="headerlink" title="Git 使用记录"></a>Git 使用记录</h1><h2 id="Git学习资源"><a href="#Git学习资源" class="headerlink" title="Git学习资源"></a>Git学习资源</h2><h2 id="Git问题记录"><a href="#Git问题记录" class="headerlink" title="Git问题记录"></a>Git问题记录</h2><h3 id="SSHKey"><a href="#SSHKey" class="headerlink" title="SSHKey"></a>SSHKey</h3><ol>
+<li><p>怎么生成？</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;youremail&quot;</span><br><span class="line">默认会生成 名字 id_rsa 的sshkey </span><br><span class="line">可以自己自定义,但再使用时可能会有问题</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>关于错误:ssh: Could not resolve hostname github.com: Name or service not known.fatal: Could not read from remote repository.<br><a href="https://www.cnblogs.com/niuniui/p/8783273.html" target="_blank" rel="noopener">参考解决方案:</a></p>
+</li>
+<li><p>在Github中使用 </p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Settings-&gt;SSHKey -&gt; NewSSHKey</span><br><span class="line">将 id_rsa.pub(公钥) 文件的内容复制进去</span><br><span class="line"></span><br><span class="line">然后在git bash 执行:ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>“执行:ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>“ 出现Permission denied (publickey)<a href="https://www.cnblogs.com/lxwphp/p/7884700.html" target="_blank" rel="noopener">参考解决方案</a></p>
+</li>
+<li><p>如果在创建sshkey时使用自定义文件名, 执行 ssh-add ~/.ssh/&lt;自定义sshkey名&gt; 可能会出现：Could not open a connection to your authentication agent <a href="https://www.cnblogs.com/Security-Darren/p/4106328.html" target="_blank" rel="noopener">参考解决方案</a></p>
+</li>
+</ol>
+<h3 id="文件名大小问题"><a href="#文件名大小问题" class="headerlink" title="文件名大小问题"></a>文件名大小问题</h3><ol>
+<li>缘由：原来的文件名是小写的文件，复制了大写的文件名文件，显示覆盖，但覆盖后，文件名还是小写的</li>
+<li>解决方案：<ol>
+<li>参考：<a href="https://blog.csdn.net/u013707249/article/details/79135639" target="_blank" rel="noopener">git 大小写问题 踩坑笔记</a></li>
+<li>在项目目录下执行命令： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">touch .gitconfig</span><br><span class="line">git config core.ignorecase false</span><br><span class="line">git config --global core.ignorecase false</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="Git二进制文件管理以及如何git瘦身"><a href="#Git二进制文件管理以及如何git瘦身" class="headerlink" title="Git二进制文件管理以及如何git瘦身"></a>Git二进制文件管理以及如何git瘦身</h3><h4 id="缘由"><a href="#缘由" class="headerlink" title="缘由"></a>缘由</h4><p>在游戏开发过程中，会使用用到很多二进制类资源，比如 图片，配置压缩文件，3d资产文件等，由于git的工作原理，不断的commit会不断的累加。整个仓库会变得非常庞大。</p>
+<h4 id="二进制文件管理"><a href="#二进制文件管理" class="headerlink" title="二进制文件管理"></a>二进制文件管理</h4><ol>
+<li>参考资料<br>a. <a href="http://www.uml.org.cn/pzgl/201901233.asp" target="_blank" rel="noopener">Git 管理实战（五）：二进制大文件的版本控制</a><br>b. <a href="https://www.jianshu.com/p/493b81544f80" target="_blank" rel="noopener">Git LFS的使用</a><br>c. 百度 git lfs<h4 id="git-瘦身实践"><a href="#git-瘦身实践" class="headerlink" title="git 瘦身实践"></a>git 瘦身实践</h4></li>
+<li>参考资料<br>a. <a href="">Git清理删除历史提交文件</a><a href="https://www.jianshu.com/p/7ace3767986a" target="_blank" rel="noopener">https://www.jianshu.com/p/7ace3767986a</a><br>b. <a href="https://www.awaimai.com/2202.html" target="_blank" rel="noopener">使用BFG移除git库中的大文件或污点提交</a><br>c. <a href="https://www.cnblogs.com/huipengly/p/8424096.html" target="_blank" rel="noopener">使用BFG清除git仓库中的隐私文件或大文件</a><br>d. <a href="http://www.huamo.online/2017/11/22/%E4%B8%BAGit%E4%BB%93%E5%BA%93%E7%98%A6%E8%BA%AB/" target="_blank" rel="noopener">为Git仓库瘦身</a><br>e. <a href="https://www.zhihu.com/question/25072850?sort=created" target="_blank" rel="noopener">git rebase有哪些用法？</a> 这个可以对项目进行瘦身</li>
+<li>可以使用 gitlfs 来迁移仓库的管理方式而瘦身。但是这个会相对麻烦，需要远程仓库也支持。如果是使用gitee或者github等免费远程仓库则需要付费</li>
+<li>将二进制或者所有资源文件使用svn进行管理<br>a. 先备份资源文件<br>b. 忽略管理对应资源文件<br>c. 删除资源文件的版本记录<br>d. 同步操作到远程仓库</li>
+<li>定期对资源文件的版本记录进行清理</li>
+</ol>
+
+    </div>
+    
+    <div class="reward" ontouchstart="">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+            <span class="reward-type">
+                <img class="wechat" src="/./img/reward-wepay.png"><b>微信打赏</b>
+            </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">
+        谢谢
+    </p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="https://ailhc.github.io/" target="_blank">AILHC</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2020/02/28/how-to-wrrite-blog/" class="pre-post btn btn-default" title="写作输出记录">
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            写作输出记录</span>
+    </a>
+    
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Git-使用记录"><span class="toc-text">Git 使用记录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Git学习资源"><span class="toc-text">Git学习资源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git问题记录"><span class="toc-text">Git问题记录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SSHKey"><span class="toc-text">SSHKey</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件名大小问题"><span class="toc-text">文件名大小问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Git二进制文件管理以及如何git瘦身"><span class="toc-text">Git二进制文件管理以及如何git瘦身</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#缘由"><span class="toc-text">缘由</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二进制文件管理"><span class="toc-text">二进制文件管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#git-瘦身实践"><span class="toc-text">git 瘦身实践</span></a></li></ol></li></ol></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+    访问量:
+    <strong id="busuanzi_value_site_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    &nbsp; | &nbsp;
+    访客数:
+    <strong id="busuanzi_value_site_uv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="/assets/tagcanvas.min.js?rev=2.9"></script>
+<script>
+var tagOption = {
+    textColour: '#444', // 字体颜色
+    outlineMethod: 'block', // 选中模式
+    outlineColour: '#FFDAB9', // 选中模式的颜色
+    interval: 30 || 30, // 动画帧之间的时间间隔，值越大，转动幅度越大
+    textHeight: 13,
+    outlineRadius: 3,
+    freezeActive: true || '', // 选中的标签是否继续滚动
+    frontSelect: true || '', // 不选标签云后部的标签
+    initial: [0.1, -0.1],
+    depth: 0.5,
+    decel: 0.95,
+    maxSpeed: 0.03,
+    reverse: true || '', // 是否反向触发
+    fadeIn: 500, // 进入动画时间
+    wheelZoom: false || '' // 是否启用鼠标滚轮
+}
+TagCanvas.Start('tag-cloud-3d', '', tagOption);
+</script>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/app.js?rev=@@hash"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+</html>
