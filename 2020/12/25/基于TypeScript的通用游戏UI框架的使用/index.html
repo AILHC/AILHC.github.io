@@ -1,0 +1,440 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="晴">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="EasyGameFramework,CocosCreator">
+
+
+<meta name="description" content="前言之前发了一篇文章分享了我设计和实现这个基于TypeScript的通用游戏UI框架的过程和想法，但没有详细的介绍如何使用。
+文章链接:通用游戏UI框架的设计与实现
+这次就讲清楚如何使用~
+介绍...">
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+<title>
+    
+    基于TypeScript的通用游戏UI框架的使用 |
+    
+    晴
+</title>
+
+<link rel="alternate" href="/atom.xml" title="晴" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header" style="background-image:url(
+    http://snippet.shenliyang.com/img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Tide Li">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        晴</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/经验之谈/"><i class="fa "></i>
+                                经验之谈</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/框架设计/"><i class="fa "></i>
+                                框架设计</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/想法流水/"><i class="fa "></i>
+                                想法流水</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/资料收集/"><i class="fa "></i>
+                                资料收集</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/关于作者"><i class="fa "></i>
+                                关于作者</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="基于TypeScript的通用游戏UI框架的使用">
+            
+            基于TypeScript的通用游戏UI框架的使用
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/EasyGameFramework使用/">EasyGameFramework使用</a> <a class="category-link" href="/categories/EasyGameFramework使用/display-ctrl/">display-ctrl</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/CocosCreator/">CocosCreator</a> <a class="tag-link" href="/tags/EasyGameFramework/">EasyGameFramework</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2020/12/25</span>
+    </span>
+    
+    <span class="fa-wrap">
+        <i class="fa fa-eye"></i>
+        <span id="busuanzi_value_page_pv"></span>
+    </span>
+    
+    
+</div>
+        
+        
+        <p class="fa fa-exclamation-triangle warning">
+            本文于<strong>
+                373</strong>
+            天之前发表，文中内容可能已经过时。
+        </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前发了一篇文章分享了我设计和实现这个基于TypeScript的通用游戏UI框架的过程和想法，但没有详细的介绍如何使用。</p>
+<p>文章链接:<a href="https://juejin.cn/post/6908189414145392654" target="_blank" rel="noopener">通用游戏UI框架的设计与实现</a></p>
+<p>这次就讲清楚如何使用~</p>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>display-ctrl是一个基于TypeScript的零依赖、跨引擎、高效、灵活、高可扩展的显示控制库(UI框架库)</p>
+<p>您可以根据项目，以及项目所使用的引擎，定制资源处理和控制器基类。</p>
+<p>合理的抽象底层，让您可以继承管理器基类，使用基类接口就可以简单扩展出符合自身需求的接口。</p>
+<p>同时这个库使用了TypeScript的高阶的类型推断，给您带来极度舒适的接口调用体验。</p>
+<p>这个库无任何依赖，可单独使用。</p>
+<p>在仓库中同时提供了基于CocosCreator2.4.2和CocosCreator3D实现的库(包含layer层级管理库的实现)</p>
+<ol>
+<li><a href="https://github.com/AILHC/EasyGameFrameworkOpen/tree/main/packages/dpctrl-ccc" target="_blank" rel="noopener">dpctrl-ccc</a></li>
+<li><a href="https://github.com/AILHC/EasyGameFrameworkOpen/tree/main/packages/dpctrl-c3d" target="_blank" rel="noopener">dpctrl-c3d</a></li>
+</ol>
+<p>github:<a href="https://github.com/AILHC/EasyGameFrameworkOpen/tree/main/packages/display-ctrl" target="_blank" rel="noopener">EasyGameFramework</a> </p>
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><ul>
+<li>跨引擎，适用于任何适用ts/js的游戏/应用项目</li>
+<li>基于TypeScript，使用高阶类型编程，提供极度舒适的类型提示</li>
+<li>高可扩展</li>
+<li>高可定制</li>
+<li>零依赖，可单独使用<h2 id="如何使用？"><a href="#如何使用？" class="headerlink" title="如何使用？"></a>如何使用？</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3></li>
+</ul>
+<ol>
+<li><p>通过npm安装</p>
+<pre><code>npm i @ailhc/display-ctrl   
+</code></pre></li>
+<li><p>本地link npm包</p>
+<p> a. clone 项目仓库</p>
+<pre><code>git clone https://github.com/AILHC/EasyGameFrameworkOpen
+</code></pre><p> b. 在packages/display-ctrl文件夹下 </p>
+<pre><code>npm link
+</code></pre><p> c. 在项目游戏项目目录下 </p>
+<pre><code>npm link @ailhc/display-ctrl    
+</code></pre></li>
+<li><p>使用源码</p>
+<p> a. clone 项目仓库</p>
+<pre><code>git clone https://github.com/AILHC/EasyGameFrameworkOpen
+</code></pre><p> b. 直接复制packages/display-ctrl/src下的ts源码到项目文件夹下使用</p>
+<h3 id="定制一下"><a href="#定制一下" class="headerlink" title="定制一下"></a>定制一下</h3><h4 id="实现引擎层"><a href="#实现引擎层" class="headerlink" title="实现引擎层"></a>实现引擎层</h4><blockquote>
+<p>不同的引擎或者项目都需要做点相应的实现，很简单的</p>
+</blockquote>
+</li>
+<li><p>控制器基类实现</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; &#125; <span class="keyword">from</span> <span class="string">"@ailhc/display-ctrl"</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> NodeCtrl <span class="keyword">implements</span> displayCtrl.ICtrl&lt;cc.Node&gt; &#123;</span><br><span class="line">    key?: <span class="built_in">string</span> | <span class="built_in">any</span>;</span><br><span class="line"></span><br><span class="line">    isLoading?: <span class="built_in">boolean</span>;</span><br><span class="line">    isLoaded?: <span class="built_in">boolean</span>;</span><br><span class="line">    isInited?: <span class="built_in">boolean</span>;</span><br><span class="line">    isShowed?: <span class="built_in">boolean</span>;</span><br><span class="line">    needShow?: <span class="built_in">boolean</span>;</span><br><span class="line">    needLoad?: <span class="built_in">boolean</span>;</span><br><span class="line">    isShowing?: <span class="built_in">boolean</span>;</span><br><span class="line">    visible: <span class="built_in">boolean</span>;</span><br><span class="line">    onLoadData: <span class="built_in">any</span>;</span><br><span class="line">    <span class="keyword">protected</span> node: cc.Node;</span><br><span class="line">    <span class="keyword">protected</span> _mgr: displayCtrl.IMgr;</span><br><span class="line">    <span class="keyword">constructor</span>(<span class="params">dpcMgr?: displayCtrl.IMgr</span>) &#123;</span><br><span class="line">        <span class="keyword">this</span>._mgr = dpcMgr;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    onInit(config?: displayCtrl.IInitConfig&lt;<span class="built_in">any</span>, <span class="built_in">any</span>&gt;): <span class="built_in">void</span> &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    onShow(config?: displayCtrl.IShowConfig&lt;<span class="built_in">any</span>, <span class="built_in">any</span>, <span class="built_in">any</span>&gt;): <span class="built_in">void</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.node) &#123;</span><br><span class="line">            <span class="keyword">this</span>.node.active = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    getRess(): <span class="built_in">any</span>[] | <span class="built_in">string</span>[] &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">undefined</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    getNode(): cc.Node &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.node;</span><br><span class="line">    &#125;</span><br><span class="line">    onUpdate(updateData: <span class="built_in">any</span>): <span class="built_in">void</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    getFace&lt;T = <span class="built_in">any</span>&gt;(): T &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span> <span class="keyword">as</span> <span class="built_in">any</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    onDestroy(destroyRes?: <span class="built_in">boolean</span>): <span class="built_in">void</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.node) &#123;</span><br><span class="line">            <span class="keyword">this</span>.node.destroy();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    onHide() &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.node) &#123;</span><br><span class="line">            <span class="keyword">this</span>.node.active = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    forceHide() &#123;</span><br><span class="line">        <span class="keyword">this</span>.node &amp;&amp; (<span class="keyword">this</span>.node.active = <span class="literal">false</span>);</span><br><span class="line">        <span class="keyword">this</span>.isShowed = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    onResize() &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>我已经提供了两个CocosCreator版本的实现参考</p>
+<ul>
+<li>CocosCreator3d的实现<a href="https://github.com/AILHC/EasyGameFrameworkOpen/tree/main/packages/dpctrl-c3d" target="_blank" rel="noopener">dpctrl-c3d</a></li>
+<li>CocosCreator2.4.2的实现<a href="https://github.com/AILHC/EasyGameFrameworkOpen/tree/main/packages/dpctrl-ccc" target="_blank" rel="noopener">dpctrl-ccc</a><br>可以直接安装(同上)</li>
+</ul>
+<ol start="2">
+<li>资源处理接口定制<br>每个项目都有自己的资源处理需求，所以这部分逻辑解耦出来，让使用者注入资源处理器。<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//egf-ccc-full DpcTestMainComp.ts</span></span><br><span class="line"><span class="keyword">const</span> dpcMgr = <span class="keyword">new</span> DpcMgr&lt;IDpcTestViewKeyMap, <span class="built_in">any</span>, IDpcTestViewShowDataMap&gt;();</span><br><span class="line"></span><br><span class="line">        dpcMgr.init(</span><br><span class="line">            &#123;</span><br><span class="line">                loadRes: <span class="function">(<span class="params">config</span>) =&gt;</span> &#123;</span><br><span class="line">                    <span class="keyword">const</span> onLoadData: IDpcTestOnLoadData = config.onLoadData;</span><br><span class="line">                    onLoadData?.showLoading &amp;&amp; dtM.uiMgr.showDpc(<span class="string">"LoadingView"</span>);</span><br><span class="line">                    cc.assetManager.loadAny(config.ress,</span><br><span class="line">                        &#123; bundle: <span class="string">"resources"</span> &#125;,</span><br><span class="line">                        (finish, total) =&gt; &#123;</span><br><span class="line">                            <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;config.key&#125;</span>加载中:<span class="subst">$&#123;finish&#125;</span>/<span class="subst">$&#123;total&#125;</span>`</span>);</span><br><span class="line">                            onLoadData?.showLoading &amp;&amp; dtM.uiMgr.updateDpc(<span class="string">"LoadingView"</span>, &#123; finished: finish, total: total &#125;)</span><br><span class="line">                        &#125;,</span><br><span class="line">                        (err, items) =&gt; &#123;</span><br><span class="line">                            <span class="keyword">if</span> (err) &#123;</span><br><span class="line">                                <span class="built_in">console</span>.error(<span class="string">`加载失败`</span>, err);</span><br><span class="line">                                config.error &amp;&amp; config.error();</span><br><span class="line">                            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                                config.complete &amp;&amp; config.complete();</span><br><span class="line">                            &#125;</span><br><span class="line">                            onLoadData?.showLoading &amp;&amp; dtM.uiMgr.hideDpc(<span class="string">"LoadingView"</span>);</span><br><span class="line">                        &#125;)</span><br><span class="line">                &#125;,</span><br><span class="line">                releaseRes: <span class="function">(<span class="params">ctrlIns</span>) =&gt;</span> &#123;</span><br><span class="line">                    <span class="keyword">const</span> ress = ctrlIns.getRess();</span><br><span class="line">                    <span class="keyword">if</span> (ress &amp;&amp; ress.length) &#123;</span><br><span class="line">                        <span class="keyword">let</span> asset: cc.Asset;</span><br><span class="line">                        ress.forEach(<span class="function">(<span class="params">res: &#123; path: <span class="built_in">string</span> &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">                            asset = cc.resources.get(res.path);</span><br><span class="line">                            <span class="keyword">if</span> (asset) &#123;</span><br><span class="line">                                cc.assetManager.releaseAsset(asset);</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;);</span><br><span class="line"></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        )</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="开始使用"><a href="#开始使用" class="headerlink" title="开始使用"></a>开始使用</h4><p><strong>基础使用（以CocosCreator2.4.2为例):创建一个普通的界面</strong></p>
+<ul>
+<li>创建一个简单的界面的prefab<br>在测试场景，新建一个node节点，放点图片，spine动画什么的。</li>
+</ul>
+<p>然后拖到resources/display-ctrl-test-views下</p>
+<p>删掉场景中的界面节点</p>
+<ul>
+<li>新建一个界面控制器代码文件<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// DepResView.ts</span></span><br><span class="line"><span class="comment">// 增加界面key声明，为了调用显示接口时有类型提示</span></span><br><span class="line"><span class="keyword">declare</span> global &#123;</span><br><span class="line">    <span class="keyword">interface</span> IDpcTestViewKeyMap &#123;</span><br><span class="line">        DepResView: <span class="string">"DepResView"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> DepResView <span class="keyword">extends</span> NodeCtrl &#123;</span><br><span class="line">    <span class="keyword">static</span> typeKey = <span class="string">"DepResView"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> _ress: &#123; path: <span class="built_in">string</span>, <span class="keyword">type</span>: <span class="built_in">any</span> &#125;[];</span><br><span class="line">    <span class="comment">//界面prefab资源路径</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> prefabUrl = <span class="string">"display-ctrl-test-views/DepResView"</span>;</span><br><span class="line">    onLoadData: IDpcTestOnLoadData = &#123; showLoading: <span class="literal">true</span> &#125;;</span><br><span class="line">    <span class="comment">//实现getRess接口返回依赖资源数组</span></span><br><span class="line">    getRess() &#123;</span><br><span class="line">        <span class="keyword">if</span> (!DepResView._ress) &#123;</span><br><span class="line">            DepResView._ress = [</span><br><span class="line">                &#123; path: DepResView.prefabUrl, <span class="keyword">type</span>: cc.Prefab &#125;,</span><br><span class="line">                &#123; path: <span class="string">"test-txts/txt1"</span>, <span class="keyword">type</span>: cc.TextAsset &#125;</span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> DepResView._ress;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//实现onInit接口，实例化显示节点</span></span><br><span class="line">    onInit() &#123;</span><br><span class="line">        <span class="keyword">super</span>.onInit()</span><br><span class="line">        <span class="keyword">this</span>.node = getPrefabNodeByPath(DepResView.prefabUrl);</span><br><span class="line">        <span class="keyword">this</span>.node.getChildByName(<span class="string">"close-icon"</span>).on(cc.Node.EventType.MOUSE_DOWN, <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            dtM.uiMgr.hideDpc(<span class="keyword">this</span>.key);</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//实现onShow接口，添加显示节点到Canvas(最好是使用层级管理，比如我框架提供的layer层级管理库)</span></span><br><span class="line">    onShow(config: displayCtrl.IShowConfig) &#123;</span><br><span class="line">        <span class="keyword">super</span>.onShow(config);</span><br><span class="line">        <span class="keyword">const</span> canvas =  cc.director.getScene().getChildByName(<span class="string">"Canvas"</span>);</span><br><span class="line">        canvas.addChild(<span class="keyword">this</span>.node);</span><br><span class="line">    &#125;</span><br><span class="line">    onHide() &#123;</span><br><span class="line">        <span class="keyword">super</span>.onHide();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>来一串基本操作:调用管理器接口</strong></p>
+<ol>
+<li>显示<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//简单调用显示</span></span><br><span class="line">dtM.uiMgr.showDpc(<span class="string">"DepResView"</span>);<span class="comment">//打出双引号就有类型提示了</span></span><br><span class="line"><span class="comment">//传数据调用显示</span></span><br><span class="line"></span><br><span class="line">dtM.uiMgr.showDpc(<span class="string">"MutiInsView"</span>,onShowData);<span class="comment">//打出双引号就有类型提示了</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>所传数据也有类型提示，需要在任意地方声明（最好是在对应的控制器代码文件中声明）<br>这里以MutiInsView为例，具体可见:<br><a href="https://github.com/AILHC/EasyGameFrameworkOpen/blob/main/examples/egf-ccc-full/assets/tests/display-ctrl/view-ctrls/MutiInsView.ts" target="_blank" rel="noopener">examples\egf-ccc-full\assets\tests\display-ctrl\view-ctrls\MutiInsView.ts</a><br><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> global &#123;</span><br><span class="line">    <span class="keyword">interface</span> IDpcTestViewKeyMap &#123;</span><br><span class="line">        MutiInsView: <span class="string">"MutiInsView"</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">interface</span> IDpcTestViewShowDataMap &#123;</span><br><span class="line">        MutiInsView: &#123; preStr: <span class="built_in">string</span>, clickCount: <span class="built_in">number</span> &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ol start="2">
+<li>更新<br>当业务需要使用数据让指定界面更新渲染时调用,以加载界面为例<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//开始加载</span></span><br><span class="line">dtM.uiMgr.updateDpc(<span class="string">"LoadingView"</span>, &#123; finished: <span class="number">0</span>, total: <span class="number">1</span> &#125;);</span><br><span class="line"><span class="comment">//加载结束</span></span><br><span class="line">dtM.uiMgr.updateDpc(<span class="string">"LoadingView"</span>, &#123; finished: <span class="number">1</span>, total: <span class="number">1</span> &#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>这个更新所传的数据也可以有类型提示,详情可见:<a href="https://github.com/AILHC/EasyGameFrameworkOpen/blob/main/examples/egf-ccc-full/assets/tests/display-ctrl/view-ctrls/LoadingView.ts" target="_blank" rel="noopener">examples\egf-ccc-full\assets\tests\display-ctrl\view-ctrls\MutiInsView.ts</a><br><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> global &#123;</span><br><span class="line">    <span class="keyword">interface</span> IDpcTestViewKeyMap &#123;</span><br><span class="line">        LoadingView: <span class="string">"LoadingView"</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">interface</span> IDpcTestUpdateDataMap &#123;</span><br><span class="line">        LoadingView: &#123; finished: <span class="built_in">number</span>, total: <span class="built_in">number</span> &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ol start="2">
+<li><p>隐藏</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dtM.uiMgr.hideDpc(<span class="string">"DepResView"</span>);<span class="comment">//打出双引号就有类型提示了</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>销毁</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dtM.uiMgr.destroyDpc(dtM.uiMgr.keys.DepResView, <span class="literal">true</span>);<span class="comment">//第二个参数可以选择是否销毁资源</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><strong>自定义资源处理显示控制器</strong></p>
+<p>在业务开发中，可能有些界面的资源处理逻辑特殊，需要自定义，框架提供了自定义资源处理的接口</p>
+<ol>
+<li>创建一个自定义资源处理显示控制器</li>
+</ol>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//需要继承displayCtrl.IResHandler,管理器会调用控制器实现的这个接口而不是通用处理器的接口</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> CustomResHandleView <span class="keyword">extends</span> NodeCtrl <span class="keyword">implements</span> displayCtrl.IResHandler &#123;</span><br><span class="line">    <span class="keyword">static</span> typeKey = <span class="string">"CustomResHandleView"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> _ress: <span class="built_in">string</span>[];</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> _monsterNames = [<span class="string">"BuleMonster"</span>, <span class="string">"GreenMonster"</span>, <span class="string">"PurpleMonster"</span>, <span class="string">"RedMonster"</span>, <span class="string">"YellowMonster"</span>];</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> _monsterIconDir = <span class="string">"monster_icon"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> prefabUrl: <span class="built_in">string</span> = <span class="string">"display-ctrl-test-views/CustomResHandleView"</span>;</span><br><span class="line">    <span class="keyword">private</span> _monsterIconRess: &#123; path: <span class="built_in">string</span>, <span class="keyword">type</span>: <span class="built_in">any</span> &#125;[];</span><br><span class="line">    <span class="comment">//自定义资源加载</span></span><br><span class="line">    loadRes(config: displayCtrl.IResLoadConfig): <span class="built_in">void</span> &#123;</span><br><span class="line">        dtM.uiMgr.showDpc(&#123;</span><br><span class="line">            typeKey: dtM.uiMgr.keys.LoadingView,</span><br><span class="line">            showedCb: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">const</span> randomMonsterNameIndexs = getSomeRandomInt(<span class="number">0</span>, CustomResHandleView._monsterNames.length - <span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">                <span class="keyword">const</span> ress = [];</span><br><span class="line">                <span class="keyword">this</span>._monsterIconRess = ress;</span><br><span class="line">                randomMonsterNameIndexs.forEach(<span class="function"><span class="params">element</span> =&gt;</span> &#123;</span><br><span class="line">                    ress.push(&#123; path: CustomResHandleView._monsterIconDir + <span class="string">"/"</span> + CustomResHandleView._monsterNames[element], <span class="keyword">type</span>: cc.SpriteFrame &#125;);</span><br><span class="line">                &#125;);</span><br><span class="line">                ress.push(&#123; path: CustomResHandleView.prefabUrl, <span class="keyword">type</span>: cc.Prefab &#125;);</span><br><span class="line">                ress.push(&#123; path: <span class="string">"test-txts/txt1"</span>, <span class="keyword">type</span>: cc.TextAsset &#125;);</span><br><span class="line">                cc.assetManager.loadAny(ress, &#123; bundle: <span class="string">"resources"</span> &#125;, <span class="function">(<span class="params">finished: <span class="built_in">number</span>, total: <span class="built_in">number</span>, item</span>) =&gt;</span> &#123;</span><br><span class="line">                    dtM.uiMgr.updateDpc(dtM.uiMgr.keys.LoadingView,</span><br><span class="line">                        &#123;</span><br><span class="line">                            finished: finished, total: total</span><br><span class="line">                        &#125;)</span><br><span class="line">                &#125;, <span class="function">(<span class="params">err, data</span>) =&gt;</span> &#123;</span><br><span class="line">                    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">                        config.error();</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        config.complete();</span><br><span class="line">                    &#125;</span><br><span class="line">                    dtM.uiMgr.hideDpc(<span class="string">"LoadingView"</span>);</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//自定义资源释放</span></span><br><span class="line">    releaseRes(): <span class="built_in">void</span> &#123;</span><br><span class="line">        cc.assetManager.releaseAsset(cc.resources.get(CustomResHandleView.prefabUrl));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//省略代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>管理器的其他接口</strong></p>
+<p>具体的接口声明可以看:<a href="https://github.com/AILHC/EasyGameFrameworkOpen/blob/main/packages/display-ctrl/src/dp-ctrl-interfaces.ts" target="_blank" rel="noopener">dp-ctrl-interfaces.ts</a> 中的IMgr</p>
+<ul>
+<li>获取依赖资源,可用于获取多个控制器依赖的资源，批量预加载</li>
+<li>获取单例控制器实例</li>
+<li>预加载指定控制器</li>
+<li><p>创建控制器实例<br>等等</p>
+<h2 id="其他可能性"><a href="#其他可能性" class="headerlink" title="其他可能性"></a>其他可能性</h2><p>其实游戏主角也可以是显示控制器实例</p>
+<p>通过IShowConfig定制更多可能性，比如页面显示动画播放完回调</p>
+<p>利用管理器的基础接口扩展出管理栈式UI的逻辑</p>
+</li>
+</ul>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>欢迎关注我的公众号，更多内容持续更新</p>
+<p>公众号搜索:玩转游戏开发</p>
+<p>或扫码:<img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/abd0c14c9c954e56af20adb71fa00da9~tplv-k3u1fbpfcp-zoom-1.image" alt="img" style="zoom:50%;"></p>
+<p>QQ 群: 1103157878</p>
+<p>博客主页: <a href="https://ailhc.github.io/" target="_blank" rel="noopener">https://ailhc.github.io/</a></p>
+<p>掘金: <a href="https://juejin.cn/user/3069492195769469" target="_blank" rel="noopener">https://juejin.cn/user/3069492195769469</a></p>
+<p>github: <a href="https://github.com/AILHC" target="_blank" rel="noopener">https://github.com/AILHC</a></p>
+
+    </div>
+    
+    <div class="reward" ontouchstart="">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+            <span class="reward-type">
+                <img class="wechat" src="/./img/reward-wepay.png"><b>微信打赏</b>
+            </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">
+        谢谢
+    </p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="https://ailhc.github.io/" target="_blank">AILHC</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2020/12/27/记第一次参加Cocos开发者沙龙/" class="pre-post btn btn-default" title="记第一次参加Cocos开发者沙龙">
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            记第一次参加Cocos开发者沙龙</span>
+    </a>
+    
+    
+    <a href="/2020/12/24/解决CocosCreator2-4-x的ABundle不能使用npm包的问题/" class="next-post btn btn-default" title="解决CocosCreator2.4.x的ABundle不能使用npm包的问题">
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            解决CocosCreator2.4.x的ABundle不能使用npm包的问题</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#特性"><span class="toc-text">特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何使用？"><span class="toc-text">如何使用？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定制一下"><span class="toc-text">定制一下</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#实现引擎层"><span class="toc-text">实现引擎层</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#开始使用"><span class="toc-text">开始使用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他可能性"><span class="toc-text">其他可能性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后"><span class="toc-text">最后</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+    访问量:
+    <strong id="busuanzi_value_site_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    &nbsp; | &nbsp;
+    访客数:
+    <strong id="busuanzi_value_site_uv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="/assets/tagcanvas.min.js?rev=2.9"></script>
+<script>
+var tagOption = {
+    textColour: '#444', // 字体颜色
+    outlineMethod: 'block', // 选中模式
+    outlineColour: '#FFDAB9', // 选中模式的颜色
+    interval: 30 || 30, // 动画帧之间的时间间隔，值越大，转动幅度越大
+    textHeight: 13,
+    outlineRadius: 3,
+    freezeActive: true || '', // 选中的标签是否继续滚动
+    frontSelect: true || '', // 不选标签云后部的标签
+    initial: [0.1, -0.1],
+    depth: 0.5,
+    decel: 0.95,
+    maxSpeed: 0.03,
+    reverse: true || '', // 是否反向触发
+    fadeIn: 500, // 进入动画时间
+    wheelZoom: false || '' // 是否启用鼠标滚轮
+}
+TagCanvas.Start('tag-cloud-3d', '', tagOption);
+</script>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/app.js?rev=@@hash"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+</html>

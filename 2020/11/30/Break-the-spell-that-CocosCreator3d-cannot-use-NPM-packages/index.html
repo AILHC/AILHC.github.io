@@ -1,0 +1,470 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="晴">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="EasyGameFramework,CocosCreator3d">
+
+
+<meta name="description" content="背景
+我在开发EasyGameFramework这个框架的时候，目标之一是构建出来的模块包可以在CocosCreator3D上使用，使用体验和正常使用具有类型声明的Npm包一致。实在不行再用发布...">
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+<title>
+    
+    打破CocosCreator3d不能使用npm包的魔咒!!! |
+    
+    晴
+</title>
+
+<link rel="alternate" href="/atom.xml" title="晴" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header" style="background-image:url(
+    http://snippet.shenliyang.com/img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Tide Li">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        晴</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/经验之谈/"><i class="fa "></i>
+                                经验之谈</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/框架设计/"><i class="fa "></i>
+                                框架设计</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/想法流水/"><i class="fa "></i>
+                                想法流水</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/资料收集/"><i class="fa "></i>
+                                资料收集</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/关于作者"><i class="fa "></i>
+                                关于作者</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="打破CocosCreator3d不能使用npm包的魔咒!!!">
+            
+            打破CocosCreator3d不能使用npm包的魔咒!!!
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/EasyGameFramework使用/">EasyGameFramework使用</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/CocosCreator3d/">CocosCreator3d</a> <a class="tag-link" href="/tags/EasyGameFramework/">EasyGameFramework</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2020/11/30</span>
+    </span>
+    
+    <span class="fa-wrap">
+        <i class="fa fa-eye"></i>
+        <span id="busuanzi_value_page_pv"></span>
+    </span>
+    
+    
+</div>
+        
+        
+        <p class="fa fa-exclamation-triangle warning">
+            本文于<strong>
+                397</strong>
+            天之前发表，文中内容可能已经过时。
+        </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><ul>
+<li><p>我在开发EasyGameFramework这个框架的时候，目标之一是构建出来的模块包可以在CocosCreator3D上使用，使用体验和正常使用具有类型声明的Npm包一致。实在不行再用发布源码的方式。</p>
+</li>
+<li><p>在js生态中npm有很多很强大很有用的模块包</p>
+</li>
+<li><p>论坛上也有小伙伴对在CocosCreator3d上使用npm包有需求。</p>
+</li>
+<li><p>但CocosCreator3D的模块机制和CocosCreator不同，所以暂不支持直接使用npm包。</p>
+<p>那怎么办呢？首先了解一下CocosCreator3d模块机制</p>
+</li>
+</ul>
+<h2 id="CocosCreator3d模块机制"><a href="#CocosCreator3d模块机制" class="headerlink" title="CocosCreator3d模块机制"></a>CocosCreator3d模块机制</h2><p>这个时候就得祭出调试的杀手级工具:Chrome Devtools</p>
+<h3 id="调试运行CocosCreator3d空项目"><a href="#调试运行CocosCreator3d空项目" class="headerlink" title="调试运行CocosCreator3d空项目"></a>调试运行CocosCreator3d空项目</h3><p><strong>查看index.html</strong></p>
+<p><img src="https://api2.mubu.com/v3/document_image/4fcfb451-ef2e-4510-858a-510dd3cdaf6d-416062.jpg" alt="index.html"></p>
+<p>CocosCreator3d中使用了system.js，并且在index.html注册了一个叫 code-quality:cr的模块</p>
+<p>而且加载了一个.import-map.json的东西</p>
+<p><strong>搜索.import-map.json看看是什么</strong></p>
+<p><img src="https://api2.mubu.com/v3/document_image/9c8ed51c-43b1-4e5c-a61e-f77aab96f3d5-416062.jpg" alt=".import-map.json"></p>
+<p>通过以上的调试我们大概知道，CocosCreator3d使用了一个叫systemjs的库，然后呢，用来注册一些模块。这个systemjs可能是关键的东西，得了解一下。</p>
+<blockquote>
+<p>SystemJS的官方github:<a href="https://github.com/systemjs/systemjs" target="_blank" rel="noopener">https://github.com/systemjs/systemjs</a></p>
+<p>别人的使用:<a href="https://www.jianshu.com/p/42c695316d56" target="_blank" rel="noopener">SystemJS使用记录</a></p>
+</blockquote>
+<p>了解过后，我们能知道它就是一个模块加载器，以及它的注册方式</p>
+<ol>
+<li>通过一个map注册一堆模块</li>
+<li>通过register接口注册一个模块</li>
+</ol>
+<p>但是怎么处理引用的呢？</p>
+<h3 id="断点调试systemjs"><a href="#断点调试systemjs" class="headerlink" title="断点调试systemjs"></a>断点调试systemjs</h3><p><strong>找到systemjs，搜索register</strong></p>
+<p><img src="https://api2.mubu.com/v3/document_image/eb5b31a3-2602-4832-8566-f8bf16809162-416062.jpg" alt="image"></p>
+<p><strong>搜索importMap之类的关键词</strong></p>
+<p><img src="https://api2.mubu.com/v3/document_image/e74c451c-2395-4acd-a8f6-5fc22f505452-416062.jpg" alt="image"></p>
+<p>通过以上调试验证了我们的猜想：SystemJs，用来注册和加载模块的，是一种模块规范，需要做特殊处理才能注册进去和使用。但我们需要来写一个简单的systemjs规范的模块来验证一下。</p>
+<h2 id="手写一个简单的SystemJs的模块"><a href="#手写一个简单的SystemJs的模块" class="headerlink" title="手写一个简单的SystemJs的模块"></a>手写一个简单的SystemJs的模块</h2><ul>
+<li><p><strong>simple-sysjs.js</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">System.register(<span class="string">'simple-sysjs'</span>, [], <span class="function"><span class="keyword">function</span> (<span class="params">exports</span>) </span>&#123;</span><br><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">    execute: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> SimpleSysJs = exports(<span class="string">'SimpleSysJs'</span>, <span class="comment">/** @class */</span> (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="function"><span class="keyword">function</span> <span class="title">SimpleSysJs</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">"我是简单的systemjs模块"</span>)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> SimpleSysJs;</span><br><span class="line">                &#125;()));</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>声明文件:<strong>simple-sysjs.d.ts</strong></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> <span class="keyword">module</span> 'simple-sysjs' &#123;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> SimpleSysJs &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>为了保证这个脚本优先于其他脚本加载，将simple-sysjs.js设置为插件</p>
+</li>
+<li><p>然后在编辑器新建脚本，写下</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; SimpleSysJs &#125; <span class="keyword">from</span> <span class="string">"simple-sysjs"</span></span><br><span class="line"><span class="keyword">new</span> SimpleSysJs()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>运行后可以看到输出:我是简单的systemjs模块</li>
+</ul>
+<p>这个很简单的，大家都可以新建一个空C3d项目尝试一下。</p>
+<p>经过验证尝试，我们知道，只要将npm包转成systemjs规范的文件就可以被我们的代码引用，以及正常使用了。但手写太麻烦了，有什么简单的办法呢？</p>
+<h2 id="如何快速地转换npm包为systemjs规范库"><a href="#如何快速地转换npm包为systemjs规范库" class="headerlink" title="如何快速地转换npm包为systemjs规范库"></a>如何快速地转换npm包为systemjs规范库</h2><h3 id="使用egf-cli"><a href="#使用egf-cli" class="headerlink" title="使用egf-cli"></a>使用egf-cli</h3><p>这个工具是我为EasyGameFramework打造的，目的是可以发布框架库为任意规范模块，给不同的引擎和项目使用。</p>
+<p>有兴趣可以看看我之前写的文章</p>
+<ul>
+<li><a href="https://ailhc.github.io/2020/11/29/The-Birth-of-a-Framework-One-The-Framework-I-Want/" target="_blank" rel="noopener">框架的诞生-一：我想要的框架</a></li>
+</ul>
+<p>以及框架仓库:<a href="https://github.com/AILHC/EasyGameClientFramework.git" target="_blank" rel="noopener">https://github.com/AILHC/EasyGameClientFramework.git</a></p>
+<p><strong>使用这个工具对npm包有一定的要求</strong></p>
+<ol>
+<li>符合commonjs规范</li>
+<li>最好有类型声明文件</li>
+<li>最好能是typescript开发的</li>
+</ol>
+<p><strong>我以<a href="https://xstate.js.org/" target="_blank" rel="noopener">xstate</a>（一个高star的状态机库）为例子</strong></p>
+<ul>
+<li><p>c3d项目下安装 xstate ,npm i xstate</p>
+</li>
+<li><p>然后复制 EasyGameFrameOpen的package-template项目</p>
+</li>
+<li><p>修改包名为</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"name": "@ailhc/xstate2c3d",</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>修改构建命令为</p>
+ <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"build:system": "egf build -f system:@ailhc/xstate2c3d",</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>删除其他ts文件，留下index.ts</p>
+</li>
+<li><p>然后写一句:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> * <span class="keyword">from</span> <span class="string">"xstate"</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>最后执行 yarn run build:system</p>
+</li>
+<li><p>最后的最后，因为xstate里引用了node的变量，所以在构建出来的index.js要加一句</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sendParent: sendParent,</span><br><span class="line">sendUpdate: sendUpdate,</span><br><span class="line">spawn: spawn</span><br><span class="line">      &#125;);</span><br><span class="line"><span class="keyword">var</span> process = &#123; <span class="attr">env</span>: &#123; <span class="attr">NODE_ENV</span>: <span class="string">"production"</span> &#125; &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>复制lib和types到c3d项目，将index.js设置为插件</p>
+</li>
+<li><p>在任意脚本引用就可以</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createMachine, interpret &#125; <span class="keyword">from</span> <span class="string">"@ailhc/xstate2c3d"</span></span><br><span class="line"><span class="comment">// Stateless machine definition</span></span><br><span class="line"><span class="comment">// machine.transition(...) is a pure function used by the interpreter.</span></span><br><span class="line"><span class="keyword">const</span> toggleMachine = createMachine(&#123;</span><br><span class="line">  id: <span class="string">'toggle'</span>,</span><br><span class="line">  initial: <span class="string">'inactive'</span>,</span><br><span class="line">  states: &#123;</span><br><span class="line">    inactive: &#123; on: &#123; TOGGLE: <span class="string">'active'</span> &#125; &#125;,</span><br><span class="line">    active: &#123; on: &#123; TOGGLE: <span class="string">'inactive'</span> &#125; &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Machine instance with internal state</span></span><br><span class="line"><span class="keyword">const</span> toggleService = interpret(toggleMachine)</span><br><span class="line">  .onTransition(<span class="function">(<span class="params">state</span>) =&gt;</span> <span class="built_in">console</span>.log(state.value))</span><br><span class="line">  .start();</span><br><span class="line"><span class="comment">// =&gt; 'inactive'</span></span><br><span class="line"></span><br><span class="line">toggleService.send(<span class="string">'TOGGLE'</span>);</span><br><span class="line"><span class="comment">// =&gt; 'active'</span></span><br><span class="line"></span><br><span class="line">toggleService.send(<span class="string">'TOGGLE'</span>);</span><br><span class="line"><span class="comment">// =&gt; 'inactive'</span></span><br></pre></td></tr></table></figure>
+<p><strong>xstate2c3d</strong>的工程已经更新到EasyGameFrameOpen：<a href="https://github.com/AILHC/EasyGameFrameworkOpen.git" target="_blank" rel="noopener">https://github.com/AILHC/EasyGameFrameworkOpen.git</a></p>
+</li>
+</ul>
+<h3 id="其他方式"><a href="#其他方式" class="headerlink" title="其他方式"></a>其他方式</h3><ol>
+<li>如果npm包有构建systemjs，直接使用</li>
+<li>如果没有构建systemjs，看是否有typescript源码，copy源码，使用egf-cli构建一个systemjs规范的js</li>
+<li>如果是全局变量的库，直接设置为插件就可以了。</li>
+</ol>
+<h2 id="CocosCreator3-0"><a href="#CocosCreator3-0" class="headerlink" title="CocosCreator3.0?"></a>CocosCreator3.0?</h2><p>它也许会支持npm包，但等待它的到来可能还有一段时间</p>
+<p>而且研究一下CocosCreator3d的模块加载机制说不定，在遇到看不懂的问题时有所头绪呢。</p>
+<p>谢谢大家阅读我的文章，希望大家能有所收获。</p>
+<h2 id="框架开发系列文章"><a href="#框架开发系列文章" class="headerlink" title="框架开发系列文章"></a>框架开发系列文章</h2><ul>
+<li><p><a href="https://ailhc.github.io/2020/11/17/The-Birth-of-Frames-Zero%EF%BC%9AWhy-write-framework/" target="_blank" rel="noopener">框架的诞生-零：为什么写框架？</a></p>
+</li>
+<li><p><a href="https://ailhc.github.io/2020/11/29/The-Birth-of-a-Framework-One-The-Framework-I-Want/" target="_blank" rel="noopener">框架的诞生-一：我想要的框架</a></p>
+</li>
+<li><p><a href="https://ailhc.github.io/2020/11/30/Break-the-spell-that-CocosCreator3d-cannot-use-NPM-packages/" target="_blank" rel="noopener">打破CocosCreator3d不能使用npm包的魔咒!!!</a></p>
+</li>
+<li><p>不只是 UI 管理:通用显示管理</p>
+</li>
+<li><p>让 fairygui 更好用的插件</p>
+</li>
+<li><p>满足多种需求的通用对象池</p>
+</li>
+<li><p>构建游戏/应用的神器:broadcast</p>
+</li>
+<li><p>满足所有自定义需求的通用 socket 网络模块</p>
+</li>
+<li><p>业务开发总结之状态管理</p>
+</li>
+<li><p>待续。。。</p>
+</li>
+</ul>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>欢迎关注我的公众号，更多内容持续更新</p>
+<p>公众号搜索:玩转游戏开发</p>
+<p>或扫码:<img src="https://coding-pages-bucket-434147-7588795-4574-367535-1255530080.cos.ap-guangzhou.myqcloud.com/img/20201128164023.png" alt="img" style="zoom:50%;"></p>
+<p>QQ 群: 1103157878</p>
+<p>博客主页: <a href="https://ailhc.github.io/" target="_blank" rel="noopener">https://ailhc.github.io/</a></p>
+<p>掘金: <a href="https://juejin.cn/user/3069492195769469" target="_blank" rel="noopener">https://juejin.cn/user/3069492195769469</a></p>
+<p>github: <a href="https://github.com/AILHC" target="_blank" rel="noopener">https://github.com/AILHC</a></p>
+
+    </div>
+    
+    <div class="reward" ontouchstart="">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+            <span class="reward-type">
+                <img class="wechat" src="/./img/reward-wepay.png"><b>微信打赏</b>
+            </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">
+        谢谢
+    </p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="https://ailhc.github.io/" target="_blank">AILHC</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2020/12/02/The-birth-of-the-framework-two-positioning/" class="pre-post btn btn-default" title="框架的诞生-二：定位">
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            框架的诞生-二：定位</span>
+    </a>
+    
+    
+    <a href="/2020/11/29/The-Birth-of-a-Framework-One-The-Framework-I-Want/" class="next-post btn btn-default" title="框架的诞生-一：我想要的框架">
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            框架的诞生-一：我想要的框架</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CocosCreator3d模块机制"><span class="toc-text">CocosCreator3d模块机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#调试运行CocosCreator3d空项目"><span class="toc-text">调试运行CocosCreator3d空项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#断点调试systemjs"><span class="toc-text">断点调试systemjs</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#手写一个简单的SystemJs的模块"><span class="toc-text">手写一个简单的SystemJs的模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何快速地转换npm包为systemjs规范库"><span class="toc-text">如何快速地转换npm包为systemjs规范库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用egf-cli"><span class="toc-text">使用egf-cli</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他方式"><span class="toc-text">其他方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CocosCreator3-0"><span class="toc-text">CocosCreator3.0?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#框架开发系列文章"><span class="toc-text">框架开发系列文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后"><span class="toc-text">最后</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+    访问量:
+    <strong id="busuanzi_value_site_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    &nbsp; | &nbsp;
+    访客数:
+    <strong id="busuanzi_value_site_uv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="/assets/tagcanvas.min.js?rev=2.9"></script>
+<script>
+var tagOption = {
+    textColour: '#444', // 字体颜色
+    outlineMethod: 'block', // 选中模式
+    outlineColour: '#FFDAB9', // 选中模式的颜色
+    interval: 30 || 30, // 动画帧之间的时间间隔，值越大，转动幅度越大
+    textHeight: 13,
+    outlineRadius: 3,
+    freezeActive: true || '', // 选中的标签是否继续滚动
+    frontSelect: true || '', // 不选标签云后部的标签
+    initial: [0.1, -0.1],
+    depth: 0.5,
+    decel: 0.95,
+    maxSpeed: 0.03,
+    reverse: true || '', // 是否反向触发
+    fadeIn: 500, // 进入动画时间
+    wheelZoom: false || '' // 是否启用鼠标滚轮
+}
+TagCanvas.Start('tag-cloud-3d', '', tagOption);
+</script>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/app.js?rev=@@hash"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+</html>
