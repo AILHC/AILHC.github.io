@@ -19,19 +19,13 @@
     <link rel="dns-prefetch" href="http://yoursite.com">
     <!--SEO-->
 
-<meta name="keywords" content="terminal,shell,mac">
+<meta name="keywords" content="CocosCreator3.x">
 
 
-<meta name="description" content="在Mac上配置命令行工具使用
-iTerm2 + zsh 
-
-参考资料
-关于homebrew的安装
-Mac下终端工具iTerm2安装在windows配置命令行工具使用
-使用Cmder
-
-参考资料
-...">
+<meta name="description" content="前言我是 大项目插件 Aswallow | Cocos Store 的作者
+插件有个后续计划：Creator3.4.x适配
+但昨晚心里有个疑问，需要适配吗？
+因为插件是基于2.x的编辑器特定问题...">
 
 
 <meta name="robots" content="all">
@@ -42,7 +36,7 @@ Mac下终端工具iTerm2安装在windows配置命令行工具使用
 
 <title>
     
-    命令行使用记录 |
+    CocosCreator340大项目开发体验测评 |
     
     晴
 </title>
@@ -151,16 +145,16 @@ Mac下终端工具iTerm2安装在windows配置命令行工具使用
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="命令行使用记录">
+        <h1 id="CocosCreator340大项目开发体验测评">
             
-            命令行使用记录
+            CocosCreator340大项目开发体验测评
             
         </h1>
         <div class="post-meta">
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/经验之谈/">经验之谈</a>
+        <a class="category-link" href="/categories/CocosCreator3-x/">CocosCreator3.x</a>
     </span>
     
     
@@ -168,7 +162,7 @@ Mac下终端工具iTerm2安装在windows配置命令行工具使用
         <i class="fa fa-tags"></i>
         <span class="tags-meta">
             
-            <a class="tag-link" href="/tags/mac/">mac</a> <a class="tag-link" href="/tags/shell/">shell</a> <a class="tag-link" href="/tags/terminal/">terminal</a>
+            <a class="tag-link" href="/tags/CocosCreator3-x/">CocosCreator3.x</a>
             
         </span>
     </span>
@@ -178,7 +172,7 @@ Mac下终端工具iTerm2安装在windows配置命令行工具使用
     <span class="fa-wrap">
         <i class="fa fa-clock-o"></i>
         <span class="date-meta">
-            2020/03/08</span>
+            2022/01/08</span>
     </span>
     
     <span class="fa-wrap">
@@ -190,26 +184,70 @@ Mac下终端工具iTerm2安装在windows配置命令行工具使用
 </div>
         
         
-        <p class="fa fa-exclamation-triangle warning">
-            本文于<strong>
-                670</strong>
-            天之前发表，文中内容可能已经过时。
-        </p>
-        
     </div>
     
     <div class="post-body post-content">
-        <h2 id="在Mac上配置命令行工具使用"><a href="#在Mac上配置命令行工具使用" class="headerlink" title="在Mac上配置命令行工具使用"></a>在Mac上配置命令行工具使用</h2><blockquote>
-<p>iTerm2 + zsh </p>
-</blockquote>
-<h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><ol>
-<li><a href="https://www.zhihu.com/topic/19650146/hot" target="_blank" rel="noopener">关于homebrew的安装</a></li>
-<li><a href="https://www.jianshu.com/p/ba08713c2b19" target="_blank" rel="noopener">Mac下终端工具iTerm2安装</a><h2 id="在windows配置命令行工具使用"><a href="#在windows配置命令行工具使用" class="headerlink" title="在windows配置命令行工具使用"></a>在windows配置命令行工具使用</h2><blockquote>
-<p>使用Cmder</p>
-</blockquote>
-<h3 id="参考资料-1"><a href="#参考资料-1" class="headerlink" title="参考资料"></a>参考资料</h3></li>
-<li><a href="https://www.bbsmax.com/A/GBJrkweE50/" target="_blank" rel="noopener">Windows终端利器Cmder</a></li>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我是 大项目插件 <a href="https://store.cocos.com/app/detail/2948" target="_blank" rel="noopener">Aswallow | Cocos Store</a> 的作者</p>
+<p>插件有个后续计划：Creator3.4.x适配</p>
+<p>但昨晚心里有个疑问，需要适配吗？</p>
+<p>因为插件是基于2.x的编辑器特定问题下的产物</p>
+<p>所以我想去验证一下3.4.x在大量资源的情况下的开发体验。</p>
+<h2 id="测试3-4-0"><a href="#测试3-4-0" class="headerlink" title="测试3.4.0"></a>测试3.4.0</h2><p>我使用的版本是最新的3.4.0</p>
+<p>电脑配置<br><img src="https://cdn.jsdelivr.net/gh/ailhc/picture/img/20220108134249.png" alt="电脑配置"> </p>
+<p>工程不在固态硬盘</p>
+<p>我想这应该是普通工作电脑的配置了，可能还要差点（手动狗头）</p>
+<p>我首先测试的是大量的3D资源</p>
+<p><strong>85</strong>个角色模型、还有<strong>6</strong>个神器模型</p>
+<p>每个角色模型平均动画数量：<strong>5~6</strong>个</p>
+<p>角色模型的总FBX数量：<strong>1118个</strong></p>
+<p><strong>25</strong>个场景，具体模型数量就<strong>728</strong>个</p>
+<p>导入时不卡顿，可以看见资源窗口在刷导入（巴适）</p>
+<p>它是不会卡住主窗口，你可以静静等待它全部导入完成，也可以编辑已经导入完成的部分。导入和使用是可以同时进行。你可以写代码，切换回来也不会卡顿。正常使用是完全不受影响的。</p>
+<p>然后我再导入 <strong>13228</strong>个2d资源(某个西游项目的资源)，同样是不会卡住当前工作和将要做的工作</p>
+<p>我之后测试再次打开。</p>
+<p>总共<strong>3G</strong>左右的资源，重新打开项目大概需要一分钟，卡在<strong>加载资源</strong>,大概50秒<br><img src="https://cdn.jsdelivr.net/gh/ailhc/picture/img/20220108134347.png" alt="image|658x325"> </p>
+<p>这里没有进度显示，体验稍差。</p>
+<p>启动完成后，进去各个窗口都还需要转圈圈一会儿，大概5秒吧，不影响。</p>
+<p>我再测试删除<strong>library</strong>和<strong>temp</strong>重新打开，模拟一下刚入职小哥哥小妹妹的体验</p>
+<p>编辑器需要加载内置资源，<strong>16927</strong>个我添加的资源</p>
+<p>这个时候正在加载资源就有进度了<br><img src="https://cdn.jsdelivr.net/gh/ailhc/picture/img/20220108134935.png" alt="image|690x318"> </p>
+<p>速度飞快</p>
+<p>但我还是等了<strong>10</strong>分钟。不过进去编辑器后，没有怎么做加载资源的事情</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ailhc/picture/img/20220108134502.png" alt="系统资源占用"> </p>
+<p><strong>3G</strong>的内存😂，怎么跟我的资源总大小那么接近，是有关系吗？@引擎组</p>
+<h2 id="测试过程中一些体验反馈"><a href="#测试过程中一些体验反馈" class="headerlink" title="测试过程中一些体验反馈"></a>测试过程中一些体验反馈</h2><ol>
+<li><p>FBX不能给<code>AnimationClip</code>赋值，就是不能直接拖FBX给<code>AnimationClip</code>资源的坑位</p>
+</li>
+<li><p>导入FBX资源，没得配置<code>AnimationClip</code>名使用FBX的文件名,所有都是<code>Tabke 001</code>要一个个改</p>
+</li>
+<li><p>删除<code>cc.SkeletalAnimation</code> 模型就不见了,为什么？</p>
+</li>
 </ol>
+<h2 id="测试2-7-0"><a href="#测试2-7-0" class="headerlink" title="测试2.7.0"></a>测试2.7.0</h2><p>我其实在想，<code>2.7.0</code>是升级过的，不知道有没有使用和<code>3.4.0</code>相同的方式。所以得测试看看</p>
+<p>我新建空项目导入<strong>13228</strong>个2d资源(某个西游项目的资源)，直接卡住，点一下主窗口没反应，还未响应。</p>
+<p>还是原来的方式处理，没变。其他的就不测试了。它过了好久才导入完成</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><ol>
+<li><p>大量资源的情况下的编辑器体验，<code>3.4.0</code>比<code>2.4.7</code>好TM太多了</p>
+</li>
+<li><p>就编辑器开发体验来说，如果和我测试的资源体量相近的项目，可以入手<code>CocosCreator3.4.0</code>了。</p>
+</li>
+<li><p><code>Aswallow</code>也不需要再适配<code>3.4.x</code>了(这体验，还适配个毛线)</p>
+</li>
+<li><p><code>2.4.x</code>的编辑器如果想开发找中大型项目，或者正在开发中大型项目，可以使用<a href="https://store.cocos.com/app/detail/2948" target="_blank" rel="noopener">Aswallow</a>改善开发体验，提高效率（微信可点阅读原文跳转）</p>
+</li>
+</ol>
+<h2 id="想要视频评测吗？"><a href="#想要视频评测吗？" class="headerlink" title="想要视频评测吗？"></a>想要视频评测吗？</h2><p>文章写得快一些，视频会直观感受强烈一些，但制作起来是真的繁琐😂。</p>
+<p>如果着急想看我出的视频评测的话，请多点赞~，越多越快</p>
+<p>或者开个直播？</p>
+<p>留言出个主意吧</p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>如果对游戏开发感兴趣的，想了解更多游戏开发相关的事和知识</p>
+<p>可以关注公众号或者加群交流</p>
+<p>公众号搜索:玩转游戏开发</p>
+<p>或扫码:<img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/abd0c14c9c954e56af20adb71fa00da9~tplv-k3u1fbpfcp-zoom-1.image" alt="img" style="zoom:50%;"></p>
+<p>QQ 群: 1103157878</p>
+<p>博客主页: <a href="https://ailhc.github.io/" target="_blank" rel="noopener">https://ailhc.github.io/</a></p>
+<p>掘金: <a href="https://juejin.cn/user/3069492195769469" target="_blank" rel="noopener">https://juejin.cn/user/3069492195769469</a></p>
+<p>github: <a href="https://github.com/AILHC" target="_blank" rel="noopener">https://github.com/AILHC</a></p>
 
     </div>
     
@@ -244,17 +282,11 @@ Mac下终端工具iTerm2安装在windows配置命令行工具使用
 </article>
 <div class="article-nav prev-next-wrap clearfix">
     
-    <a href="/2020/11/17/The-Birth-of-Frames-Zero：Why-write-framework/" class="pre-post btn btn-default" title="框架的诞生-零：为什么写框架？">
-        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-        <span class="hidden-xs">
-            框架的诞生-零：为什么写框架？</span>
-    </a>
     
-    
-    <a href="/2020/02/28/how-to-wrrite-blog/" class="next-post btn btn-default" title="写作输出记录">
+    <a href="/2022/01/02/飞向元宇宙的燕子和椰子/" class="next-post btn btn-default" title="飞向元宇宙的燕子和椰子">
         <span class="hidden-lg">下一篇</span>
         <span class="hidden-xs">
-            写作输出记录</span><i class="fa fa-angle-right fa-fw"></i>
+            飞向元宇宙的燕子和椰子</span><i class="fa fa-angle-right fa-fw"></i>
     </a>
     
 </div>
@@ -267,7 +299,7 @@ Mac下终端工具iTerm2安装在windows配置命令行工具使用
             文章目录
         </h3>
         
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#在Mac上配置命令行工具使用"><span class="toc-text">在Mac上配置命令行工具使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#在windows配置命令行工具使用"><span class="toc-text">在windows配置命令行工具使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料-1"><span class="toc-text">参考资料</span></a></li></ol></li>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试3-4-0"><span class="toc-text">测试3.4.0</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试过程中一些体验反馈"><span class="toc-text">测试过程中一些体验反馈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试2-7-0"><span class="toc-text">测试2.7.0</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结论"><span class="toc-text">结论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#想要视频评测吗？"><span class="toc-text">想要视频评测吗？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后"><span class="toc-text">最后</span></a></li></ol>
         
     </div>
 </aside>
